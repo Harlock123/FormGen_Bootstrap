@@ -1,5 +1,5 @@
-# FormGen
-Typescript Library to Use Data structures handed to it to interpret and create UI CRUD screens.
+# FormGenBS
+Typescript Library to Use Data structures handed to it to interpret and create UI CRUD screens. Tailored for BOOTSTRAP
 
 ```typescript
 constructor(DomElementID: string, UIElements: UIElement[],VersionString: string) {
@@ -13,8 +13,8 @@ Versionstring gets handed back and forth between the class and the forms persist
 ## UIElement definition
 
 ```typescript
-class UIElement
-{
+class UIElement {
+    public elFormRow: number;
     public elID: string;
     public elType: string;
     public elLabel: string;
@@ -26,11 +26,11 @@ class UIElement
     public elStyle: string;
     public elScore: number[];
 
-    constructor(elid: string, eltype: string, ellabel: string, 
-        ellabelbold: boolean, elcontent: string[],elrequired: boolean,
-        elinteractions: UIInteraction[],elinitialvisibility: boolean, elstyle: string,
-        elscore: number[])
-    {
+    constructor(elformrow: number, elid: string, eltype: string, ellabel: string,
+        ellabelbold: boolean, elcontent: string[], elrequired: boolean,
+        elinteractions: UIInteraction[], elinitialvisibility: boolean, elstyle: string,
+        elscore: number[]) {
+        this.elFormRow = elformrow;
         this.elID = elid;
         this.elContent = elcontent;
         this.elLabel = ellabel;
@@ -47,6 +47,8 @@ class UIElement
 ```
 
 ### Some Details:
+- **elFormRow** is s chronological grouping of elements to be inserted at a given row in the bootstrap matrix. FormGen will interpret these entries and group them together and decorate their entries with col-md-x where x is 1 2 3 4 6 12 ato attempt to evenly space them across the form in the standard bootstrap way. Start at 1 and number each subsequent rows entries chronologically ie next rows contents would be 2 and then 3 and so on.
+
 - **elid** is a simple string that will be used to identify the element on the DOM. It can be any alpha numeric be unique for each elemet that is being placed into the form.
 
 - **eltype** is a string representation of the kind of ui element desired. Valid types are
@@ -137,16 +139,16 @@ Sample JSON data output from a blank form built via the included HTML file, show
 - **GetFormDefinitionFrom(webUrl: string)** Will attempt to do an HTTPGet from the specified webURL and parse the result as the list of UIElements that create the form. This allows creating the form via webservice calls on the fly, by calling restful endpoints that create the JSON data programatically perhaps from a database of stored forms. The inclided HTML test apparatus simples does an HTTPget from LOCALHOST:8000 (Created using pythons SimpleHTTPServer in my test environment), of a simple JSON file to simulate an endpoint generating the forms definition programatically. That file is shown below...
 
 ```json
-[
-    {"elID":"1","elContent":[],"elLabel":"The Label for this piece of input Fetched from a HTTPGet","elRequired":true,"elType":"text","elLabelBold":true,"elInteractions":[{"elIDSource":"1","elIDTarget":"8","elInteractionType":"SHOW","elValueTrigger":"N/A"}],"elInitialVisibility":true,"elStyle":"","elScore":[0]},
-    {"elID":"2","elContent":[],"elLabel":"The Label for this narrative Fetched from an HTTPGet","elRequired":true,"elType":"narrative","elLabelBold":true,"elInteractions":[{"elIDSource":"2","elIDTarget":"8","elInteractionType":"SHOW","elValueTrigger":"SAMPLE TRIGGER"}],"elInitialVisibility":true,"elStyle":"","elScore":[1]},
-    {"elID":"3","elContent":["Male","Female","Unknown"],"elLabel":"Gender","elRequired":true,"elType":"radio","elLabelBold":true,"elInteractions":[{"elIDSource":"3","elIDTarget":"5","elInteractionType":"SHOW","elValueTrigger":"Unknown"}],"elInitialVisibility":true,"elStyle":"","elScore":[2,3,4]},
-    {"elID":"4","elContent":["unset","1","2","3","4"],"elLabel":"Select from the dropdown that was fetched from an HTTPGet","elRequired":true,"elType":"dropdown","elLabelBold":true,"elInteractions":[{"elIDSource":"4","elIDTarget":"8","elInteractionType":"HIDE","elValueTrigger":"unset"}],"elInitialVisibility":true,"elStyle":"","elScore":[0,5,6,7,8]},
-    {"elID":"5","elContent":[],"elLabel":"The Label Date","elRequired":true,"elType":"date","elLabelBold":true,"elInteractions":[{"elIDSource":"5","elIDTarget":"5a","elInteractionType":"SHOW","elValueTrigger":""}],"elInitialVisibility":false,"elStyle":"","elScore":[9]},
-    {"elID":"5a","elContent":[],"elLabel":"What was the curcumstances for the date noted above. This should be a long label that should wrap nicely in the space provided as a test. This long Label should not overwite the actual input field","elRequired":true,"elType":"text","elLabelBold":true,"elInteractions":[],"elInitialVisibility":false,"elStyle":"","elScore":[0]},
-    {"elID":"6","elContent":["Checkbox option 1","Checkbox option 2","Checkbox option 3","Checkbox option 4","Checkbox option 5"],"elLabel":"A bunch of check boxes","elRequired":true,"elType":"checkbox","elLabelBold":true,"elInteractions":[{"elIDSource":"6","elIDTarget":"7","elInteractionType":"SHOW","elValueTrigger":"Checkbox option 3"}],"elInitialVisibility":true,"elStyle":"","elScore":[10,11,12,13,14]},
-    {"elID":"7","elContent":[],"elLabel":"Another Narrative is here Fetched from the HTTPGet","elRequired":true,"elType":"narrative","elLabelBold":true,"elInteractions":[],"elInitialVisibility":false,"elStyle":"","elScore":[15]},
-    {"elID":"8","elContent":[],"elLabel":"A Third Narrative is here Fetched from the HTTPGet","elRequired":true,"elType":"narrative","elLabelBold":true,"elInteractions":[],"elInitialVisibility":false,"elStyle":"","elScore":[16]}
+
+    {"elFormRow":1,"elID":"1","elContent":[],"elLabel":"The Label for this piece of input Fetched from a HTTPGet","elRequired":true,"elType":"text","elLabelBold":true,"elInteractions":[{"elIDSource":"1","elIDTarget":"8","elInteractionType":"SHOW","elValueTrigger":"N/A"}],"elInitialVisibility":true,"elStyle":"","elScore":[0]},
+    {"elFormRow":1,"elID":"2","elContent":[],"elLabel":"The Label for this narrative Fetched from an HTTPGet","elRequired":true,"elType":"narrative","elLabelBold":true,"elInteractions":[{"elIDSource":"2","elIDTarget":"8","elInteractionType":"SHOW","elValueTrigger":"SAMPLE TRIGGER"}],"elInitialVisibility":true,"elStyle":"","elScore":[1]},
+    {"elFormRow":2,"elID":"3","elContent":["Male","Female","Unknown"],"elLabel":"Gender","elRequired":true,"elType":"radio","elLabelBold":true,"elInteractions":[{"elIDSource":"3","elIDTarget":"5","elInteractionType":"SHOW","elValueTrigger":"Unknown"}],"elInitialVisibility":true,"elStyle":"","elScore":[2,3,4]},
+    {"elFormRow":2,"elID":"4","elContent":["unset","1","2","3","4"],"elLabel":"Select from the dropdown that was fetched from an HTTPGet","elRequired":true,"elType":"dropdown","elLabelBold":true,"elInteractions":[{"elIDSource":"4","elIDTarget":"8","elInteractionType":"HIDE","elValueTrigger":"unset"}],"elInitialVisibility":true,"elStyle":"","elScore":[0,5,6,7,8]},
+    {"elFormRow":3,"elID":"5","elContent":[],"elLabel":"The Label Date","elRequired":true,"elType":"date","elLabelBold":true,"elInteractions":[{"elIDSource":"5","elIDTarget":"5a","elInteractionType":"SHOW","elValueTrigger":""}],"elInitialVisibility":false,"elStyle":"","elScore":[9]},
+    {"elFormRow":3,"elID":"5a","elContent":[],"elLabel":"What was the curcumstances for the date noted above. This should be a long label that should wrap nicely in the space provided as a test. This long Label should not overwite the actual input field","elRequired":true,"elType":"text","elLabelBold":true,"elInteractions":[],"elInitialVisibility":false,"elStyle":"","elScore":[0]},
+    {"elFormRow":4,"elID":"6","elContent":["Checkbox option 1","Checkbox option 2","Checkbox option 3","Checkbox option 4","Checkbox option 5"],"elLabel":"A bunch of check boxes","elRequired":true,"elType":"checkbox","elLabelBold":true,"elInteractions":[{"elIDSource":"6","elIDTarget":"7","elInteractionType":"SHOW","elValueTrigger":"Checkbox option 3"}],"elInitialVisibility":true,"elStyle":"","elScore":[10,11,12,13,14]},
+    {"elFormRow":5,"elID":"7","elContent":[],"elLabel":"Another Narrative is here Fetched from the HTTPGet","elRequired":true,"elType":"narrative","elLabelBold":true,"elInteractions":[],"elInitialVisibility":false,"elStyle":"","elScore":[15]},
+    {"elFormRow":5,"elID":"8","elContent":[],"elLabel":"A Third Narrative is here Fetched from the HTTPGet","elRequired":true,"elType":"narrative","elLabelBold":true,"elInteractions":[],"elInitialVisibility":false,"elStyle":"","elScore":[16]}
 ]
 ```
         
@@ -185,13 +187,15 @@ If the class is defined as FG then
 <html>
 
 <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
     <title>FormGen Test</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
-        
-    <div id="FormGenBody" style="height:70vh; width: 98vw" >
-        
-    </div>
     <div id="testbuttons">
         <input type="button" onclick="alert(FG.GetFormDataAsString());" 
                 id="btnValRetrieve" value="Retrieve the values">
@@ -226,41 +230,50 @@ If the class is defined as FG then
 
     </div>
 
-    <script src="FormGen.js"></script>
+    <div id="FormGenBody" style="height:90vh; width: 100vw" >
+        
+    </div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.js"></script>
+    
+    <script src="FormGenBS.js"></script>
+    
     <script type="text/javascript">
         var ELEs = new Array();
 
         ELEs.push(
-            new UIElement("1","text","The Label for this piece of input",true,[],true,
+            new UIElement(1,"1","text","The Label for this piece of input",true,[],true,
             [new UIInteraction("1","8","SHOW","N/A")],true,"",[0]));
         ELEs.push(
-            new UIElement("2","narrative","The Label for this narrative",true,[],true,
+            new UIElement(1,"2","narrative","The Label for this narrative",true,[],true,
             [new UIInteraction("2","8","SHOW","SAMPLE TRIGGER")],true,"",[1]));
         ELEs.push(
-            new UIElement("3","radio","Gender",true,["Male","Female","Unknown"],true,
+            new UIElement(2,"3","radio","Gender",true,["Male","Female","Unknown"],true,
             [new UIInteraction("3","5","SHOW","Unknown")],true,"",[2,3,4]));
         ELEs.push(
-            new UIElement("4","dropdown","Select from the dropdown",true,["unset","1","2","3","4"], true,
+            new UIElement(2,"4","dropdown","Select from the dropdown",true,["unset","1","2","3","4"], true,
             [new UIInteraction("4","8","HIDE","unset")],true,"",[0,5,6,7,8]));
         ELEs.push(
-            new UIElement("5","date","The Label Date",true,[],true,
+            new UIElement(3,"5","date","The Label Date",true,[],true,
             [new UIInteraction("5","5a","SHOW","")],false,"",[9]));
         ELEs.push(
-            new UIElement("5a","text","What was the curcumstances for the date noted above",true,[],true,
+            new UIElement(3,"5a","text","What was the curcumstances for the date noted above",true,[],true,
             [],false,"",[0]));
         ELEs.push(
-            new UIElement("6","checkbox","A bunch of check boxes",true,
+            new UIElement(4,"6","checkbox","A bunch of check boxes",true,
             ["Checkbox option 1","Checkbox option 2","Checkbox option 3","Checkbox option 4","Checkbox option 5"],
             true,[new UIInteraction("6","7","SHOW","Checkbox option 3")],true,"",[10,11,12,13,14]));
         ELEs.push(
-            new UIElement("7","narrative","Another Narrative is here",true,[],true,[],false,"",[15]));
+            new UIElement(5,"7","narrative","Another Narrative is here",true,[],true,[],false,"",[15]));
         
         ELEs.push(
-            new UIElement("8","narrative","A Third Narrative is here",true,[],true,[],false,"",[16]));
+            new UIElement(5,"8","narrative","A Third Narrative is here",true,[],true,[],false,"",[16]));
         
         var FFG = JSON.stringify(ELEs);
         
-        var FG = new FormGen('FormGenBody',ELEs,'Version 1');
+        var FG = new FormGenBS('FormGenBody',ELEs,'Version 1');
 
         /// This is a stub routine to wire up the UIInteractions
         /// as I dont know how to have the class call into itself via the ONCLICK and ONCHANGE
@@ -296,7 +309,7 @@ If the class is defined as FG then
 
 Sample form output from the HTML above.
 
-![ScreenShot](ScreenShots/SS1.png)
+![ScreenShot](ScreenShots/SS2.png)
 
 **Some Other Notes**
 
