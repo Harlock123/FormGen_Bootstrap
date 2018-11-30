@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <title>FormGen Test</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+    <div id="testbuttons">
+        <input type="button" onclick="alert(FG.GetFormDataAsString());" 
+                id="btnValRetrieve" value="Retrieve the values">
+
+        <input type="button" 
+                onclick="FG.SetFormData([ new UIValue('3_3','true'),
+                                          new UIValue('5','2018-11-01'),
+                                          new UIValue('6_1','true'),
+                                          new UIValue('6_3','true'),
+                                          new UIValue('7','This is a test')
+                                        ]);" 
+                                
+                id="btnValSet" value="Set Some Values">
+
+
+        <input type="button" 
+                onclick="PopulateFromString();" 
+                id="btnValSet1" value="Set Some Values from a String">
+
+        <input type="button" 
+                onclick="alert(' The Score is: ' + FG.GetFormScore());" 
+                id="btnScoreGet" value="Fetch Form Score">
+
+        <input type="button" 
+                onclick="alert(' The Validity is: ' + FG.IsFormValid());" 
+                id="btnValidityGet" value="Fetch Form Validity">
+
+        <input type="button" 
+                onclick="FG.GetFormDefinitionFrom('http://localhost:8000/SampleForm.json');" 
+                id="btnPopulateFromURL" value="Form Definition from URL">
+
+
+    </div>
+
+    <div id="FormGenBody" style="height:90vh; width: 100vw" >
+        
+    </div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.js"></script>
+    
+    <script src="FormGenBS.js"></script>
+    
+    <script type="text/javascript">
+        var ELEs = new Array();
+
+        ELEs.push(
+            new UIElement(1,"1","text","The Label for this piece of input",true,[],true,
+            [new UIInteraction("1","8","SHOW","N/A")],true,"",[0]));
+        ELEs.push(
+            new UIElement(1,"2","narrative","The Label for this narrative",true,[],true,
+            [new UIInteraction("2","8","SHOW","SAMPLE TRIGGER")],true,"",[1]));
+        ELEs.push(
+            new UIElement(2,"3","radio","Gender",true,["Male","Female","Unknown"],true,
+            [new UIInteraction("3","5","SHOW","Unknown")],true,"",[2,3,4]));
+        ELEs.push(
+            new UIElement(2,"4","dropdown","Select from the dropdown",true,["unset","1","2","3","4"], true,
+            [new UIInteraction("4","8","HIDE","unset")],true,"",[0,5,6,7,8]));
+        ELEs.push(
+            new UIElement(3,"5","date","The Label Date",true,[],true,
+            [new UIInteraction("5","5a","SHOW","")],false,"",[9]));
+        ELEs.push(
+            new UIElement(3,"5a","text","What was the curcumstances for the date noted above",true,[],true,
+            [],false,"",[0]));
+        ELEs.push(
+            new UIElement(4,"6","checkbox","A bunch of check boxes",true,
+            ["Checkbox option 1","Checkbox option 2","Checkbox option 3","Checkbox option 4","Checkbox option 5"],
+            true,[new UIInteraction("6","7","SHOW","Checkbox option 3")],true,"",[10,11,12,13,14]));
+        ELEs.push(
+            new UIElement(5,"7","narrative","Another Narrative is here",true,[],true,[],false,"",[15]));
+        
+        ELEs.push(
+            new UIElement(5,"8","narrative","A Third Narrative is here",true,[],true,[],false,"",[16]));
+        
+        var FFG = JSON.stringify(ELEs);
+        
+        var FG = new FormGenBS('FormGenBody',ELEs,'Version 1');
+
+        /// This is a stub routine to wire up the UIInteractions
+        /// as I dont know how to have the class call into itself via the ONCLICK and ONCHANGE
+        /// manufactured handlers in the inserted DOM elements
+        /// Need to find a cleaner way to do this
+        function DoFormGenInteraction(e)
+        {
+            FG.DoFormGenInteraction(e);
+        }
+
+        function PopulateFromString() /// assumes the class is instanced as FG
+        {
+            var x = '[{"uivID":"1","uivValue":"test data"},{"uivID":"2","uivValue":"sadfsadfsadf"},'+
+                 '{"uivID":"3_1","uivValue":"false"},{"uivID":"3_2","uivValue":"false"},' +
+                 '{"uivID":"3_3","uivValue":"true"},{"uivID":"4","uivValue":"3"},'+
+                 '{"uivID":"5","uivValue":"2018-11-30"},{"uivID":"6_1","uivValue":"true"},'+
+                 '{"uivID":"6_2","uivValue":"true"},{"uivID":"6_3","uivValue":"true"},'+
+                 '{"uivID":"6_4","uivValue":"false"},{"uivID":"6_5","uivValue":"true"},'+
+                 '{"uivID":"7","uivValue":"asdfsadfsadf\\nMultiLine\\nMultiLine"},' +
+                 '{"uivID":"8","uivValue":"Some More Text Inserted into a Narrative\\nMultiLine\\nMultiLine"}]';
+                 
+
+            FG.SetFormDataFromString(x);
+
+        }
+
+    
+    </script>
+
+</body>
+</html>
