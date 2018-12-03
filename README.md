@@ -18,28 +18,29 @@ class UIElement {
     public elID: string;
     public elType: string;
     public elLabel: string;
-    public elLabelBold: boolean;
     public elContent: string[];
     public elRequired: boolean;
     public elInteractions: UIInteraction[];
     public elInitialVisibility: boolean;
     public elStyle: string;
+    public elLabelStyle: string;
+    public elFormStyle: string;
     public elScore: number[];
 
     constructor(elformrow: number, elid: string, eltype: string, ellabel: string,
-        ellabelbold: boolean, elcontent: string[], elrequired: boolean,
-        elinteractions: UIInteraction[], elinitialvisibility: boolean, elstyle: string,
-        elscore: number[]) {
+        elcontent: string[], elrequired: boolean,elinteractions: UIInteraction[], elinitialvisibility: boolean, 
+        elstyle: string, ellabelstyle: string, elformstyle: string, elscore: number[]) {
         this.elFormRow = elformrow;
         this.elID = elid;
         this.elContent = elcontent;
         this.elLabel = ellabel;
         this.elRequired = elrequired;
         this.elType = eltype;
-        this.elLabelBold = ellabelbold;
         this.elInteractions = elinteractions;
         this.elInitialVisibility = elinitialvisibility;
         this.elStyle = elstyle;
+        this.elLabelStyle = ellabelstyle;
+        this.elFormStyle = elformstyle;
         this.elScore = elscore;
 
     }
@@ -61,8 +62,6 @@ class UIElement {
 
 - **ellabel** is the string label to be applied to the element being placed on the page
 
-- **ellabelbold** boolean indicating, yup you guessed it, draw the label bold or not
-
 - **elcontent**  is an array of strings that get turned into a list of appropriate sub elements for things that have subelements. IE RadioButtons, DropDowns, and CheckBoxes.
 
 - **elrequired** is a boolean used to trigger the required or not check for form validation methods
@@ -71,7 +70,11 @@ class UIElement {
 
 - **elinitialvisibility** is a boolean used to indicate if the element will be inserted into the DOM visible or hidden
 
-- **elstyle** is a string that will be inserted as a style tag on the wrapping DIV tak for each element placed in the DOM
+- **elstyle** is a string that will be inserted as an inline style= assertion on the form-row of the element. Note: that the first element for any given row will this style value applied to all other elements place in that row. Useful for things like the whole rows background color for example and is demonstrated in the projects index.html test page. 
+
+- **ellabelstyle** is a string that will be inserted as an inline style= assertion on the Label of the element. 
+
+- **elformstyle** is a string that will be inserted as an inline style= assertion on the combination of element and label container. In BootStrap this is a form-group.
 
 - **elscore** is an array of numbers used to associate a weight numerically with each element as its inserted into the page. Used by the GetFormScore method to return a  value if an associated element is populated or selected. So if you have a radiobutton list or checkboxlist or dropdown list, you will have a weight for subelement. Text, Dates and Narrative will have a singular value in this array.
 
@@ -139,16 +142,16 @@ Sample JSON data output from a blank form built via the included HTML file, show
 - **GetFormDefinitionFrom(webUrl: string)** Will attempt to do an HTTPGet from the specified webURL and parse the result as the list of UIElements that create the form. This allows creating the form via webservice calls on the fly, by calling restful endpoints that create the JSON data programatically perhaps from a database of stored forms. The inclided HTML test apparatus simples does an HTTPget from LOCALHOST:8000 (Created using pythons SimpleHTTPServer in my test environment), of a simple JSON file to simulate an endpoint generating the forms definition programatically. That file is shown below...
 
 ```json
-
-    {"elFormRow":1,"elID":"1","elContent":[],"elLabel":"The Label for this piece of input Fetched from a HTTPGet","elRequired":true,"elType":"text","elLabelBold":true,"elInteractions":[{"elIDSource":"1","elIDTarget":"8","elInteractionType":"SHOW","elValueTrigger":"N/A"}],"elInitialVisibility":true,"elStyle":"","elScore":[0]},
-    {"elFormRow":1,"elID":"2","elContent":[],"elLabel":"The Label for this narrative Fetched from an HTTPGet","elRequired":true,"elType":"narrative","elLabelBold":true,"elInteractions":[{"elIDSource":"2","elIDTarget":"8","elInteractionType":"SHOW","elValueTrigger":"SAMPLE TRIGGER"}],"elInitialVisibility":true,"elStyle":"","elScore":[1]},
-    {"elFormRow":2,"elID":"3","elContent":["Male","Female","Unknown"],"elLabel":"Gender","elRequired":true,"elType":"radio","elLabelBold":true,"elInteractions":[{"elIDSource":"3","elIDTarget":"5","elInteractionType":"SHOW","elValueTrigger":"Unknown"}],"elInitialVisibility":true,"elStyle":"","elScore":[2,3,4]},
-    {"elFormRow":2,"elID":"4","elContent":["unset","1","2","3","4"],"elLabel":"Select from the dropdown that was fetched from an HTTPGet","elRequired":true,"elType":"dropdown","elLabelBold":true,"elInteractions":[{"elIDSource":"4","elIDTarget":"8","elInteractionType":"HIDE","elValueTrigger":"unset"}],"elInitialVisibility":true,"elStyle":"","elScore":[0,5,6,7,8]},
-    {"elFormRow":3,"elID":"5","elContent":[],"elLabel":"The Label Date","elRequired":true,"elType":"date","elLabelBold":true,"elInteractions":[{"elIDSource":"5","elIDTarget":"5a","elInteractionType":"SHOW","elValueTrigger":""}],"elInitialVisibility":false,"elStyle":"","elScore":[9]},
-    {"elFormRow":3,"elID":"5a","elContent":[],"elLabel":"What was the curcumstances for the date noted above. This should be a long label that should wrap nicely in the space provided as a test. This long Label should not overwite the actual input field","elRequired":true,"elType":"text","elLabelBold":true,"elInteractions":[],"elInitialVisibility":false,"elStyle":"","elScore":[0]},
-    {"elFormRow":4,"elID":"6","elContent":["Checkbox option 1","Checkbox option 2","Checkbox option 3","Checkbox option 4","Checkbox option 5"],"elLabel":"A bunch of check boxes","elRequired":true,"elType":"checkbox","elLabelBold":true,"elInteractions":[{"elIDSource":"6","elIDTarget":"7","elInteractionType":"SHOW","elValueTrigger":"Checkbox option 3"}],"elInitialVisibility":true,"elStyle":"","elScore":[10,11,12,13,14]},
-    {"elFormRow":5,"elID":"7","elContent":[],"elLabel":"Another Narrative is here Fetched from the HTTPGet","elRequired":true,"elType":"narrative","elLabelBold":true,"elInteractions":[],"elInitialVisibility":false,"elStyle":"","elScore":[15]},
-    {"elFormRow":5,"elID":"8","elContent":[],"elLabel":"A Third Narrative is here Fetched from the HTTPGet","elRequired":true,"elType":"narrative","elLabelBold":true,"elInteractions":[],"elInitialVisibility":false,"elStyle":"","elScore":[16]}
+[
+    {"elFormRow":1,"elID":"1","elContent":[],"elLabel":"The Label for this piece of input Fetched from a HTTPGet","elRequired":true,"elType":"text","elLabelBold":true,"elInteractions":[{"elIDSource":"1","elIDTarget":"8","elInteractionType":"SHOW","elValueTrigger":"N/A"}],"elInitialVisibility":true,"elStyle":"","elLabelStyle":"","elFormStyle":"","elScore":[0]},
+    {"elFormRow":1,"elID":"2","elContent":[],"elLabel":"The Label for this narrative Fetched from an HTTPGet","elRequired":true,"elType":"narrative","elLabelBold":true,"elInteractions":[{"elIDSource":"2","elIDTarget":"8","elInteractionType":"SHOW","elValueTrigger":"SAMPLE TRIGGER"}],"elInitialVisibility":true,"elStyle":"","elLabelStyle":"","elFormStyle":"","elScore":[1]},
+    {"elFormRow":2,"elID":"3","elContent":["Male","Female","Unknown"],"elLabel":"Gender","elRequired":true,"elType":"radio","elLabelBold":true,"elInteractions":[{"elIDSource":"3","elIDTarget":"5","elInteractionType":"SHOW","elValueTrigger":"Unknown"}],"elInitialVisibility":true,"elStyle":"","elLabelStyle":"","elFormStyle":"","elScore":[2,3,4]},
+    {"elFormRow":2,"elID":"4","elContent":["unset","1","2","3","4"],"elLabel":"Select from the dropdown that was fetched from an HTTPGet","elRequired":true,"elType":"dropdown","elLabelBold":true,"elInteractions":[{"elIDSource":"4","elIDTarget":"8","elInteractionType":"HIDE","elValueTrigger":"unset"}],"elInitialVisibility":true,"elStyle":"","elLabelStyle":"","elFormStyle":"","elScore":[0,5,6,7,8]},
+    {"elFormRow":3,"elID":"5","elContent":[],"elLabel":"The Label Date","elRequired":true,"elType":"date","elLabelBold":true,"elInteractions":[{"elIDSource":"5","elIDTarget":"5a","elInteractionType":"SHOW","elValueTrigger":""}],"elInitialVisibility":false,"elStyle":"","elLabelStyle":"","elFormStyle":"","elScore":[9]},
+    {"elFormRow":3,"elID":"5a","elContent":[],"elLabel":"What was the curcumstances for the date noted above. This should be a long label that should wrap nicely in the space provided as a test. This long Label should not overwite the actual input field","elRequired":true,"elType":"text","elLabelBold":true,"elInteractions":[],"elInitialVisibility":false,"elStyle":"","elLabelStyle":"","elFormStyle":"","elScore":[0]},
+    {"elFormRow":4,"elID":"6","elContent":["Checkbox option 1","Checkbox option 2","Checkbox option 3","Checkbox option 4","Checkbox option 5"],"elLabel":"A bunch of check boxes","elRequired":true,"elType":"checkbox","elLabelBold":true,"elInteractions":[{"elIDSource":"6","elIDTarget":"7","elInteractionType":"SHOW","elValueTrigger":"Checkbox option 3"}],"elInitialVisibility":true,"elStyle":"","elLabelStyle":"","elFormStyle":"","elScore":[10,11,12,13,14]},
+    {"elFormRow":5,"elID":"7","elContent":[],"elLabel":"Another Narrative is here Fetched from the HTTPGet","elRequired":true,"elType":"narrative","elLabelBold":true,"elInteractions":[],"elInitialVisibility":false,"elStyle":"","elLabelStyle":"","elFormStyle":"","elScore":[15]},
+    {"elFormRow":6,"elID":"8","elContent":[],"elLabel":"A Third Narrative is here Fetched from the HTTPGet","elRequired":true,"elType":"narrative","elLabelBold":true,"elInteractions":[],"elInitialVisibility":false,"elStyle":"","elLabelStyle":"","elFormStyle":"","elScore":[16]}
 ]
 ```
         
@@ -244,32 +247,32 @@ If the class is defined as FG then
         var ELEs = new Array();
 
         ELEs.push(
-            new UIElement(1,"1","text","The Label for this piece of input",true,[],true,
-            [new UIInteraction("1","8","SHOW","N/A")],true,"",[0]));
+            new UIElement(1,"1","text","The Label for this piece of input",[],true,
+            [new UIInteraction("1","8","SHOW","N/A")],true,"","font-size:16px;font-weight:bold","background-color: lavender",[0]));
         ELEs.push(
-            new UIElement(1,"2","narrative","The Label for this narrative",true,[],true,
-            [new UIInteraction("2","8","SHOW","SAMPLE TRIGGER")],true,"",[1]));
+            new UIElement(1,"2","narrative","The Label for this narrative",[],true,
+            [],true,"","","",[1]));
         ELEs.push(
-            new UIElement(2,"3","radio","Gender",true,["Male","Female","Unknown"],true,
-            [new UIInteraction("3","5","SHOW","Unknown")],true,"",[2,3,4]));
+            new UIElement(2,"3","radio","Gender",["Male","Female","Unknown"],true,
+            [new UIInteraction("3","5","SHOW","Unknown")],true,"background-color: palegreen","","",[2,3,4]));
         ELEs.push(
-            new UIElement(2,"4","dropdown","Select from the dropdown",true,["unset","1","2","3","4"], true,
-            [new UIInteraction("4","8","HIDE","unset")],true,"",[0,5,6,7,8]));
+            new UIElement(2,"4","dropdown","Select from the dropdown",["unset","1","2","3","4"], true,
+            [new UIInteraction("4","8","HIDE","unset")],true,"","","",[0,5,6,7,8]));
         ELEs.push(
-            new UIElement(3,"5","date","The Label Date",true,[],true,
-            [new UIInteraction("5","5a","SHOW","")],false,"",[9]));
+            new UIElement(3,"5","date","The Label Date",[],true,
+            [new UIInteraction("5","5a","SHOW","")],false,"","","",[9]));
         ELEs.push(
-            new UIElement(3,"5a","text","What was the curcumstances for the date noted above",true,[],true,
-            [],false,"",[0]));
+            new UIElement(3,"5a","text","What was the curcumstances for the date noted above",[],true,
+            [],false,"","","",[0]));
         ELEs.push(
-            new UIElement(4,"6","checkbox","A bunch of check boxes",true,
+            new UIElement(4,"6","checkbox","A bunch of check boxes",
             ["Checkbox option 1","Checkbox option 2","Checkbox option 3","Checkbox option 4","Checkbox option 5"],
-            true,[new UIInteraction("6","7","SHOW","Checkbox option 3")],true,"",[10,11,12,13,14]));
+            true,[new UIInteraction("6","7","SHOW","Checkbox option 3")],true,"background-color: palegreen","","",[10,11,12,13,14]));
         ELEs.push(
-            new UIElement(5,"7","narrative","Another Narrative is here",true,[],true,[],false,"",[15]));
+            new UIElement(5,"7","narrative","Another Narrative is here",[],true,[],false,"","","",[15]));
         
         ELEs.push(
-            new UIElement(5,"8","narrative","A Third Narrative is here",true,[],true,[],false,"",[16]));
+            new UIElement(5,"8","narrative","A Third Narrative is here",[],true,[],false,"","","",[16]));
         
         var FFG = JSON.stringify(ELEs);
         
@@ -309,7 +312,7 @@ If the class is defined as FG then
 
 Sample form output from the HTML above.
 
-![ScreenShot](ScreenShots/SS2.png)
+![ScreenShot](ScreenShots/SS3.png)
 
 **Some Other Notes**
 
@@ -320,5 +323,12 @@ $ python -m SimpleHTTPServer
 ```
 
 The default port should be 8000 which is why the sample HTML references localhost:8000 one on of the button click handlers
+
+of you have Python3 installed on your windows machine the simple http server can be launced via the command prompt or powershell prompt using
+
+```bash
+python -m http.server
+```
+
 
 

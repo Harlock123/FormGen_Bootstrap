@@ -68,7 +68,7 @@ class FormGenBS {
                         for (let THEEL of UIElements) {
                             if (THEEL.elFormRow == cnt)
                             {
-                                FROWTAGS.push(THEEL.elFormStyle);
+                                FROWTAGS.push(THEEL.elStyle);
                                 break;
                             }
                         }
@@ -81,7 +81,7 @@ class FormGenBS {
                         for (let THEEL of UIElements) {
                             if (THEEL.elFormRow == cnt)
                             {
-                                FROWTAGS.push(THEEL.elFormStyle);
+                                FROWTAGS.push(THEEL.elStyle);
                                 break;
                             }
                         }
@@ -94,7 +94,7 @@ class FormGenBS {
                         for (let THEEL of UIElements) {
                             if (THEEL.elFormRow == cnt)
                             {
-                                FROWTAGS.push(THEEL.elFormStyle);
+                                FROWTAGS.push(THEEL.elStyle);
                                 break;
                             }
                         }
@@ -107,7 +107,7 @@ class FormGenBS {
                         for (let THEEL of UIElements) {
                             if (THEEL.elFormRow == cnt)
                             {
-                                FROWTAGS.push(THEEL.elFormStyle);
+                                FROWTAGS.push(THEEL.elStyle);
                                 break;
                             }
                         }
@@ -120,7 +120,7 @@ class FormGenBS {
                         for (let THEEL of UIElements) {
                             if (THEEL.elFormRow == cnt)
                             {
-                                FROWTAGS.push(THEEL.elFormStyle);
+                                FROWTAGS.push(THEEL.elStyle);
                                 break;
                             }
                         }
@@ -133,7 +133,7 @@ class FormGenBS {
                         for (let THEEL of UIElements) {
                             if (THEEL.elFormRow == cnt)
                             {
-                                FROWTAGS.push(THEEL.elFormStyle);
+                                FROWTAGS.push(THEEL.elStyle);
                                 break;
                             }
                         }
@@ -146,7 +146,7 @@ class FormGenBS {
                         for (let THEEL of UIElements) {
                             if (THEEL.elFormRow == cnt)
                             {
-                                FROWTAGS.push(THEEL.elFormStyle);
+                                FROWTAGS.push(THEEL.elStyle);
                                 break;
                             }
                         }
@@ -200,7 +200,7 @@ class FormGenBS {
         
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
                                 innerhtml += '<input type="text" class="form-control input-md" name = "' + THEEL.elID +
-                                    '" id="' + THEEL.elID + '" ><br> ';
+                                    '" id="' + THEEL.elID + '" style="' + THEEL.elFormStyle +'"  > ';
                             }
                             else {
                                 for (let v of THEEL.elInteractions) {
@@ -208,7 +208,7 @@ class FormGenBS {
                                 }
         
                                 innerhtml += '<input type="text" class="form-control input-md" name = "' + THEEL.elID +
-                                    '" id="' + THEEL.elID + '" onchange="DoFormGenInteraction(this)" > ';
+                                    '" id="' + THEEL.elID + '" onchange="DoFormGenInteraction(this)" style="' + THEEL.elFormStyle +'" > ';
         
                             }        
                                     
@@ -239,7 +239,7 @@ class FormGenBS {
                                    
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
                                 innerhtml += '<input type="date" class="form-control input-md" name = "' + THEEL.elID +
-                                    '" id="' + THEEL.elID + '" ><br> ';
+                                    '" id="' + THEEL.elID + '" style="' + THEEL.elFormStyle +'" > ';
                             }
                             else {
                                 for (let v of THEEL.elInteractions) {
@@ -247,7 +247,7 @@ class FormGenBS {
                                 }
         
                                 innerhtml += '<input type="date" class="form-control input-md" name = "' + THEEL.elID +
-                                    '" id="' + THEEL.elID + '" onchange="DoFormGenInteraction(this)" > ';
+                                    '" id="' + THEEL.elID + '" onchange="DoFormGenInteraction(this)" style="' + THEEL.elFormStyle +'" > ';
         
                             }       
                            
@@ -270,6 +270,7 @@ class FormGenBS {
                             if (!THEEL.elInitialVisibility) {
                                 VIS = 'style="display:none"';
                             }
+                            
                             innerhtml += '<div class="' + CBTAG + '" >';
                             innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                             innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
@@ -278,7 +279,7 @@ class FormGenBS {
         
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
                                 innerhtml += '<textarea rows="5" cols="40" class="form-control input-md" name="' + THEEL.elID + '" id="'
-                                    + THEEL.elID + '" ></textarea> ';
+                                    + THEEL.elID + '" style="' + THEEL.elFormStyle +'" ></textarea> ';
                             }
                             else {
                                 for (let v of THEEL.elInteractions) {
@@ -286,7 +287,7 @@ class FormGenBS {
                                 }
         
                                 innerhtml += '<textarea rows="5" cols="40" class="form-control input-md" name="' + THEEL.elID + '" id="'
-                                    + THEEL.elID + '" onchange="DoFormGenInteraction(this)" ></textarea> ';
+                                    + THEEL.elID + '" onchange="DoFormGenInteraction(this)" style="' + THEEL.elFormStyle +'" ></textarea> ';
         
                             }
         
@@ -314,7 +315,7 @@ class FormGenBS {
                             innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                             innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                             innerhtml += THEEL.elLabel;
-                            innerhtml += '</label><br />';
+                            innerhtml += '</label><br /> ';
                                     
                             let i = 0;
                             for (let v of THEEL.elContent) {
@@ -332,7 +333,7 @@ class FormGenBS {
                                     innerhtml += '<input type="radio" class="form-check-input" ' +
                                         'name = "' + THEEL.elID + '" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
-                                        'value="' + v + '" >';
+                                        'value="' + v + '" style="' + THEEL.elFormStyle +'" >';
                                     innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
                                 }
                                 else {
@@ -343,7 +344,7 @@ class FormGenBS {
                                     innerhtml += '<input type="radio" class="form-check-input" ' +
                                         'name = "' + THEEL.elID + '" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
-                                        'value="' + v + '" onchange="DoFormGenInteraction(this)" >';
+                                        'value="' + v + '" onchange="DoFormGenInteraction(this)" style="' + THEEL.elFormStyle +'" >';
                                     innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
                                 }
 
@@ -376,7 +377,8 @@ class FormGenBS {
                             innerhtml += '</label>';
         
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
-                                innerhtml += '<select name="' + THEEL.elID + '" class="form-control input-md" id="' + THEEL.elID + '" >';
+                                innerhtml += '<select name="' + THEEL.elID + '" class="form-control input-md" id="' + 
+                                THEEL.elID + '" style="' + THEEL.elFormStyle +'" >';
                             }
                             else {
                                 for (let v of THEEL.elInteractions) {
@@ -384,7 +386,8 @@ class FormGenBS {
                                 }
         
                                 innerhtml += '<select name="' + THEEL.elID +
-                                    '" class="form-control input-md" id="' + THEEL.elID + '" onchange="DoFormGenInteraction(this)" >';
+                                    '" class="form-control input-md" id="' + THEEL.elID + 
+                                    '" onchange="DoFormGenInteraction(this)" style="' + THEEL.elFormStyle +'" >';
                             }
         
                             let i = 0;
@@ -436,7 +439,7 @@ class FormGenBS {
                                     innerhtml += '<input type="checkbox" ' +
                                         'name = "' + THEEL.elID + '" class="form-check-input" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
-                                        'value="' + v + '" >';
+                                        'value="' + v + '" style="' + THEEL.elFormStyle +'" >';
                                     innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
                                 }
                                 else {
@@ -447,7 +450,7 @@ class FormGenBS {
                                     innerhtml += '<input type="checkbox" ' +
                                         'name = "' + THEEL.elID + '" class="form-check-input" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
-                                        'value="' + v + '" onchange="DoFormGenInteraction(this)" >';
+                                        'value="' + v + '" onchange="DoFormGenInteraction(this)" style="' + THEEL.elFormStyle +'" >';
                                     innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
                                 }
 
@@ -1388,9 +1391,8 @@ class UIElement {
     public elScore: number[];
 
     constructor(elformrow: number, elid: string, eltype: string, ellabel: string,
-        elcontent: string[], elrequired: boolean,
-        elinteractions: UIInteraction[], elinitialvisibility: boolean, elstyle: string, ellabelstyle: string, elformstyle: string,
-        elscore: number[]) {
+        elcontent: string[], elrequired: boolean,elinteractions: UIInteraction[], elinitialvisibility: boolean, 
+        elstyle: string, ellabelstyle: string, elformstyle: string, elscore: number[]) {
         this.elFormRow = elformrow;
         this.elID = elid;
         this.elContent = elcontent;

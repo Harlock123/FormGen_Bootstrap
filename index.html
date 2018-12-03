@@ -60,13 +60,13 @@
 
         ELEs.push(
             new UIElement(1,"1","text","The Label for this piece of input",[],true,
-            [new UIInteraction("1","8","SHOW","N/A")],true,"","","font-size:14px",[0]));
+            [new UIInteraction("1","8","SHOW","N/A")],true,"","font-size:16px;font-weight:bold","background-color: lavender",[0]));
         ELEs.push(
             new UIElement(1,"2","narrative","The Label for this narrative",[],true,
-            [new UIInteraction("2","8","SHOW","SAMPLE TRIGGER")],true,"","","",[1]));
+            [],true,"","","",[1]));
         ELEs.push(
             new UIElement(2,"3","radio","Gender",["Male","Female","Unknown"],true,
-            [new UIInteraction("3","5","SHOW","Unknown")],true,"","vertical-align:middle","",[2,3,4]));
+            [new UIInteraction("3","5","SHOW","Unknown")],true,"background-color: palegreen","","",[2,3,4]));
         ELEs.push(
             new UIElement(2,"4","dropdown","Select from the dropdown",["unset","1","2","3","4"], true,
             [new UIInteraction("4","8","HIDE","unset")],true,"","","",[0,5,6,7,8]));
@@ -79,7 +79,7 @@
         ELEs.push(
             new UIElement(4,"6","checkbox","A bunch of check boxes",
             ["Checkbox option 1","Checkbox option 2","Checkbox option 3","Checkbox option 4","Checkbox option 5"],
-            true,[new UIInteraction("6","7","SHOW","Checkbox option 3")],true,"","","",[10,11,12,13,14]));
+            true,[new UIInteraction("6","7","SHOW","Checkbox option 3")],true,"background-color: palegreen","","",[10,11,12,13,14]));
         ELEs.push(
             new UIElement(5,"7","narrative","Another Narrative is here",[],true,[],false,"","","",[15]));
         
