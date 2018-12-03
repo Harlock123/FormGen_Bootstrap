@@ -247,24 +247,27 @@ var FormGenBS = /** @class */ (function () {
                                 var v = _t[_s];
                                 i += 1;
                                 //var vdiv = '<div style="' + THEEL.elLabelStyle + '" >' + v + "</div> ";
-                                innerhtml += '<div class="custom-control custom-radio custom-control-inline">';
+                                //innerhtml += '<div class="custom-control custom-radio custom-control-inline">';
+                                innerhtml += '<div class="form-check form-check-inline">';
                                 if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
-                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v;
-                                    innerhtml += '<input type="radio" class="custom-control-input" ' +
+                                    //innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v + '</label>';
+                                    innerhtml += '<input type="radio" class="form-check-input" ' +
                                         'name = "' + THEEL.elID + '" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
-                                        'value="' + v + '" ></label>';
+                                        'value="' + v + '" >';
+                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
                                 }
                                 else {
                                     for (var _u = 0, _v = THEEL.elInteractions; _u < _v.length; _u++) {
                                         var v_1 = _v[_u];
                                         this.theUIInteractions.push(v_1);
                                     }
-                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v;
-                                    innerhtml += '<input type="radio" class="custom-control-input" ' +
+                                    //innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v + '</label>';
+                                    innerhtml += '<input type="radio" class="form-check-input" ' +
                                         'name = "' + THEEL.elID + '" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
-                                        'value="' + v + '" onchange="DoFormGenInteraction(this)" ></label>';
+                                        'value="' + v + '" onchange="DoFormGenInteraction(this)" >';
+                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
                                 }
                                 innerhtml += "</div>";
                             }
@@ -329,24 +332,27 @@ var FormGenBS = /** @class */ (function () {
                             for (var _0 = 0, _1 = THEEL.elContent; _0 < _1.length; _0++) {
                                 var v = _1[_0];
                                 i += 1;
-                                innerhtml += '<div class="custom-control custom-checkbox custom-control-inline">';
+                                //innerhtml += '<div class="custom-control custom-checkbox custom-control-inline">';
+                                innerhtml += '<div class="form-check form-check-inline">';
                                 if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
-                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v;
+                                    //innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v ;
                                     innerhtml += '<input type="checkbox" ' +
-                                        'name = "' + THEEL.elID + '" class="custom-control-input" id="' +
+                                        'name = "' + THEEL.elID + '" class="form-check-input" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
-                                        'value="' + v + '" ></label>';
+                                        'value="' + v + '" >';
+                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
                                 }
                                 else {
                                     for (var _2 = 0, _3 = THEEL.elInteractions; _2 < _3.length; _2++) {
                                         var v_2 = _3[_2];
                                         this.theUIInteractions.push(v_2);
                                     }
-                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v;
+                                    //innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v ;
                                     innerhtml += '<input type="checkbox" ' +
-                                        'name = "' + THEEL.elID + '" class="custom-control-input" id="' +
+                                        'name = "' + THEEL.elID + '" class="form-check-input" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
-                                        'value="' + v + '" onchange="DoFormGenInteraction(this)" ></label>';
+                                        'value="' + v + '" onchange="DoFormGenInteraction(this)" >';
+                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
                                 }
                                 innerhtml += "</div>";
                             }
