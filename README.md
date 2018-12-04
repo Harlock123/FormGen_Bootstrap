@@ -59,6 +59,11 @@ class UIElement {
     - RADIO
     - DROPDOWN
     - CHECKBOX
+    - (TO BE ADDED)
+        - INFOTEXT   This will be a NON Input Simple Label that can also contain Bullet lists of submitems using **elcontent** Array for the list items. The **ellabel** item will carry the main message and each elcontent item will be in the bullet list
+        - HEADER     This will be a non Input simple item that will be placed on its own row in the form the **ellabel** paremeter will be used for the label
+        - FOOTER     This will be a non Input simple item that will be placed on its own row in the form the **ellabel** paremeter will be used for the label
+
 
 - **ellabel** is the string label to be applied to the element being placed on the page
 
