@@ -59,32 +59,44 @@
         var ELEs = new Array();
 
         ELEs.push(
-            new UIElement(1,"1","text","The Label for this piece of input",[],true,
+            new UIElement(1,"TheHeader","header","This Is the header for this form",[],true,[],true,
+            "font-size:20px;font-weight:bold;background-color: lavender","margin-bottom:0","",[0]));
+
+        ELEs.push(
+            new UIElement(2,"1","text","The Label for this piece of input",[],true,
             [new UIInteraction("1","8","SHOW","N/A")],true,"","font-size:16px;font-weight:bold","background-color: lavender",[0]));
         ELEs.push(
-            new UIElement(1,"2","narrative","The Label for this narrative",[],true,
+            new UIElement(2,"2","narrative","The Label for this narrative",[],true,
             [],true,"","","",[1]));
         ELEs.push(
-            new UIElement(2,"3","radio","Gender",["Male","Female","Unknown"],true,
+            new UIElement(3,"3","radio","Gender",["Male","Female","Unknown"],true,
             [new UIInteraction("3","5","SHOW","Unknown")],true,"background-color: palegreen","","",[2,3,4]));
         ELEs.push(
-            new UIElement(2,"4","dropdown","Select from the dropdown",["unset","1","2","3","4"], true,
+            new UIElement(3,"4","dropdown","Select from the dropdown",["unset","1","2","3","4"], true,
             [new UIInteraction("4","8","HIDE","unset")],true,"","","",[0,5,6,7,8]));
         ELEs.push(
-            new UIElement(3,"5","date","The Label Date",[],true,
+            new UIElement(4,"5","date","The Label Date",[],true,
             [new UIInteraction("5","5a","SHOW","")],false,"","","",[9]));
         ELEs.push(
-            new UIElement(3,"5a","text","What was the curcumstances for the date noted above",[],true,
+            new UIElement(4,"5a","text","What was the curcumstances for the date noted above",[],true,
             [],false,"","","",[0]));
         ELEs.push(
-            new UIElement(4,"6","checkbox","A bunch of check boxes",
+            new UIElement(5,"6","checkbox","A bunch of check boxes",
             ["Checkbox option 1","Checkbox option 2","Checkbox option 3","Checkbox option 4","Checkbox option 5"],
             true,[new UIInteraction("6","7","SHOW","Checkbox option 3")],true,"background-color: palegreen","","",[10,11,12,13,14]));
         ELEs.push(
-            new UIElement(5,"7","narrative","Another Narrative is here",[],true,[],false,"","","",[15]));
+            new UIElement(6,"7","narrative","Another Narrative is here",[],true,[],false,"","","",[15]));
         
         ELEs.push(
-            new UIElement(5,"8","narrative","A Third Narrative is here",[],true,[],false,"","","",[16]));
+            new UIElement(6,"8","narrative","A Third Narrative is here",[],true,[],false,"","","",[16]));
+
+        ELEs.push(
+            new UIElement(7,"LIST","infotext","This would be an example of a list being inserted into the output List items will be enumerated in the ELCONTENT array as shown",
+            ["LIST ITEM 1","LIST ITEM 2","LIST ITEM 3"],true,[],true,"","","",[]));
+
+        ELEs.push(
+            new UIElement(8,"TheFooter","footer","This Is the footer for this form",[],true,[],true,
+            "font-size:18px;font-weight:bold;background-color: lavender","margin-bottom:0","",[0]));
         
         var FFG = JSON.stringify(ELEs);
         

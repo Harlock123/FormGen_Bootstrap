@@ -135,7 +135,7 @@ var FormGenBS = /** @class */ (function () {
             innerhtml += '<div class="form-row" style="' + FROWTAGS[CURROW - 1] + '" >';
             for (var _k = 0, UIElements_9 = UIElements; _k < UIElements_9.length; _k++) {
                 var THEEL = UIElements_9[_k];
-                if (THEEL.elFormRow == CURROW) {
+                if (THEEL.elFormRow == CURROW) { // We have an element that is going into the curent row
                     switch (THEEL.elType.toUpperCase()) {
                         case "TEXT": {
                             // here we decode the elFormStyle element if its present
@@ -361,6 +361,72 @@ var FormGenBS = /** @class */ (function () {
                             innerhtml += '</div></div> ';
                             break;
                         }
+                        case "INFOTEXT": {
+                            var STY = "";
+                            if (THEEL.elStyle != "") {
+                                STY = ' style="' + THEEL.elStyle + '" ';
+                            }
+                            var VIS = ""; //'style="display:block"';
+                            if (!THEEL.elInitialVisibility) {
+                                VIS = 'style="display:none"';
+                            }
+                            innerhtml += '<div class="' + CBTAG + '" >';
+                            innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                            innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                            innerhtml += THEEL.elLabel;
+                            innerhtml += '</label><br />';
+                            if (THEEL.elContent.length != 0) {
+                                // we have some items for an actual list
+                                innerhtml += '<ul style="' + THEEL.elFormStyle + '">';
+                                for (var _4 = 0, _5 = THEEL.elContent; _4 < _5.length; _4++) {
+                                    var v = _5[_4];
+                                    innerhtml += '<li>' + v + '</li>';
+                                }
+                                innerhtml += '</ul>';
+                            }
+                            innerhtml += '</div></div> ';
+                            break;
+                        }
+                        case "HEADER": {
+                            var STY = "";
+                            if (THEEL.elStyle != "") {
+                                STY = ' style="text-align:center;vertical-align:middle;margin-bottom:0; ' + THEEL.elStyle + '" ';
+                            }
+                            else {
+                                STY = ' style="text-align:center;vertical-align:middle;margin-bottom:0" ';
+                            }
+                            var VIS = ""; //'style="display:block"';
+                            if (!THEEL.elInitialVisibility) {
+                                VIS = 'style="display:none"';
+                            }
+                            innerhtml += '<div class="' + CBTAG + '" >';
+                            innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                            innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                            innerhtml += THEEL.elLabel;
+                            innerhtml += '</label>';
+                            innerhtml += '</div></div> ';
+                            break;
+                        }
+                        case "FOOTER": {
+                            var STY = "";
+                            if (THEEL.elStyle != "") {
+                                STY = ' style="text-align:center;vertical-align:middle;margin-bottom:0; ' + THEEL.elStyle + '" ';
+                            }
+                            else {
+                                STY = ' style="text-align:centervertical-align:middle;margin-bottom:0" ';
+                            }
+                            var VIS = ""; //'style="display:block"';
+                            if (!THEEL.elInitialVisibility) {
+                                VIS = 'style="display:none"';
+                            }
+                            innerhtml += '<div class="' + CBTAG + '" >';
+                            innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                            innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                            innerhtml += THEEL.elLabel;
+                            innerhtml += '</label>';
+                            innerhtml += '</div></div> ';
+                            break;
+                        }
                     }
                 }
             } // end of for (let THEEL of UIElements) 
@@ -371,8 +437,8 @@ var FormGenBS = /** @class */ (function () {
         el.innerHTML = innerhtml;
         // Ok now all of the elements should be in the DOM
         // now we want to iterate over everything again to set any scoring and any required bits
-        for (var _4 = 0, UIElements_10 = UIElements; _4 < UIElements_10.length; _4++) {
-            var THEEL = UIElements_10[_4];
+        for (var _6 = 0, UIElements_10 = UIElements; _6 < UIElements_10.length; _6++) {
+            var THEEL = UIElements_10[_6];
             switch (THEEL.elType.toUpperCase()) {
                 case "TEXT": {
                     var el = (document.getElementById(THEEL.elID));
@@ -409,8 +475,8 @@ var FormGenBS = /** @class */ (function () {
                 }
                 case "RADIO": {
                     var i = 0;
-                    for (var _5 = 0, _6 = THEEL.elScore; _5 < _6.length; _5++) {
-                        var v = _6[_5];
+                    for (var _7 = 0, _8 = THEEL.elScore; _7 < _8.length; _7++) {
+                        var v = _8[_7];
                         i += 1;
                         var el = (document.getElementById(THEEL.elID + '_' + i.toString()));
                         el.dataset.fgscore = v.toString();
@@ -425,8 +491,8 @@ var FormGenBS = /** @class */ (function () {
                 }
                 case "DROPDOWN": {
                     var i = 0;
-                    for (var _7 = 0, _8 = THEEL.elScore; _7 < _8.length; _7++) {
-                        var v = _8[_7];
+                    for (var _9 = 0, _10 = THEEL.elScore; _9 < _10.length; _9++) {
+                        var v = _10[_9];
                         i += 1;
                         var ell = (document.getElementById(THEEL.elID + '_' + i.toString()));
                         ell.dataset.fgscore = v.toString();
@@ -441,8 +507,8 @@ var FormGenBS = /** @class */ (function () {
                 }
                 case "CHECKBOX": {
                     var i = 0;
-                    for (var _9 = 0, _10 = THEEL.elScore; _9 < _10.length; _9++) {
-                        var v = _10[_9];
+                    for (var _11 = 0, _12 = THEEL.elScore; _11 < _12.length; _11++) {
+                        var v = _12[_11];
                         i += 1;
                         var el = (document.getElementById(THEEL.elID + '_' + i.toString()));
                         el.dataset.fgscore = v.toString();
@@ -1013,7 +1079,7 @@ var FormGenBS = /** @class */ (function () {
                             }
                             break;
                         }
-                    default:// SELECT HANDLED HERE
+                    default: // SELECT HANDLED HERE
                         {
                             // this will be the select check for dropdowns
                             if (e.type.toUpperCase().startsWith("SELECT")) {

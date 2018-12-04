@@ -462,6 +462,99 @@ class FormGenBS {
                             break;
         
                         }
+                        case "INFOTEXT": {
+                            var STY = "";
+        
+                            if (THEEL.elStyle != "") {
+                                STY = ' style="' + THEEL.elStyle + '" ';
+                            }
+        
+                            var VIS = "";//'style="display:block"';
+        
+                            if (!THEEL.elInitialVisibility) {
+                                VIS = 'style="display:none"';
+                            }
+        
+                            innerhtml += '<div class="' + CBTAG + '" >';
+                            innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                            innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                            innerhtml += THEEL.elLabel;
+                            innerhtml += '</label><br />';
+
+                            if (THEEL.elContent.length != 0) {
+                                // we have some items for an actual list
+
+                                innerhtml += '<ul style="' + THEEL.elFormStyle + '">';
+
+                                for (let v of THEEL.elContent)
+                                {
+                                    innerhtml += '<li>' + v + '</li>';
+
+                                }
+
+                                innerhtml += '</ul>';
+                            }
+
+                            innerhtml += '</div></div> ';
+
+                            break;
+
+                        }
+                        case "HEADER": {
+                            var STY = "";
+        
+                            if (THEEL.elStyle != "") {
+                                STY = ' style="text-align:center;vertical-align:middle;margin-bottom:0; ' + THEEL.elStyle + '" ';
+                            }
+                            else
+                            {
+                                STY = ' style="text-align:center;vertical-align:middle;margin-bottom:0" ';
+                            }
+        
+                            var VIS = "";//'style="display:block"';
+        
+                            if (!THEEL.elInitialVisibility) {
+                                VIS = 'style="display:none"';
+                            }
+        
+                            innerhtml += '<div class="' + CBTAG + '" >';
+                            innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                            innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                            innerhtml += THEEL.elLabel;
+                            innerhtml += '</label>';
+
+                            innerhtml += '</div></div> ';
+
+                            break;
+
+                        }
+                        case "FOOTER": {
+                            var STY = "";
+        
+                            if (THEEL.elStyle != "") {
+                                STY = ' style="text-align:center;vertical-align:middle;margin-bottom:0; ' + THEEL.elStyle + '" ';
+                            }
+                            else
+                            {
+                                STY = ' style="text-align:centervertical-align:middle;margin-bottom:0" ';
+                            }
+        
+                            var VIS = "";//'style="display:block"';
+        
+                            if (!THEEL.elInitialVisibility) {
+                                VIS = 'style="display:none"';
+                            }
+        
+                            innerhtml += '<div class="' + CBTAG + '" >';
+                            innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                            innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                            innerhtml += THEEL.elLabel;
+                            innerhtml += '</label>';
+
+                            innerhtml += '</div></div> ';
+
+                            break;
+                        }
                     }
                 }
             } // end of for (let THEEL of UIElements) 
