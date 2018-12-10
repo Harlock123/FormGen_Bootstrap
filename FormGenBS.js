@@ -442,7 +442,12 @@ var FormGenBS = /** @class */ (function () {
             switch (THEEL.elType.toUpperCase()) {
                 case "TEXT": {
                     var el = (document.getElementById(THEEL.elID));
-                    el.dataset.fgscore = THEEL.elScore[0].toString();
+                    if (typeof THEEL.elScore[0] == 'undefined') {
+                        el.dataset.fgscore = "0";
+                    }
+                    else {
+                        el.dataset.fgscore = THEEL.elScore[0].toString();
+                    }
                     if (THEEL.elRequired) {
                         el.dataset.fgrequired = "YES";
                     }
@@ -453,7 +458,13 @@ var FormGenBS = /** @class */ (function () {
                 }
                 case "DATE": {
                     var el = (document.getElementById(THEEL.elID));
-                    el.dataset.fgscore = THEEL.elScore[0].toString();
+                    if (typeof THEEL.elScore[0] == 'undefined') {
+                        el.dataset.fgscore = "0";
+                    }
+                    else {
+                        el.dataset.fgscore = THEEL.elScore[0].toString();
+                    }
+                    //el.dataset.fgscore = THEEL.elScore[0].toString();
                     if (THEEL.elRequired) {
                         el.dataset.fgrequired = "YES";
                     }
@@ -464,7 +475,13 @@ var FormGenBS = /** @class */ (function () {
                 }
                 case "NARRATIVE": {
                     var el = (document.getElementById(THEEL.elID));
-                    el.dataset.fgscore = THEEL.elScore[0].toString();
+                    if (typeof THEEL.elScore[0] == 'undefined') {
+                        el.dataset.fgscore = "0";
+                    }
+                    else {
+                        el.dataset.fgscore = THEEL.elScore[0].toString();
+                    }
+                    //el.dataset.fgscore = THEEL.elScore[0].toString();
                     if (THEEL.elRequired) {
                         el.dataset.fgrequired = "YES";
                     }

@@ -575,8 +575,16 @@ class FormGenBS {
 
                     var el = <HTMLElement>(document.getElementById(THEEL.elID));
 
-                    el.dataset.fgscore = THEEL.elScore[0].toString();
+                    if (typeof THEEL.elScore[0] == 'undefined')
+                    {
+                        el.dataset.fgscore = "0";
 
+                    }
+                    else
+                    {
+                        el.dataset.fgscore = THEEL.elScore[0].toString();
+                    }
+                    
                     if (THEEL.elRequired) {
                         el.dataset.fgrequired = "YES";
                     }
@@ -589,7 +597,16 @@ class FormGenBS {
                 case "DATE": {
                     var el = <HTMLElement>(document.getElementById(THEEL.elID));
 
-                    el.dataset.fgscore = THEEL.elScore[0].toString();
+                    if (typeof THEEL.elScore[0] == 'undefined')
+                    {
+                        el.dataset.fgscore = "0";
+
+                    }
+                    else
+                    {
+                        el.dataset.fgscore = THEEL.elScore[0].toString();
+                    }
+                    //el.dataset.fgscore = THEEL.elScore[0].toString();
 
                     if (THEEL.elRequired) {
                         el.dataset.fgrequired = "YES";
@@ -604,7 +621,16 @@ class FormGenBS {
                 case "NARRATIVE": {
                     var el = <HTMLElement>(document.getElementById(THEEL.elID));
 
-                    el.dataset.fgscore = THEEL.elScore[0].toString();
+                    if (typeof THEEL.elScore[0] == 'undefined')
+                    {
+                        el.dataset.fgscore = "0";
+
+                    }
+                    else
+                    {
+                        el.dataset.fgscore = THEEL.elScore[0].toString();
+                    }
+                    //el.dataset.fgscore = THEEL.elScore[0].toString();
 
                     if (THEEL.elRequired) {
                         el.dataset.fgrequired = "YES";
