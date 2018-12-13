@@ -1149,8 +1149,21 @@ class FormGenBS {
 
                                 var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
 
+                                el.classList.remove('is-invalid');
+                                el.classList.remove('is-valid');
+                                
+
                                 if (el.value + "" == "") {
                                     isvalid = false;
+
+                                    //el.classList.add('.was-validated');
+                                    el.classList.add('is-invalid');
+                                    
+                                }
+                                else
+                                {
+                                    //el.classList.add('.was-validated');
+                                    //el.classList.add(':valid');
                                 }
                             }
 
@@ -1164,8 +1177,14 @@ class FormGenBS {
 
                                 var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
 
+                                el.classList.remove('is-invalid');
+                                el.classList.remove('is-valid');
+
                                 if (el.value + "" == "") {
                                     isvalid = false;
+
+                                    el.classList.add('is-invalid');
+                                
                                 }
                             }
 
@@ -1179,8 +1198,14 @@ class FormGenBS {
 
                                 var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
 
+                                el.classList.remove('is-invalid');
+                                el.classList.remove('is-valid');
+
                                 if (el.value + "" == "") {
                                     isvalid = false;
+
+                                    el.classList.add('is-invalid');
+                                
                                 }
                             }
 
@@ -1210,7 +1235,31 @@ class FormGenBS {
                                 }
 
                                 if (isvalid && !newvalid)
+                                {
                                     isvalid = newvalid;
+
+                                    
+                                }
+
+                                i = 0;
+
+                                for (let vv of THEEL.elContent) {
+                                    i += 1;
+
+                                    var theid = THEEL.elID + "_" + i.toString();
+
+                                    var el = <HTMLInputElement>(document.getElementById(theid));
+
+                                    el.classList.remove('is-invalid');
+                                    el.classList.remove('is-valid');
+
+                                    if (!newvalid)
+                                    {
+                                        el.classList.add("is-invalid")
+                                    }
+                                    
+                                }
+
                             }
                             break;
                         }
@@ -1221,11 +1270,17 @@ class FormGenBS {
                             if (!del.hidden) {
 
                                 var eli = <HTMLSelectElement>(document.getElementById(THEEL.elID));
+                                
+                                eli.classList.remove('is-invalid');
+                                eli.classList.remove('is-valid');
+
 
                                 var seltext = eli.options[eli.selectedIndex].text;
 
                                 if (seltext + "" == "") {
                                     isvalid = false;
+
+                                    eli.classList.add("is-invalid");
                                 }
                             }
 
@@ -1255,7 +1310,29 @@ class FormGenBS {
                                 }
 
                                 if (isvalid && !newvalid)
+                                {
                                     isvalid = newvalid;
+
+                                    
+                                }
+
+                                i=0;
+
+                                for (let vv of THEEL.elContent) {
+                                    i += 1;
+
+                                    var theid = THEEL.elID + "_" + i.toString();
+
+                                    var el = <HTMLInputElement>(document.getElementById(theid));
+
+                                    el.classList.remove('is-invalid');
+                                    el.classList.remove('is-valid');
+
+                                    if (!newvalid)
+                                    {
+                                        el.classList.add("is-invalid")
+                                    }
+                                }
                             }
                             break;
                         }
@@ -1265,6 +1342,61 @@ class FormGenBS {
 
 
         return isvalid;
+    }
+
+    /**
+     * ClearFormValidityVisuals
+     */
+    public ClearFormValidityVisuals()
+    {
+        for (let THEEL of this.theUIElements) {
+            switch (THEEL.elType.toUpperCase()) {
+                case "TEXT":
+                case "DATE":
+                case "NARRATIVE":
+                
+                    {
+
+                        var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
+                        el.classList.remove('is-invalid');
+                        el.classList.remove('is-valid');
+
+
+                        break;
+                    }
+                case "RADIO":
+                case "CHECKBOX":
+                    {
+
+                        let i = 0;
+                        for (let vv of THEEL.elContent) {
+                            i += 1;
+
+                            var theid = THEEL.elID + "_" + i.toString();
+
+                            var el = <HTMLInputElement>(document.getElementById(theid));
+
+                            el.classList.remove('is-invalid');
+                            el.classList.remove('is-valid');
+                           
+                        }
+
+                        break;
+                    }
+                case "DROPDOWN":
+                    {
+                        var eli = <HTMLSelectElement>(document.getElementById(THEEL.elID));
+                            
+                        eli.classList.remove('is-invalid');
+                        eli.classList.remove('is-valid');
+
+                        break;
+                    }
+                
+            }
+        
+        }
+
     }
 
     /**

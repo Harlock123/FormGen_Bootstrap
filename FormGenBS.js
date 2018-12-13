@@ -892,8 +892,16 @@ var FormGenBS = /** @class */ (function () {
                             var del = (document.getElementById("div_" + THEEL.elID));
                             if (!del.hidden) {
                                 var el = (document.getElementById(THEEL.elID));
+                                el.classList.remove('is-invalid');
+                                el.classList.remove('is-valid');
                                 if (el.value + "" == "") {
                                     isvalid = false;
+                                    //el.classList.add('.was-validated');
+                                    el.classList.add('is-invalid');
+                                }
+                                else {
+                                    //el.classList.add('.was-validated');
+                                    //el.classList.add(':valid');
                                 }
                             }
                             break;
@@ -903,8 +911,11 @@ var FormGenBS = /** @class */ (function () {
                             var del = (document.getElementById("div_" + THEEL.elID));
                             if (!del.hidden) {
                                 var el = (document.getElementById(THEEL.elID));
+                                el.classList.remove('is-invalid');
+                                el.classList.remove('is-valid');
                                 if (el.value + "" == "") {
                                     isvalid = false;
+                                    el.classList.add('is-invalid');
                                 }
                             }
                             break;
@@ -914,8 +925,11 @@ var FormGenBS = /** @class */ (function () {
                             var del = (document.getElementById("div_" + THEEL.elID));
                             if (!del.hidden) {
                                 var el = (document.getElementById(THEEL.elID));
+                                el.classList.remove('is-invalid');
+                                el.classList.remove('is-valid');
                                 if (el.value + "" == "") {
                                     isvalid = false;
+                                    el.classList.add('is-invalid');
                                 }
                             }
                             break;
@@ -935,8 +949,21 @@ var FormGenBS = /** @class */ (function () {
                                         newvalid = true;
                                     }
                                 }
-                                if (isvalid && !newvalid)
+                                if (isvalid && !newvalid) {
                                     isvalid = newvalid;
+                                }
+                                i = 0;
+                                for (var _d = 0, _e = THEEL.elContent; _d < _e.length; _d++) {
+                                    var vv = _e[_d];
+                                    i += 1;
+                                    var theid = THEEL.elID + "_" + i.toString();
+                                    var el = (document.getElementById(theid));
+                                    el.classList.remove('is-invalid');
+                                    el.classList.remove('is-valid');
+                                    if (!newvalid) {
+                                        el.classList.add("is-invalid");
+                                    }
+                                }
                             }
                             break;
                         }
@@ -945,9 +972,12 @@ var FormGenBS = /** @class */ (function () {
                             var del = (document.getElementById("div_" + THEEL.elID));
                             if (!del.hidden) {
                                 var eli = (document.getElementById(THEEL.elID));
+                                eli.classList.remove('is-invalid');
+                                eli.classList.remove('is-valid');
                                 var seltext = eli.options[eli.selectedIndex].text;
                                 if (seltext + "" == "") {
                                     isvalid = false;
+                                    eli.classList.add("is-invalid");
                                 }
                             }
                             break;
@@ -958,8 +988,8 @@ var FormGenBS = /** @class */ (function () {
                             if (!del.hidden) {
                                 var i = 0;
                                 var newvalid = false;
-                                for (var _d = 0, _e = THEEL.elContent; _d < _e.length; _d++) {
-                                    var vv = _e[_d];
+                                for (var _f = 0, _g = THEEL.elContent; _f < _g.length; _f++) {
+                                    var vv = _g[_f];
                                     i += 1;
                                     var theid = THEEL.elID + "_" + i.toString();
                                     var el = (document.getElementById(theid));
@@ -967,8 +997,21 @@ var FormGenBS = /** @class */ (function () {
                                         newvalid = true;
                                     }
                                 }
-                                if (isvalid && !newvalid)
+                                if (isvalid && !newvalid) {
                                     isvalid = newvalid;
+                                }
+                                i = 0;
+                                for (var _h = 0, _j = THEEL.elContent; _h < _j.length; _h++) {
+                                    var vv = _j[_h];
+                                    i += 1;
+                                    var theid = THEEL.elID + "_" + i.toString();
+                                    var el = (document.getElementById(theid));
+                                    el.classList.remove('is-invalid');
+                                    el.classList.remove('is-valid');
+                                    if (!newvalid) {
+                                        el.classList.add("is-invalid");
+                                    }
+                                }
                             }
                             break;
                         }
@@ -976,6 +1019,46 @@ var FormGenBS = /** @class */ (function () {
             }
         }
         return isvalid;
+    };
+    /**
+     * ClearFormValidityVisuals
+     */
+    FormGenBS.prototype.ClearFormValidityVisuals = function () {
+        for (var _i = 0, _a = this.theUIElements; _i < _a.length; _i++) {
+            var THEEL = _a[_i];
+            switch (THEEL.elType.toUpperCase()) {
+                case "TEXT":
+                case "DATE":
+                case "NARRATIVE":
+                    {
+                        var el = (document.getElementById(THEEL.elID));
+                        el.classList.remove('is-invalid');
+                        el.classList.remove('is-valid');
+                        break;
+                    }
+                case "RADIO":
+                case "CHECKBOX":
+                    {
+                        var i = 0;
+                        for (var _b = 0, _c = THEEL.elContent; _b < _c.length; _b++) {
+                            var vv = _c[_b];
+                            i += 1;
+                            var theid = THEEL.elID + "_" + i.toString();
+                            var el = (document.getElementById(theid));
+                            el.classList.remove('is-invalid');
+                            el.classList.remove('is-valid');
+                        }
+                        break;
+                    }
+                case "DROPDOWN":
+                    {
+                        var eli = (document.getElementById(THEEL.elID));
+                        eli.classList.remove('is-invalid');
+                        eli.classList.remove('is-valid');
+                        break;
+                    }
+            }
+        }
     };
     /**
      * DoFormGenInteraction
