@@ -170,7 +170,11 @@ Sample JSON data output from a blank form built via the included HTML file, show
 
 - **GetFormScore()** Will return a number of the sum of all the entered fields on the form that have associated weights assigned. Used to apply a simple score to a collection of entered form fields for various business logic assertions.
 
-- **IsFormValid()** Returns a simple TRUE or FALSE if all of the elements that have the **elrequired** flag set in their definition. TEXT, DATES, NARRATIVES are all based on blank/empty or something in them. Checkboxes and RadioButtons and Dropdowns are all if something is selected in them.
+- **IsFormValid()** Returns a simple TRUE or FALSE if all of the elements that have the **elrequired** flag set in their definition. TEXT, DATES, NARRATIVES are all based on blank/empty or something in them. Checkboxes and RadioButtons and Dropdowns are all if something is selected in them. Validity visuals will be placed onto elements that do NOT pass validity status (Generallally a red outline on the input element itself). Screenshot below for reference
+
+![ScreenShot](ScreenShots/SS5.png)
+
+- **ClearFormValidityVisuals()** Will clear the validity queues placed on a form vis the **IsFormValid()** call noted above. 
 
 - **DoFormInteraction(e)** a public internal method that should be wired to a base javascript function outside of the class of the same name that calls the internal method with the same signature.
 IE 
@@ -200,12 +204,13 @@ If the class is defined as FG then
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="stylesheet" href="css/bootstrap.css">
 
     <title>FormGen Test</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
+   
 </head>
 <body>
+    <!--  -->
     <div id="testbuttons">
         <input type="button" onclick="alert(FG.GetFormDataAsString());" 
                 id="btnValRetrieve" value="Retrieve the values">
@@ -228,6 +233,10 @@ If the class is defined as FG then
         <input type="button" 
                 onclick="alert(' The Score is: ' + FG.GetFormScore());" 
                 id="btnScoreGet" value="Fetch Form Score">
+
+        <input type="button" 
+                onclick=" FG.ClearFormValidityVisuals();" 
+                id="btnValidityClear" value="Clear Form Validity">
 
         <input type="button" 
                 onclick="alert(' The Validity is: ' + FG.IsFormValid());" 
@@ -259,15 +268,20 @@ If the class is defined as FG then
 
         ELEs.push(
             new UIElement(2,"1","text","The Label for this piece of input",[],true,
-            [new UIInteraction("1","8","SHOW","N/A")],true,"","font-size:16px;font-weight:bold","background-color: lavender",[0]));
+            [new UIInteraction("1","8","SHOW","N/A")],true,"","font-size:16px;font-weight:bold","background-color: lavender",[]));
         ELEs.push(
             new UIElement(2,"2","narrative","The Label for this narrative",[],true,
             [],true,"","","",[1]));
+
+        ELEs.push(
+            new UIElement(2,"2a","narrative","The Label for this second narrative",[],true,
+            [],true,"","","",[1]));
+
         ELEs.push(
             new UIElement(3,"3","radio","Gender",["Male","Female","Unknown"],true,
             [new UIInteraction("3","5","SHOW","Unknown")],true,"background-color: palegreen","","",[2,3,4]));
         ELEs.push(
-            new UIElement(3,"4","dropdown","Select from the dropdown",["unset","1","2","3","4"], true,
+            new UIElement(3,"4","dropdown","Select from the dropdown",["","1","2","3","4"], true,
             [new UIInteraction("4","8","HIDE","unset")],true,"","","",[0,5,6,7,8]));
         ELEs.push(
             new UIElement(4,"5","date","The Label Date",[],true,
@@ -283,7 +297,7 @@ If the class is defined as FG then
             new UIElement(6,"7","narrative","Another Narrative is here",[],true,[],false,"","","",[15]));
         
         ELEs.push(
-            new UIElement(6,"8","narrative","A Third Narrative is here",[],true,[],false,"","","",[16]));
+            new UIElement(6,"8","narrative","A Fifth Narrative is here",[],true,[],false,"","","",[16]));
 
         ELEs.push(
             new UIElement(7,"LIST","infotext","This would be an example of a list being inserted into the output List items will be enumerated in the ELCONTENT array as shown",
