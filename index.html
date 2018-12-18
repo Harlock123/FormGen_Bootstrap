@@ -111,16 +111,7 @@
         
         var FFG = JSON.stringify(ELEs);
         
-        var FG = new FormGenBS('FormGenBody',ELEs,'Version 1');
-
-        /// This is a stub routine to wire up the UIInteractions
-        /// as I dont know how to have the class call into itself via the ONCLICK and ONCHANGE
-        /// manufactured handlers in the inserted DOM elements
-        /// Need to find a cleaner way to do this
-        function DoFormGenInteraction(e)
-        {
-            FG.DoFormGenInteraction(e);
-        }
+        var FG = new FormGenBS('FormGenBody',ELEs,'Version 1','FG');
 
         function PopulateFromString() /// assumes the class is instanced as FG
         {

@@ -1,12 +1,15 @@
 var FormGenBS = /** @class */ (function () {
-    function FormGenBS(DomElementID, UIElements, VersionString) {
+    function FormGenBS(DomElementID, UIElements, VersionString, JSobjectName) {
         this.theUIInteractions = [];
         this.theVersionString = "";
+        this.JSOBJECTNAME = "";
         // set the form version here
         this.theVersionString = VersionString;
         // DomElementID will be the container for all the inserted form content
         // save the containerID for further use elsewhere
         this.theContainer = DomElementID;
+        // save the name the particular instance is called for event wireup 
+        this.JSOBJECTNAME = JSobjectName;
         this.HydrateForm(UIElements);
     }
     FormGenBS.prototype.HydrateForm = function (UIElements) {
@@ -20,6 +23,7 @@ var FormGenBS = /** @class */ (function () {
         var FROWTAGS = [];
         var row = 0;
         var cnt = 0;
+        var eventwirup = this.JSOBJECTNAME + ".DoFormGenInteraction(this)";
         for (var _i = 0, UIElements_1 = UIElements; _i < UIElements_1.length; _i++) {
             var THEEL = UIElements_1[_i];
             if (THEEL.elFormRow != row) {
@@ -162,7 +166,7 @@ var FormGenBS = /** @class */ (function () {
                                     this.theUIInteractions.push(v);
                                 }
                                 innerhtml += '<input type="text" class="form-control input-md" name = "' + THEEL.elID +
-                                    '" id="' + THEEL.elID + '" onchange="DoFormGenInteraction(this)" style="' + THEEL.elFormStyle + '" > ';
+                                    '" id="' + THEEL.elID + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" > ';
                             }
                             innerhtml += '</div></div> ';
                             break;
@@ -192,7 +196,7 @@ var FormGenBS = /** @class */ (function () {
                                     this.theUIInteractions.push(v);
                                 }
                                 innerhtml += '<input type="date" class="form-control input-md" name = "' + THEEL.elID +
-                                    '" id="' + THEEL.elID + '" onchange="DoFormGenInteraction(this)" style="' + THEEL.elFormStyle + '" > ';
+                                    '" id="' + THEEL.elID + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" > ';
                             }
                             innerhtml += '</div></div> ';
                             break;
@@ -222,7 +226,7 @@ var FormGenBS = /** @class */ (function () {
                                     this.theUIInteractions.push(v);
                                 }
                                 innerhtml += '<textarea rows="5" cols="40" class="form-control input-md" name="' + THEEL.elID + '" id="'
-                                    + THEEL.elID + '" onchange="DoFormGenInteraction(this)" style="' + THEEL.elFormStyle + '" ></textarea> ';
+                                    + THEEL.elID + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" ></textarea> ';
                             }
                             innerhtml += '</div></div> ';
                             break;
@@ -266,7 +270,7 @@ var FormGenBS = /** @class */ (function () {
                                     innerhtml += '<input type="radio" class="form-check-input" ' +
                                         'name = "' + THEEL.elID + '" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
-                                        'value="' + v + '" onchange="DoFormGenInteraction(this)" style="' + THEEL.elFormStyle + '" >';
+                                        'value="' + v + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" >';
                                     innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
                                 }
                                 innerhtml += "</div>";
@@ -300,7 +304,7 @@ var FormGenBS = /** @class */ (function () {
                                 }
                                 innerhtml += '<select name="' + THEEL.elID +
                                     '" class="form-control input-md" id="' + THEEL.elID +
-                                    '" onchange="DoFormGenInteraction(this)" style="' + THEEL.elFormStyle + '" >';
+                                    '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" >';
                             }
                             // Lets put the Watermark in here
                             innerhtml += '<option value="" disabled selected hidden>Please Choose One...</option>';
@@ -355,7 +359,7 @@ var FormGenBS = /** @class */ (function () {
                                     innerhtml += '<input type="checkbox" ' +
                                         'name = "' + THEEL.elID + '" class="form-check-input" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
-                                        'value="' + v + '" onchange="DoFormGenInteraction(this)" style="' + THEEL.elFormStyle + '" >';
+                                        'value="' + v + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" >';
                                     innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
                                 }
                                 innerhtml += "</div>";

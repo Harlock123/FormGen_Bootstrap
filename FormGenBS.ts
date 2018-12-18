@@ -4,8 +4,9 @@ class FormGenBS {
     private theContainer: string;
     private theUIElements: UIElement[];
     private theVersionString: string = "";
+    private JSOBJECTNAME: string = "";
 
-    constructor(DomElementID: string, UIElements: UIElement[],VersionString: string) {
+    constructor(DomElementID: string, UIElements: UIElement[],VersionString: string, JSobjectName: string) {
         
         // set the form version here
         this.theVersionString = VersionString;
@@ -14,6 +15,9 @@ class FormGenBS {
 
         // save the containerID for further use elsewhere
         this.theContainer = DomElementID;
+
+        // save the name the particular instance is called for event wireup 
+        this.JSOBJECTNAME = JSobjectName;
 
         this.HydrateForm(UIElements);
 
@@ -32,6 +36,8 @@ class FormGenBS {
         var FROWTAGS: string[] = [];
         var row = 0;
         var cnt = 0;
+
+        var eventwirup = this.JSOBJECTNAME + ".DoFormGenInteraction(this)";
 
         for (let THEEL of UIElements) {
             if (THEEL.elFormRow != row)
@@ -208,7 +214,7 @@ class FormGenBS {
                                 }
         
                                 innerhtml += '<input type="text" class="form-control input-md" name = "' + THEEL.elID +
-                                    '" id="' + THEEL.elID + '" onchange="DoFormGenInteraction(this)" style="' + THEEL.elFormStyle +'" > ';
+                                    '" id="' + THEEL.elID + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle +'" > ';
         
                             }        
                                     
@@ -247,7 +253,7 @@ class FormGenBS {
                                 }
         
                                 innerhtml += '<input type="date" class="form-control input-md" name = "' + THEEL.elID +
-                                    '" id="' + THEEL.elID + '" onchange="DoFormGenInteraction(this)" style="' + THEEL.elFormStyle +'" > ';
+                                    '" id="' + THEEL.elID + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle +'" > ';
         
                             }       
                            
@@ -287,7 +293,7 @@ class FormGenBS {
                                 }
         
                                 innerhtml += '<textarea rows="5" cols="40" class="form-control input-md" name="' + THEEL.elID + '" id="'
-                                    + THEEL.elID + '" onchange="DoFormGenInteraction(this)" style="' + THEEL.elFormStyle +'" ></textarea> ';
+                                    + THEEL.elID + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle +'" ></textarea> ';
         
                             }
         
@@ -315,7 +321,7 @@ class FormGenBS {
                             innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                             innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                             innerhtml += THEEL.elLabel;
-                            innerhtml += '</label><br /> ';
+                            innerhtml += '</label> ';
                                     
                             let i = 0;
                             for (let v of THEEL.elContent) {
@@ -344,7 +350,7 @@ class FormGenBS {
                                     innerhtml += '<input type="radio" class="form-check-input" ' +
                                         'name = "' + THEEL.elID + '" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
-                                        'value="' + v + '" onchange="DoFormGenInteraction(this)" style="' + THEEL.elFormStyle +'" >';
+                                        'value="' + v + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle +'" >';
                                     innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
                                 }
 
@@ -387,7 +393,7 @@ class FormGenBS {
         
                                 innerhtml += '<select name="' + THEEL.elID +
                                     '" class="form-control input-md" id="' + THEEL.elID + 
-                                    '" onchange="DoFormGenInteraction(this)" style="' + THEEL.elFormStyle +'" >';
+                                    '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle +'" >';
                             }
 
                             // Lets put the Watermark in here
@@ -427,7 +433,7 @@ class FormGenBS {
                             innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                             innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                             innerhtml += THEEL.elLabel;
-                            innerhtml += '</label><br />';
+                            innerhtml += '</label> ';
         
                             let i = 0;
                             for (let v of THEEL.elContent) {
@@ -453,7 +459,7 @@ class FormGenBS {
                                     innerhtml += '<input type="checkbox" ' +
                                         'name = "' + THEEL.elID + '" class="form-check-input" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
-                                        'value="' + v + '" onchange="DoFormGenInteraction(this)" style="' + THEEL.elFormStyle +'" >';
+                                        'value="' + v + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle +'" >';
                                     innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
                                 }
 
@@ -482,7 +488,7 @@ class FormGenBS {
                             innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                             innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                             innerhtml += THEEL.elLabel;
-                            innerhtml += '</label><br />';
+                            innerhtml += '</label> ';
 
                             if (THEEL.elContent.length != 0) {
                                 // we have some items for an actual list
