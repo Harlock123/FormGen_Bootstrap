@@ -7,19 +7,19 @@ constructor(DomElementID: string, UIElements: UIElement[],VersionString: string,
 }
 ```
 Parameters:
-## DomElementID
+- **DomElementID**
 
     This is a container object (Usually a DIV) where you want the Form to be generated. FormGen will hydrate the HTML interface inside of this object automagically...
 
-## UIElements
+- **UIElements**
 
     This simple ARRA of elements in the form of UIElement. These elements represent the actual objects that FormGen will ge erate inside of the form. UIElement also contains definitions for the various interactions between elements, the scoreing values used in FormGens scoring functions, and Style parameters to apply to the generated objects and their labels...
 
-## VersionString
+- **VersionString**
 
     A simple string that will also be handed back when asking formgen for the set of answers given by the user in the form. Used to support form versioning in whatever persistance model is employed along with FormGen in your projects.
 
-##JSobjectName
+- **JSobjectName**
 
     A simple string the represents the name of the particular instance of FormGen that your code has created this as. Used when FormGen wires up event handlers for objects its creating so the varous onchange events can call into the specific instance of FormGen. (Formerly used a small stub routine to call in that lived out in the global namespace, Tnis is still a hack but is cleaner than the stub alternative)
 
