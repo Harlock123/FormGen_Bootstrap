@@ -245,7 +245,7 @@ var FormGenBS = /** @class */ (function () {
                             innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                             innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                             innerhtml += THEEL.elLabel;
-                            innerhtml += '</label><br /> ';
+                            innerhtml += '</label> ';
                             var i = 0;
                             for (var _s = 0, _t = THEEL.elContent; _s < _t.length; _s++) {
                                 var v = _t[_s];
@@ -335,7 +335,7 @@ var FormGenBS = /** @class */ (function () {
                             innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                             innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                             innerhtml += THEEL.elLabel;
-                            innerhtml += '</label><br />';
+                            innerhtml += '</label> ';
                             var i = 0;
                             for (var _0 = 0, _1 = THEEL.elContent; _0 < _1.length; _0++) {
                                 var v = _1[_0];
@@ -380,7 +380,7 @@ var FormGenBS = /** @class */ (function () {
                             innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                             innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                             innerhtml += THEEL.elLabel;
-                            innerhtml += '</label><br />';
+                            innerhtml += '</label> ';
                             if (THEEL.elContent.length != 0) {
                                 // we have some items for an actual list
                                 innerhtml += '<ul style="' + THEEL.elFormStyle + '">';
@@ -1224,6 +1224,59 @@ var FormGenBS = /** @class */ (function () {
             }
         }
         //alert("Interacted Here current value of ");
+    };
+    /**
+     * SetReadWrite()
+     * @param RW True or False will enumerate the form and set the appropriate attributes for RW
+     */
+    FormGenBS.prototype.SetReadWrite = function (RW) {
+        for (var _i = 0, _a = this.theUIElements; _i < _a.length; _i++) {
+            var THEEL = _a[_i];
+            switch (THEEL.elType.toUpperCase()) {
+                case "TEXT":
+                case "DATE":
+                case "NARRATIVE":
+                    {
+                        var el = (document.getElementById(THEEL.elID));
+                        if (RW) {
+                            el.removeAttribute('readonly');
+                        }
+                        else {
+                            el.setAttribute('readonly', '');
+                        }
+                        break;
+                    }
+                case "RADIO":
+                case "CHECKBOX":
+                    {
+                        var i = 0;
+                        for (var _b = 0, _c = THEEL.elContent; _b < _c.length; _b++) {
+                            var vv = _c[_b];
+                            i += 1;
+                            var theid = THEEL.elID + "_" + i.toString();
+                            var el = (document.getElementById(theid));
+                            if (RW) {
+                                el.removeAttribute('disabled');
+                            }
+                            else {
+                                el.setAttribute('disabled', '');
+                            }
+                        }
+                        break;
+                    }
+                case "DROPDOWN":
+                    {
+                        var eli = (document.getElementById(THEEL.elID));
+                        if (RW) {
+                            eli.removeAttribute('disabled');
+                        }
+                        else {
+                            eli.setAttribute('disabled', '');
+                        }
+                        break;
+                    }
+            }
+        }
     };
     // use in propigation of UIInteractions on visibiliy checks
     FormGenBS.prototype.isVisible = function (e) {

@@ -1630,6 +1630,77 @@ class FormGenBS {
         //alert("Interacted Here current value of ");
     }
 
+    /**
+     * SetReadWrite()
+     * @param RW True or False will enumerate the form and set the appropriate attributes for RW 
+     */
+    public SetReadWrite(RW: boolean)
+    {
+        for (let THEEL of this.theUIElements) {
+            switch (THEEL.elType.toUpperCase()) {
+                case "TEXT":
+                case "DATE":
+                case "NARRATIVE":
+                    {
+
+                        var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
+                        
+                        if (RW)
+                        {
+                            el.removeAttribute('readonly');
+                        }
+                        else
+                        {
+                            el.setAttribute('readonly','');
+                        }
+
+                        break;
+                    }
+                case "RADIO":
+                case "CHECKBOX":
+                    {
+                        let i = 0;
+                        for (let vv of THEEL.elContent) {
+                            i += 1;
+
+                            var theid = THEEL.elID + "_" + i.toString();
+
+                            var el = <HTMLInputElement>(document.getElementById(theid));
+
+                            if (RW)
+                            {
+                                el.removeAttribute('disabled');
+                            }
+                            else
+                            {
+                                el.setAttribute('disabled','');
+                            }
+                        }
+
+                        break;
+                    }
+                
+                case "DROPDOWN":
+                    {
+                        var eli = <HTMLSelectElement>(document.getElementById(THEEL.elID));
+                            
+                        if (RW)
+                        {
+                            eli.removeAttribute('disabled');
+                        }
+                        else
+                        {
+                            eli.setAttribute('disabled','');
+                        }
+
+                        break;
+                    }
+                
+            }
+        }
+    }
+
+
     // use in propigation of UIInteractions on visibiliy checks
     private isVisible(e) {
         return !!(e.offsetWidth || e.offsetHeight || e.getClientRects().length);

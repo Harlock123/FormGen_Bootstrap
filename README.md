@@ -2,13 +2,29 @@
 Typescript Library to Use Data structures handed to it to interpret and create UI CRUD screens. Tailored for BOOTSTRAP
 
 ```typescript
-constructor(DomElementID: string, UIElements: UIElement[],VersionString: string) {
+constructor(DomElementID: string, UIElements: UIElement[],VersionString: string,JSobjectName: string) {
         ...
 }
 ```
+Parameters:
+## DomElementID
 
-Takes a simple ARRAY of elements in the form of UIElement and the name of the container object in which to place the results, along with the specific versionstring for the particular forms content.
-Versionstring gets handed back and forth between the class and the forms persisted values on saving and loading methods (see below for more details) 
+    This is a container object (Usually a DIV) where you want the Form to be generated. FormGen will hydrate the HTML interface inside of this object automagically...
+
+## UIElements
+
+    This simple ARRA of elements in the form of UIElement. These elements represent the actual objects that FormGen will ge erate inside of the form. UIElement also contains definitions for the various interactions between elements, the scoreing values used in FormGens scoring functions, and Style parameters to apply to the generated objects and their labels...
+
+## VersionString
+
+    A simple string that will also be handed back when asking formgen for the set of answers given by the user in the form. Used to support form versioning in whatever persistance model is employed along with FormGen in your projects.
+
+##JSobjectName
+
+    A simple string the represents the name of the particular instance of FormGen that your code has created this as. Used when FormGen wires up event handlers for objects its creating so the varous onchange events can call into the specific instance of FormGen. (Formerly used a small stub routine to call in that lived out in the global namespace, Tnis is still a hack but is cleaner than the stub alternative)
+
+
+Firther documentation regarding FormGens Use and the various objects employed are below
 
 ## UIElement definition
 
@@ -192,6 +208,15 @@ If the class is defined as FG then
 
 - **GetFormVersion** Returns the internal version  number either set at constructor or via **SetFormVersion**
 
+- **SetReadWrite(RW: boolean)** True or False handed in maked the form Readonly (FALSE) or ReadWrite (TRUE)
+
+Sample Form Set to READONLY  using FALSE as the Parameter
+
+![ScreenShot](ScreenShots/SS6.png)
+
+Same Form set bact to ReadWrite using TRUE as the Parameter
+
+![ScreenShot](ScreenShots/SS7.png)
 
 ### SAMPLE HTML
 (also included in the project)
@@ -246,7 +271,13 @@ If the class is defined as FG then
                 onclick="FG.GetFormDefinitionFrom('http://localhost:8000/SampleForm.json');" 
                 id="btnPopulateFromURL" value="Form Definition from URL">
 
+        <input type="button" 
+                onclick="FG.SetReadWrite(true);" 
+                id="btnSetReadWriteTrue" value="ReadWrite">
 
+        <input type="button" 
+                onclick="FG.SetReadWrite(false);" 
+                id="btnSetReadWritefalse" value="ReadOnly">
     </div>
 
     <div id="FormGenBody" style="height:90vh; width: 100vw" >
@@ -281,8 +312,9 @@ If the class is defined as FG then
             new UIElement(3,"3","radio","Gender",["Male","Female","Unknown"],true,
             [new UIInteraction("3","5","SHOW","Unknown")],true,"background-color: palegreen","","",[2,3,4]));
         ELEs.push(
-            new UIElement(3,"4","dropdown","Select from the dropdown",["","1","2","3","4"], true,
-            [new UIInteraction("4","8","HIDE","unset")],true,"","","",[0,5,6,7,8]));
+            new UIElement(3,"4","dropdown","Select from the dropdown",["1","2","3","4"], true,
+            [new UIInteraction("4","8","HIDE","4"),new UIInteraction("4","8","HIDE","3"),
+             new UIInteraction("4","8","SHOW","1"),new UIInteraction("4","8","SHOW","2")],true,"","","",[5,6,7,8]));
         ELEs.push(
             new UIElement(4,"5","date","The Label Date",[],true,
             [new UIInteraction("5","5a","SHOW","")],false,"","","",[9]));
@@ -309,16 +341,7 @@ If the class is defined as FG then
         
         var FFG = JSON.stringify(ELEs);
         
-        var FG = new FormGenBS('FormGenBody',ELEs,'Version 1');
-
-        /// This is a stub routine to wire up the UIInteractions
-        /// as I dont know how to have the class call into itself via the ONCLICK and ONCHANGE
-        /// manufactured handlers in the inserted DOM elements
-        /// Need to find a cleaner way to do this
-        function DoFormGenInteraction(e)
-        {
-            FG.DoFormGenInteraction(e);
-        }
+        var FG = new FormGenBS('FormGenBody',ELEs,'Version 1','FG');
 
         function PopulateFromString() /// assumes the class is instanced as FG
         {

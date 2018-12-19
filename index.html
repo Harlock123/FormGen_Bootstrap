@@ -47,7 +47,13 @@
                 onclick="FG.GetFormDefinitionFrom('http://localhost:8000/SampleForm.json');" 
                 id="btnPopulateFromURL" value="Form Definition from URL">
 
+        <input type="button" 
+                onclick="FG.SetReadWrite(true);" 
+                id="btnSetReadWriteTrue" value="ReadWrite">
 
+        <input type="button" 
+                onclick="FG.SetReadWrite(false);" 
+                id="btnSetReadWritefalse" value="ReadOnly">
     </div>
 
     <div id="FormGenBody" style="height:90vh; width: 100vw" >
