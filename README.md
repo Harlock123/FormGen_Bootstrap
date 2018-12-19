@@ -24,7 +24,7 @@ Parameters:
     A simple string the represents the name of the particular instance of FormGen that your code has created this as. Used when FormGen wires up event handlers for objects its creating so the varous onchange events can call into the specific instance of FormGen. (Formerly used a small stub routine to call in that lived out in the global namespace, Tnis is still a hack but is cleaner than the stub alternative)
 
 
-Firther documentation regarding FormGens Use and the various objects employed are below
+Further documentation regarding FormGens Use and the various objects employed are below
 
 ## UIElement definition
 
