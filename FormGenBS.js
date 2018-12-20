@@ -11,6 +11,7 @@ var FormGenBS = /** @class */ (function () {
         // save the name the particular instance is called for event wireup 
         this.JSOBJECTNAME = JSobjectName;
         this.HydrateForm(UIElements);
+        this.DOINTERACTION = function (e) { this.DoFormGenInteraction(e); };
     }
     FormGenBS.prototype.HydrateForm = function (UIElements) {
         // save the handed in UIElements for further processing later
@@ -23,7 +24,7 @@ var FormGenBS = /** @class */ (function () {
         var FROWTAGS = [];
         var row = 0;
         var cnt = 0;
-        var eventwirup = this.JSOBJECTNAME + ".DoFormGenInteraction(this)";
+        var eventwirup = this.JSOBJECTNAME + ".DOINTERACTION(this)";
         for (var _i = 0, UIElements_1 = UIElements; _i < UIElements_1.length; _i++) {
             var THEEL = UIElements_1[_i];
             if (THEEL.elFormRow != row) {

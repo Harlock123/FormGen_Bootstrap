@@ -5,6 +5,7 @@ class FormGenBS {
     private theUIElements: UIElement[];
     private theVersionString: string = "";
     private JSOBJECTNAME: string = "";
+    private DOINTERACTION;
 
     constructor(DomElementID: string, UIElements: UIElement[],VersionString: string, JSobjectName: string) {
         
@@ -20,6 +21,9 @@ class FormGenBS {
         this.JSOBJECTNAME = JSobjectName;
 
         this.HydrateForm(UIElements);
+
+        this.DOINTERACTION = function(e: any) {this.DoFormGenInteraction(e);}
+
 
     }
 
@@ -37,7 +41,7 @@ class FormGenBS {
         var row = 0;
         var cnt = 0;
 
-        var eventwirup = this.JSOBJECTNAME + ".DoFormGenInteraction(this)";
+        var eventwirup = this.JSOBJECTNAME + ".DOINTERACTION(this)";
 
         for (let THEEL of UIElements) {
             if (THEEL.elFormRow != row)
@@ -1411,7 +1415,7 @@ class FormGenBS {
     /**
      * DoFormGenInteraction
      */
-    public DoFormGenInteraction(e) {
+    private DoFormGenInteraction(e) {
 
         for (let UIi of this.theUIInteractions) {
             // parse each noted interaction to see if we need to act on it

@@ -117,7 +117,9 @@
         
         var FFG = JSON.stringify(ELEs);
         
-        var FG = new FormGenBS('FormGenBody',ELEs,'Version 1','FG');
+        var FG = new FormGenBS('FormGenBody',ELEs,'Version 1','FG');  
+
+        console.log(FG);
 
         function PopulateFromString() /// assumes the class is instanced as FG
         {
