@@ -44,7 +44,7 @@
                 id="btnValidityGet" value="Fetch Form Validity">
 
         <input type="button" 
-                onclick="FG.GetFormDefinitionFrom('http://localhost:8000/SampleForm.json');" 
+                onclick="FG.GetFormDefinitionFrom('http://localhost:5500/SampleForm.json');" 
                 id="btnPopulateFromURL" value="Form Definition from URL">
 
         <input type="button" 
@@ -85,7 +85,7 @@
             [],true,"","","",[1]));
 
         ELEs.push(
-            new UIElement(3,"3","radio","Gender",["Male","Female","Unknown"],true,
+            new UIElement(3,"3","radio","Gender",["Male","Female","UNKNOWN"],true,
             [new UIInteraction("3","5","SHOW","Unknown")],true,"background-color: palegreen","","",[2,3,4]));
         ELEs.push(
             new UIElement(3,"4","dropdown","Select from the dropdown",["1","2","3","4"], true,
