@@ -145,6 +145,10 @@ var FormGenBS = /** @class */ (function () {
                         case "TEXT": {
                             // here we decode the elFormStyle element if its present
                             var STY = "";
+                            var CC = "form-control input-md"; // for TEXT inputs
+                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined) {
+                                CC = THEEL.elCustomClass;
+                            }
                             if (THEEL.elStyle != "") {
                                 STY = ' style="' + THEEL.elStyle + '" ';
                             }
@@ -152,13 +156,18 @@ var FormGenBS = /** @class */ (function () {
                             if (!THEEL.elInitialVisibility) {
                                 VIS = 'style="display:none"';
                             }
-                            innerhtml += '<div class="' + CBTAG + '" >';
+                            if (THEEL.elAutoSize) {
+                                innerhtml += '<div class="col-auto" >';
+                            }
+                            else {
+                                innerhtml += '<div class="' + CBTAG + '" >';
+                            }
                             innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                             innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                             innerhtml += THEEL.elLabel;
                             innerhtml += '</label>';
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
-                                innerhtml += '<input type="text" class="form-control input-md" name = "' + THEEL.elID +
+                                innerhtml += '<input type="text" class="' + CC + '" name = "' + THEEL.elID +
                                     '" id="' + THEEL.elID + '" style="' + THEEL.elFormStyle + '"  > ';
                             }
                             else {
@@ -166,7 +175,7 @@ var FormGenBS = /** @class */ (function () {
                                     var v = _m[_l];
                                     this.theUIInteractions.push(v);
                                 }
-                                innerhtml += '<input type="text" class="form-control input-md" name = "' + THEEL.elID +
+                                innerhtml += '<input type="text" class="' + CC + '" name = "' + THEEL.elID +
                                     '" id="' + THEEL.elID + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" > ';
                             }
                             innerhtml += '</div></div> ';
@@ -175,6 +184,10 @@ var FormGenBS = /** @class */ (function () {
                         case "DATE": {
                             // here we decode the elFormStyle element if its present
                             var STY = "";
+                            var CC = "form-control input-md"; // for TEXT inputs
+                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined) {
+                                CC = THEEL.elCustomClass;
+                            }
                             if (THEEL.elStyle != "") {
                                 STY = ' style="' + THEEL.elStyle + '" ';
                             }
@@ -182,13 +195,18 @@ var FormGenBS = /** @class */ (function () {
                             if (!THEEL.elInitialVisibility) {
                                 VIS = 'style="display:none"';
                             }
-                            innerhtml += '<div class="' + CBTAG + '" >';
+                            if (THEEL.elAutoSize) {
+                                innerhtml += '<div class="col-auto" >';
+                            }
+                            else {
+                                innerhtml += '<div class="' + CBTAG + '" >';
+                            }
                             innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                             innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                             innerhtml += THEEL.elLabel;
                             innerhtml += '</label>';
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
-                                innerhtml += '<input type="date" class="form-control input-md" name = "' + THEEL.elID +
+                                innerhtml += '<input type="date" class="' + CC + '" name = "' + THEEL.elID +
                                     '" id="' + THEEL.elID + '" style="' + THEEL.elFormStyle + '" > ';
                             }
                             else {
@@ -196,7 +214,7 @@ var FormGenBS = /** @class */ (function () {
                                     var v = _p[_o];
                                     this.theUIInteractions.push(v);
                                 }
-                                innerhtml += '<input type="date" class="form-control input-md" name = "' + THEEL.elID +
+                                innerhtml += '<input type="date" class="' + CC + '" name = "' + THEEL.elID +
                                     '" id="' + THEEL.elID + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" > ';
                             }
                             innerhtml += '</div></div> ';
@@ -205,6 +223,10 @@ var FormGenBS = /** @class */ (function () {
                         case "NARRATIVE": {
                             // here we decode the elFormStyle element if its present
                             var STY = "";
+                            var CC = "form-control input-md"; // for TEXT inputs
+                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined) {
+                                CC = THEEL.elCustomClass;
+                            }
                             if (THEEL.elStyle != "") {
                                 STY = ' style="' + THEEL.elStyle + '" ';
                             }
@@ -212,13 +234,18 @@ var FormGenBS = /** @class */ (function () {
                             if (!THEEL.elInitialVisibility) {
                                 VIS = 'style="display:none"';
                             }
-                            innerhtml += '<div class="' + CBTAG + '" >';
+                            if (THEEL.elAutoSize) {
+                                innerhtml += '<div class="col-auto" >';
+                            }
+                            else {
+                                innerhtml += '<div class="' + CBTAG + '" >';
+                            }
                             innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                             innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                             innerhtml += THEEL.elLabel;
                             innerhtml += '</label>';
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
-                                innerhtml += '<textarea rows="5" cols="40" class="form-control input-md" name="' + THEEL.elID + '" id="'
+                                innerhtml += '<textarea rows="5" cols="40" class="' + CC + '" name="' + THEEL.elID + '" id="'
                                     + THEEL.elID + '" style="' + THEEL.elFormStyle + '" ></textarea> ';
                             }
                             else {
@@ -226,7 +253,7 @@ var FormGenBS = /** @class */ (function () {
                                     var v = _r[_q];
                                     this.theUIInteractions.push(v);
                                 }
-                                innerhtml += '<textarea rows="5" cols="40" class="form-control input-md" name="' + THEEL.elID + '" id="'
+                                innerhtml += '<textarea rows="5" cols="40" class="' + CC + '" name="' + THEEL.elID + '" id="'
                                     + THEEL.elID + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" ></textarea> ';
                             }
                             innerhtml += '</div></div> ';
@@ -235,6 +262,10 @@ var FormGenBS = /** @class */ (function () {
                         case "RADIO": {
                             // here we decode the elFormStyle element if its present
                             var STY = "";
+                            var CC = "form-check-input";
+                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined) {
+                                CC = THEEL.elCustomClass;
+                            }
                             if (THEEL.elStyle != "") {
                                 STY = ' style="' + THEEL.elStyle + '" ';
                             }
@@ -242,7 +273,12 @@ var FormGenBS = /** @class */ (function () {
                             if (!THEEL.elInitialVisibility) {
                                 VIS = 'style="display:none"';
                             }
-                            innerhtml += '<div class="' + CBTAG + '" >';
+                            if (THEEL.elAutoSize) {
+                                innerhtml += '<div class="col-auto" >';
+                            }
+                            else {
+                                innerhtml += '<div class="' + CBTAG + '" >';
+                            }
                             innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                             innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                             innerhtml += THEEL.elLabel;
@@ -256,7 +292,7 @@ var FormGenBS = /** @class */ (function () {
                                 innerhtml += '<div class="form-check form-check-inline">';
                                 if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
                                     //innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v + '</label>';
-                                    innerhtml += '<input type="radio" class="form-check-input" ' +
+                                    innerhtml += '<input type="radio" class="' + CC + '" ' +
                                         'name = "' + THEEL.elID + '" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
                                         'value="' + v + '" style="' + THEEL.elFormStyle + '" >';
@@ -268,7 +304,7 @@ var FormGenBS = /** @class */ (function () {
                                         this.theUIInteractions.push(v_1);
                                     }
                                     //innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v + '</label>';
-                                    innerhtml += '<input type="radio" class="form-check-input" ' +
+                                    innerhtml += '<input type="radio" class="' + CC + '" ' +
                                         'name = "' + THEEL.elID + '" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
                                         'value="' + v + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" >';
@@ -282,6 +318,10 @@ var FormGenBS = /** @class */ (function () {
                         case "DROPDOWN": {
                             // here we decode the elFormStyle element if its present
                             var STY = "";
+                            var CC = "form-control input-md"; // for TEXT inputs
+                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined) {
+                                CC = THEEL.elCustomClass;
+                            }
                             if (THEEL.elStyle != "") {
                                 STY = ' style="' + THEEL.elStyle + '" ';
                             }
@@ -289,13 +329,18 @@ var FormGenBS = /** @class */ (function () {
                             if (!THEEL.elInitialVisibility) {
                                 VIS = 'style="display:none"';
                             }
-                            innerhtml += '<div class="' + CBTAG + '" >';
+                            if (THEEL.elAutoSize) {
+                                innerhtml += '<div class="col-auto" >';
+                            }
+                            else {
+                                innerhtml += '<div class="' + CBTAG + '" >';
+                            }
                             innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                             innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                             innerhtml += THEEL.elLabel;
                             innerhtml += '</label>';
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
-                                innerhtml += '<select name="' + THEEL.elID + '" class="form-control input-md" id="' +
+                                innerhtml += '<select name="' + THEEL.elID + '" class="' + CC + '" id="' +
                                     THEEL.elID + '" style="' + THEEL.elFormStyle + '" >';
                             }
                             else {
@@ -304,7 +349,7 @@ var FormGenBS = /** @class */ (function () {
                                     this.theUIInteractions.push(v);
                                 }
                                 innerhtml += '<select name="' + THEEL.elID +
-                                    '" class="form-control input-md" id="' + THEEL.elID +
+                                    '" class="' + CC + '" id="' + THEEL.elID +
                                     '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" >';
                             }
                             // Lets put the Watermark in here
@@ -325,6 +370,10 @@ var FormGenBS = /** @class */ (function () {
                         case "CHECKBOX": {
                             // here we decode the elFormStyle element if its present
                             var STY = "";
+                            var CC = "form-check-input";
+                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined) {
+                                CC = THEEL.elCustomClass;
+                            }
                             if (THEEL.elStyle != "") {
                                 STY = ' style="' + THEEL.elStyle + '" ';
                             }
@@ -332,7 +381,12 @@ var FormGenBS = /** @class */ (function () {
                             if (!THEEL.elInitialVisibility) {
                                 VIS = 'style="display:none"';
                             }
-                            innerhtml += '<div class="' + CBTAG + '" >';
+                            if (THEEL.elAutoSize) {
+                                innerhtml += '<div class="col-auto" >';
+                            }
+                            else {
+                                innerhtml += '<div class="' + CBTAG + '" >';
+                            }
                             innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                             innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                             innerhtml += THEEL.elLabel;
@@ -346,7 +400,7 @@ var FormGenBS = /** @class */ (function () {
                                 if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
                                     //innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v ;
                                     innerhtml += '<input type="checkbox" ' +
-                                        'name = "' + THEEL.elID + '" class="form-check-input" id="' +
+                                        'name = "' + THEEL.elID + '" class="' + CC + '" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
                                         'value="' + v + '" style="' + THEEL.elFormStyle + '" >';
                                     innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
@@ -358,7 +412,7 @@ var FormGenBS = /** @class */ (function () {
                                     }
                                     //innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v ;
                                     innerhtml += '<input type="checkbox" ' +
-                                        'name = "' + THEEL.elID + '" class="form-check-input" id="' +
+                                        'name = "' + THEEL.elID + '" class="' + CC + '" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
                                         'value="' + v + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" >';
                                     innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
@@ -377,7 +431,12 @@ var FormGenBS = /** @class */ (function () {
                             if (!THEEL.elInitialVisibility) {
                                 VIS = 'style="display:none"';
                             }
-                            innerhtml += '<div class="' + CBTAG + '" >';
+                            if (THEEL.elAutoSize) {
+                                innerhtml += '<div class="col-auto" >';
+                            }
+                            else {
+                                innerhtml += '<div class="' + CBTAG + '" >';
+                            }
                             innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                             innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                             innerhtml += THEEL.elLabel;
@@ -406,7 +465,12 @@ var FormGenBS = /** @class */ (function () {
                             if (!THEEL.elInitialVisibility) {
                                 VIS = 'style="display:none"';
                             }
-                            innerhtml += '<div class="' + CBTAG + '" >';
+                            if (THEEL.elAutoSize) {
+                                innerhtml += '<div class="col-auto" >';
+                            }
+                            else {
+                                innerhtml += '<div class="' + CBTAG + '" >';
+                            }
                             innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                             innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                             innerhtml += THEEL.elLabel;
@@ -426,7 +490,12 @@ var FormGenBS = /** @class */ (function () {
                             if (!THEEL.elInitialVisibility) {
                                 VIS = 'style="display:none"';
                             }
-                            innerhtml += '<div class="' + CBTAG + '" >';
+                            if (THEEL.elAutoSize) {
+                                innerhtml += '<div class="col-auto" >';
+                            }
+                            else {
+                                innerhtml += '<div class="' + CBTAG + '" >';
+                            }
                             innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                             innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                             innerhtml += THEEL.elLabel;
@@ -1286,7 +1355,7 @@ var FormGenBS = /** @class */ (function () {
     return FormGenBS;
 }());
 var UIElement = /** @class */ (function () {
-    function UIElement(elformrow, elid, eltype, ellabel, elcontent, elrequired, elinteractions, elinitialvisibility, elstyle, ellabelstyle, elformstyle, elscore) {
+    function UIElement(elformrow, elid, eltype, ellabel, elcontent, elrequired, elinteractions, elinitialvisibility, elstyle, ellabelstyle, elformstyle, elscore, elautosize, elcustomclass) {
         this.elFormRow = elformrow;
         this.elID = elid;
         this.elContent = elcontent;
@@ -1299,6 +1368,18 @@ var UIElement = /** @class */ (function () {
         this.elLabelStyle = ellabelstyle;
         this.elFormStyle = elformstyle;
         this.elScore = elscore;
+        if (elautosize == undefined) {
+            this.elAutoSize = false;
+        }
+        else {
+            this.elAutoSize = elautosize;
+        }
+        if (elcustomclass == undefined) {
+            this.elCustomClass = "";
+        }
+        else {
+            this.elCustomClass = elcustomclass;
+        }
     }
     return UIElement;
 }());

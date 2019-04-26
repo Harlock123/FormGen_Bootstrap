@@ -42,10 +42,14 @@ class UIElement {
     public elLabelStyle: string;
     public elFormStyle: string;
     public elScore: number[];
+    public elAutoSize: boolean;
+    public elCustomClass: string;
 
     constructor(elformrow: number, elid: string, eltype: string, ellabel: string,
-        elcontent: string[], elrequired: boolean,elinteractions: UIInteraction[], elinitialvisibility: boolean, 
-        elstyle: string, ellabelstyle: string, elformstyle: string, elscore: number[]) {
+    elcontent: string[], elrequired: boolean,elinteractions: UIInteraction[], elinitialvisibility: boolean, 
+    elstyle: string, ellabelstyle: string, elformstyle: string, elscore: number[], 
+    elautosize?: boolean, elcustomclass?: string) 
+    {
         this.elFormRow = elformrow;
         this.elID = elid;
         this.elContent = elcontent;
@@ -58,6 +62,24 @@ class UIElement {
         this.elLabelStyle = ellabelstyle;
         this.elFormStyle = elformstyle;
         this.elScore = elscore;
+
+        if (elautosize == undefined)
+        { 
+            this.elAutoSize = false;
+        }
+        else
+        {
+            this.elAutoSize = elautosize;
+        }
+
+        if (elcustomclass == undefined)
+        {
+            this.elCustomClass = "";
+        }
+        else
+        {        
+            this.elCustomClass = elcustomclass;
+        }
 
     }
 }
@@ -97,6 +119,10 @@ class UIElement {
 - **elformstyle** is a string that will be inserted as an inline style= assertion on the combination of element and label container. In BootStrap this is a form-group.
 
 - **elscore** is an array of numbers used to associate a weight numerically with each element as its inserted into the page. Used by the GetFormScore method to return a  value if an associated element is populated or selected. So if you have a radiobutton list or checkboxlist or dropdown list, you will have a weight for subelement. Text, Dates and Narrative will have a singular value in this array.
+
+- **elautosize** is a optional boolean that flags the resulting input element type (TEXT,TEXTAREA,SELECT,RADIO,CHECKBOX,DATE) wrapping DIV as a class="col-auto" as opposed to decorating it with the calculated col-md-x value (based on how many other elements are also on that row). Useful when you have some fairly narrow input fields that dont need to be spread across a wide browser screen or a tablet in landscape mode. Its optional so it can be left off the UIELEMENT constructor and defaults to **false**.
+
+- **elcustomclass** is an optional string that will be substituted as the class for the specific input element type (TEXT,TEXTAREA,SELECT,RADIO,CHECKBOX,DATE). Useful when you want to substiture some custome rendeition on these input elements. Is an optional string and defaults toan empty string whit will then defaultto rendering the input element with bootstrap standard classes, form-control input-md andc where appropriate form-check-input (RADIO and CHECKBOX)
 
 ## UIInteraction definition
 
