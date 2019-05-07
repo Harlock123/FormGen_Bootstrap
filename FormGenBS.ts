@@ -1,4 +1,4 @@
-class FormGenBS {
+export class FormGenBS {
 
     private theUIInteractions: UIInteraction[] = [];
     private theContainer: string;
@@ -7,11 +7,11 @@ class FormGenBS {
     private JSOBJECTNAME: string = "";
     private DOINTERACTION;
 
-    constructor(DomElementID: string, UIElements: UIElement[],VersionString: string, JSobjectName: string) {
-        
+    constructor(DomElementID: string, UIElements: UIElement[], VersionString: string, JSobjectName: string) {
+
         // set the form version here
         this.theVersionString = VersionString;
-        
+
         // DomElementID will be the container for all the inserted form content
 
         // save the containerID for further use elsewhere
@@ -22,7 +22,7 @@ class FormGenBS {
 
         this.HydrateForm(UIElements);
 
-        this.DOINTERACTION = function(e: any) {this.DoFormGenInteraction(e);}
+        this.DOINTERACTION = function (e: any) { this.DoFormGenInteraction(e); }
 
 
     }
@@ -44,21 +44,27 @@ class FormGenBS {
         var eventwirup = this.JSOBJECTNAME + ".DOINTERACTION(this)";
 
         for (let THEEL of UIElements) {
-            if (THEEL.elFormRow != row)
-            {
+            if (THEEL.elFormRow != row) {
                 // we have a new row lets push the old row
                 FROWS.push(cnt);
                 cnt = 1;
                 row = THEEL.elFormRow;
             }
-            else
-            {
+            else {
                 cnt += 1;
             }
         }
 
         FROWS.push(cnt);
+        for (let i = FROWS.length; i < UIElements.length; i++) {
+            FROWS.push(cnt);
+            FROWS.push(cnt);
+            FROWS.push(cnt);
+            FROWS.push(cnt);
+            FROWS.push(cnt);
+        }
         cnt = 0;
+        for (let i = FROWS.length; i < UIElements.length; i++) { FROWS.push(cnt); FROWS.push(cnt); FROWS.push(cnt); FROWS.push(cnt); }
 
         // we now have an array of numbers the ordinal position in that array has the number of
         // elements that are in that forms row as defined by the UIElements array handed in
@@ -67,17 +73,14 @@ class FormGenBS {
 
         // now lets iterate over the list of FORM ROWS and determine the BOOTSTRAP Tags to employ on each of those rows
 
-        for (let RRR of FROWS)
-        {
-            if (RRR != 0)
-            {
+        for (let RRR of FROWS) {
+            if (RRR != 0) {
                 switch (RRR) {
                     case 1: {
                         BOOTSTRAPTAGS.push("col-md-12");
-                        
+
                         for (let THEEL of UIElements) {
-                            if (THEEL.elFormRow == cnt)
-                            {
+                            if (THEEL.elFormRow == cnt) {
                                 FROWTAGS.push(THEEL.elStyle);
                                 break;
                             }
@@ -87,10 +90,9 @@ class FormGenBS {
                     }
                     case 2: {
                         BOOTSTRAPTAGS.push("col-md-6");
-                        
+
                         for (let THEEL of UIElements) {
-                            if (THEEL.elFormRow == cnt)
-                            {
+                            if (THEEL.elFormRow == cnt) {
                                 FROWTAGS.push(THEEL.elStyle);
                                 break;
                             }
@@ -100,10 +102,9 @@ class FormGenBS {
                     }
                     case 3: {
                         BOOTSTRAPTAGS.push("col-md-4");
-                        
+
                         for (let THEEL of UIElements) {
-                            if (THEEL.elFormRow == cnt)
-                            {
+                            if (THEEL.elFormRow == cnt) {
                                 FROWTAGS.push(THEEL.elStyle);
                                 break;
                             }
@@ -113,10 +114,9 @@ class FormGenBS {
                     }
                     case 4: {
                         BOOTSTRAPTAGS.push("col-md-3");
-                        
+
                         for (let THEEL of UIElements) {
-                            if (THEEL.elFormRow == cnt)
-                            {
+                            if (THEEL.elFormRow == cnt) {
                                 FROWTAGS.push(THEEL.elStyle);
                                 break;
                             }
@@ -126,10 +126,9 @@ class FormGenBS {
                     }
                     case 6: {
                         BOOTSTRAPTAGS.push("col-md-2");
-                        
+
                         for (let THEEL of UIElements) {
-                            if (THEEL.elFormRow == cnt)
-                            {
+                            if (THEEL.elFormRow == cnt) {
                                 FROWTAGS.push(THEEL.elStyle);
                                 break;
                             }
@@ -139,10 +138,9 @@ class FormGenBS {
                     }
                     case 12: {
                         BOOTSTRAPTAGS.push("col-md-1");
-                        
+
                         for (let THEEL of UIElements) {
-                            if (THEEL.elFormRow == cnt)
-                            {
+                            if (THEEL.elFormRow == cnt) {
                                 FROWTAGS.push(THEEL.elStyle);
                                 break;
                             }
@@ -152,10 +150,9 @@ class FormGenBS {
                     }
                     default: {
                         BOOTSTRAPTAGS.push("col-md-1");
-                        
+
                         for (let THEEL of UIElements) {
-                            if (THEEL.elFormRow == cnt)
-                            {
+                            if (THEEL.elFormRow == cnt) {
                                 FROWTAGS.push(THEEL.elStyle);
                                 break;
                             }
@@ -176,15 +173,14 @@ class FormGenBS {
 
         var CURROW = 0;
 
-        for(let CBTAG of BOOTSTRAPTAGS)
-        {
-            CURROW+=1;
+        for (let CBTAG of BOOTSTRAPTAGS) {
+            CURROW += 1;
 
-            innerhtml += '<div class="form-row" style="' + FROWTAGS[CURROW-1] + '" >'; 
+            innerhtml += '<div class="form-row" style="' + FROWTAGS[CURROW - 1] + '" >';
 
             for (let THEEL of UIElements) {
 
-                if(THEEL.elFormRow == CURROW) { // We have an element that is going into the curent row
+                if (THEEL.elFormRow == CURROW) { // We have an element that is going into the curent row
 
                     switch (THEEL.elType.toUpperCase()) {
                         case "TEXT": {
@@ -194,167 +190,194 @@ class FormGenBS {
                             var STY = "";
                             var CC = "form-control input-md"; // for TEXT inputs
 
-                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined)
-                            {
+                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined) {
                                 CC = THEEL.elCustomClass;
                             }
 
-        
                             if (THEEL.elStyle != "") {
                                 STY = ' style="' + THEEL.elStyle + '" ';
                             }
-        
+
                             var VIS = "";//'style="display:block"';
-        
+
                             if (!THEEL.elInitialVisibility) {
                                 VIS = 'style="display:none"';
                             }
-                            
-                            if (THEEL.elAutoSize)
-                            {
+                            if (THEEL.elAutoSize) {
                                 innerhtml += '<div class="col-auto" >';
                             }
-                            else
-                            {
+                            else {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
 
-                            innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
-                            innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
-                            innerhtml += THEEL.elLabel;
-                            innerhtml += '</label>';
+                            if (THEEL.elRequired)
+                            {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td valign="top" style="color:red"> * </td>';
+                                innerhtml += '<td>'; 
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                                innerhtml += '</td>'; 
+                                innerhtml += '</table>';
 
+                            }
+                            else
+                            {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                            }
                             
-
-        
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
                                 innerhtml += '<input type="text" class="' + CC + '" name = "' + THEEL.elID +
-                                    '" id="' + THEEL.elID + '" style="' + THEEL.elFormStyle +'"  > ';
+                                    '" id="' + THEEL.elID + '" style="' + THEEL.elFormStyle + '"  > ';
                             }
                             else {
                                 for (let v of THEEL.elInteractions) {
                                     this.theUIInteractions.push(v);
                                 }
-        
+
                                 innerhtml += '<input type="text" class="' + CC + '" name = "' + THEEL.elID +
-                                    '" id="' + THEEL.elID + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle +'" > ';
-        
-                            }        
-                                    
+                                    '" id="' + THEEL.elID + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" > ';
+
+                            }
+
                             innerhtml += '</div></div> ';
-        
+
                             break;
-        
+
                         }
                         case "DATE": {
                             // here we decode the elFormStyle element if its present
-        
+
                             var STY = "";
                             var CC = "form-control input-md"; // for TEXT inputs
 
-                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined)
-                            {
+                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined) {
                                 CC = THEEL.elCustomClass;
                             }
-
-        
                             if (THEEL.elStyle != "") {
                                 STY = ' style="' + THEEL.elStyle + '" ';
                             }
-        
+
                             var VIS = "";//'style="display:block"';
-        
+
                             if (!THEEL.elInitialVisibility) {
                                 VIS = 'style="display:none"';
                             }
-                            
-                            if (THEEL.elAutoSize)
-                            {
+                            if (THEEL.elAutoSize) {
                                 innerhtml += '<div class="col-auto" >';
                             }
-                            else
-                            {
+                            else {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
 
-                            innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
-                            innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
-                            innerhtml += THEEL.elLabel;
-                            innerhtml += '</label>';
-                                   
+                            if (THEEL.elRequired)
+                            {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td valign="top" style="color:red"> * </td>';
+                                innerhtml += '<td>'; 
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                                innerhtml += '</td>'; 
+                                innerhtml += '</table>';
+
+                            }
+                            else
+                            {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                            }
+
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
                                 innerhtml += '<input type="date" class="' + CC + '" name = "' + THEEL.elID +
-                                    '" id="' + THEEL.elID + '" style="' + THEEL.elFormStyle +'" > ';
+                                    '" id="' + THEEL.elID + '" style="' + THEEL.elFormStyle + '" > ';
                             }
                             else {
                                 for (let v of THEEL.elInteractions) {
                                     this.theUIInteractions.push(v);
                                 }
-        
+
                                 innerhtml += '<input type="date" class="' + CC + '" name = "' + THEEL.elID +
-                                    '" id="' + THEEL.elID + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle +'" > ';
-        
-                            }       
-                           
+                                    '" id="' + THEEL.elID + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" > ';
+                            }
+
                             innerhtml += '</div></div> ';
-        
+
                             break;
-        
+
                         }
                         case "NARRATIVE": {
                             // here we decode the elFormStyle element if its present
-   
+
                             var STY = "";
                             var CC = "form-control input-md"; // for TEXT inputs
 
-                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined)
-                            {
+                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined) {
                                 CC = THEEL.elCustomClass;
                             }
-
-        
                             if (THEEL.elStyle != "") {
                                 STY = ' style="' + THEEL.elStyle + '" ';
                             }
-        
+
                             var VIS = "";//'style="display:block"';
-        
+
                             if (!THEEL.elInitialVisibility) {
                                 VIS = 'style="display:none"';
                             }
-                            
-                            if (THEEL.elAutoSize)
-                            {
+
+                            if (THEEL.elAutoSize) {
                                 innerhtml += '<div class="col-auto" >';
                             }
-                            else
-                            {
+                            else {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
 
-                            innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
-                            innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
-                            innerhtml += THEEL.elLabel;
-                            innerhtml += '</label>';
-        
+                            if (THEEL.elRequired)
+                            {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td valign="top" style="color:red"> * </td>';
+                                innerhtml += '<td>'; 
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                                innerhtml += '</td>'; 
+                                innerhtml += '</table>';
+
+                            }
+                            else
+                            {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                            }
+
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
                                 innerhtml += '<textarea rows="5" cols="40" class="' + CC + '" name="' + THEEL.elID + '" id="'
-                                    + THEEL.elID + '" style="' + THEEL.elFormStyle +'" ></textarea> ';
+                                    + THEEL.elID + '" style="' + THEEL.elFormStyle + '" ></textarea> ';
                             }
                             else {
                                 for (let v of THEEL.elInteractions) {
                                     this.theUIInteractions.push(v);
                                 }
-        
+
                                 innerhtml += '<textarea rows="5" cols="40" class="' + CC + '" name="' + THEEL.elID + '" id="'
-                                    + THEEL.elID + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle +'" ></textarea> ';
-        
+                                    + THEEL.elID + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" ></textarea> ';
                             }
-        
+
                             innerhtml += '</div></div> ';
-        
+
                             break;
-        
+
                         }
                         case "RADIO": {
                             // here we decode the elFormStyle element if its present
@@ -362,35 +385,48 @@ class FormGenBS {
                             var STY = "";
                             var CC = "form-check-input";
 
-                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined)
-                            {
+                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined) {
                                 CC = THEEL.elCustomClass;
                             }
-        
+
                             if (THEEL.elStyle != "") {
                                 STY = ' style="' + THEEL.elStyle + '" ';
                             }
-        
+
                             var VIS = "";//'style="display:block"';
-        
+
                             if (!THEEL.elInitialVisibility) {
                                 VIS = 'style="display:none"';
                             }
-        
-                            if (THEEL.elAutoSize)
-                            {
+
+                            if (THEEL.elAutoSize) {
                                 innerhtml += '<div class="col-auto" >';
                             }
-                            else
-                            {
+                            else {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
 
-                            innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
-                            innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
-                            innerhtml += THEEL.elLabel;
-                            innerhtml += '</label> ';
-                                    
+                            if (THEEL.elRequired)
+                            {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td valign="top" style="color:red"> * </td>';
+                                innerhtml += '<td>'; 
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                                innerhtml += '</td>'; 
+                                innerhtml += '</table>';
+
+                            }
+                            else
+                            {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                            }
+
                             let i = 0;
                             for (let v of THEEL.elContent) {
                                 i += 1;
@@ -400,14 +436,14 @@ class FormGenBS {
                                 //innerhtml += '<div class="custom-control custom-radio custom-control-inline">';
 
                                 innerhtml += '<div class="form-check form-check-inline">';
-        
-        
+
+
                                 if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
                                     //innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v + '</label>';
                                     innerhtml += '<input type="radio" class="' + CC + '" ' +
                                         'name = "' + THEEL.elID + '" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
-                                        'value="' + v + '" style="' + THEEL.elFormStyle +'" >';
+                                        'value="' + v + '" style="' + THEEL.elFormStyle + '" >';
                                     innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
                                 }
                                 else {
@@ -418,15 +454,15 @@ class FormGenBS {
                                     innerhtml += '<input type="radio" class="' + CC + '" ' +
                                         'name = "' + THEEL.elID + '" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
-                                        'value="' + v + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle +'" >';
+                                        'value="' + v + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" >';
                                     innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
                                 }
 
-                                innerhtml+= "</div>";
+                                innerhtml += "</div>";
                             }
-        
+
                             innerhtml += '</div></div> ';
-        
+
                             break;
                         }
                         case "DROPDOWN": {
@@ -435,53 +471,64 @@ class FormGenBS {
                             var STY = "";
                             var CC = "form-control input-md"; // for TEXT inputs
 
-                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined)
-                            {
+                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined) {
                                 CC = THEEL.elCustomClass;
                             }
-
-        
                             if (THEEL.elStyle != "") {
                                 STY = ' style="' + THEEL.elStyle + '" ';
                             }
-        
+
                             var VIS = "";//'style="display:block"';
-        
+
                             if (!THEEL.elInitialVisibility) {
                                 VIS = 'style="display:none"';
                             }
-        
-                            if (THEEL.elAutoSize)
-                            {
+
+                            if (THEEL.elAutoSize) {
                                 innerhtml += '<div class="col-auto" >';
+                            }
+                            else {
+                                innerhtml += '<div class="' + CBTAG + '" >';
+                            }
+
+                            if (THEEL.elRequired)
+                            {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td valign="top" style="color:red"> * </td>';
+                                innerhtml += '<td>'; 
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                                innerhtml += '</td>'; 
+                                innerhtml += '</table>';
+
                             }
                             else
                             {
-                                innerhtml += '<div class="' + CBTAG + '" >';
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
                             }
-                            
-                            
-                            innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
-                            innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
-                            innerhtml += THEEL.elLabel;
-                            innerhtml += '</label>';
-        
+
+
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
-                                innerhtml += '<select name="' + THEEL.elID + '" class="' + CC + '" id="' + 
-                                THEEL.elID + '" style="' + THEEL.elFormStyle +'" >';
+                                innerhtml += '<select name="' + THEEL.elID + '" class="' + CC + '"  id="' +
+                                    THEEL.elID + '" style="' + THEEL.elFormStyle + '" >';
                             }
                             else {
                                 for (let v of THEEL.elInteractions) {
                                     this.theUIInteractions.push(v);
                                 }
-        
+
                                 innerhtml += '<select name="' + THEEL.elID +
-                                    '" class="' + CC + '" id="' + THEEL.elID + 
-                                    '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle +'" >';
+                                    '" class="' + CC + '" id="' + THEEL.elID +
+                                    '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" >';
                             }
 
                             // Lets put the Watermark in here
-                            innerhtml += '<option value="" disabled selected hidden>Please Choose One...</option>';
+                            innerhtml += '<option value="" disabled selected hidden>Please Select </option>';
 
                             let i = 0;
                             for (let v of THEEL.elContent) {
@@ -492,11 +539,11 @@ class FormGenBS {
                                     'value="' + v + '" >' + v + '</option> ';
                             }
                             innerhtml += '</select>';
-        
+
                             innerhtml += '</div></div> ';
-        
+
                             break;
-        
+
                         }
                         case "CHECKBOX": {
                             // here we decode the elFormStyle element if its present
@@ -504,35 +551,48 @@ class FormGenBS {
                             var STY = "";
                             var CC = "form-check-input";
 
-                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined)
-                            {
+                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined) {
                                 CC = THEEL.elCustomClass;
                             }
 
                             if (THEEL.elStyle != "") {
                                 STY = ' style="' + THEEL.elStyle + '" ';
                             }
-        
+
                             var VIS = "";//'style="display:block"';
-        
+
                             if (!THEEL.elInitialVisibility) {
                                 VIS = 'style="display:none"';
                             }
-        
-                            if (THEEL.elAutoSize)
-                            {
+
+                            if (THEEL.elAutoSize) {
                                 innerhtml += '<div class="col-auto" >';
                             }
-                            else
-                            {
+                            else {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
 
-                            innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
-                            innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
-                            innerhtml += THEEL.elLabel;
-                            innerhtml += '</label> ';
-        
+                            if (THEEL.elRequired)
+                            {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td valign="top" style="color:red"> * </td>';
+                                innerhtml += '<td>'; 
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                                innerhtml += '</td>'; 
+                                innerhtml += '</table>';
+
+                            }
+                            else
+                            {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                            }
+
                             let i = 0;
                             for (let v of THEEL.elContent) {
                                 i += 1;
@@ -540,13 +600,13 @@ class FormGenBS {
                                 //innerhtml += '<div class="custom-control custom-checkbox custom-control-inline">';
 
                                 innerhtml += '<div class="form-check form-check-inline">';
-        
+
                                 if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
                                     //innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v ;
                                     innerhtml += '<input type="checkbox" ' +
-                                        'name = "' + THEEL.elID + '" class="' + CC + '" id="' +
+                                        'name = "' + THEEL.elID + '" class="' + CC + '"  id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
-                                        'value="' + v + '" style="' + THEEL.elFormStyle +'" >';
+                                        'value="' + v + '" style="' + THEEL.elFormStyle + '" >';
                                     innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
                                 }
                                 else {
@@ -555,39 +615,37 @@ class FormGenBS {
                                     }
                                     //innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v ;
                                     innerhtml += '<input type="checkbox" ' +
-                                        'name = "' + THEEL.elID + '" class="' + CC + '" id="' +
+                                        'name = "' + THEEL.elID + '" class="' + CC + '"  id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
-                                        'value="' + v + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle +'" >';
+                                        'value="' + v + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" >';
                                     innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
                                 }
 
-                                innerhtml+= "</div>";
+                                innerhtml += "</div>";
                             }
-        
+
                             innerhtml += '</div></div> ';
-        
+
                             break;
-        
+
                         }
                         case "INFOTEXT": {
                             var STY = "";
-        
+
                             if (THEEL.elStyle != "") {
                                 STY = ' style="' + THEEL.elStyle + '" ';
                             }
-        
+
                             var VIS = "";//'style="display:block"';
-        
+
                             if (!THEEL.elInitialVisibility) {
                                 VIS = 'style="display:none"';
                             }
-        
-                            if (THEEL.elAutoSize)
-                            {
+
+                            if (THEEL.elAutoSize) {
                                 innerhtml += '<div class="col-auto" >';
                             }
-                            else
-                            {
+                            else {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
 
@@ -601,8 +659,7 @@ class FormGenBS {
 
                                 innerhtml += '<ul style="' + THEEL.elFormStyle + '">';
 
-                                for (let v of THEEL.elContent)
-                                {
+                                for (let v of THEEL.elContent) {
                                     innerhtml += '<li>' + v + '</li>';
 
                                 }
@@ -617,27 +674,24 @@ class FormGenBS {
                         }
                         case "HEADER": {
                             var STY = "";
-        
+
                             if (THEEL.elStyle != "") {
                                 STY = ' style="text-align:center;vertical-align:middle;margin-bottom:0; ' + THEEL.elStyle + '" ';
                             }
-                            else
-                            {
+                            else {
                                 STY = ' style="text-align:center;vertical-align:middle;margin-bottom:0" ';
                             }
-        
+
                             var VIS = "";//'style="display:block"';
-        
+
                             if (!THEEL.elInitialVisibility) {
                                 VIS = 'style="display:none"';
                             }
-        
-                            if (THEEL.elAutoSize)
-                            {
+
+                            if (THEEL.elAutoSize) {
                                 innerhtml += '<div class="col-auto" >';
                             }
-                            else
-                            {
+                            else {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
 
@@ -653,27 +707,24 @@ class FormGenBS {
                         }
                         case "FOOTER": {
                             var STY = "";
-        
+
                             if (THEEL.elStyle != "") {
                                 STY = ' style="text-align:center;vertical-align:middle;margin-bottom:0; ' + THEEL.elStyle + '" ';
                             }
-                            else
-                            {
+                            else {
                                 STY = ' style="text-align:centervertical-align:middle;margin-bottom:0" ';
                             }
-        
+
                             var VIS = "";//'style="display:block"';
-        
+
                             if (!THEEL.elInitialVisibility) {
                                 VIS = 'style="display:none"';
                             }
-        
-                            if (THEEL.elAutoSize)
-                            {
+
+                            if (THEEL.elAutoSize) {
                                 innerhtml += '<div class="col-auto" >';
                             }
-                            else
-                            {
+                            else {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
 
@@ -706,35 +757,32 @@ class FormGenBS {
 
                     var el = <HTMLElement>(document.getElementById(THEEL.elID));
 
-                    if (typeof THEEL.elScore[0] == 'undefined')
-                    {
+                    if (typeof THEEL.elScore[0] == 'undefined' && el != null && el.dataset["fgscore"] !== undefined) {
                         el.dataset.fgscore = "0";
 
                     }
-                    else
-                    {
+                    else if (el != null && el.dataset["fgscore"] !== undefined) {
                         el.dataset.fgscore = THEEL.elScore[0].toString();
                     }
-                    
-                    if (THEEL.elRequired) {
+
+                    if (THEEL.elRequired && el != null) {
                         el.dataset.fgrequired = "YES";
                     }
-                    else {
+                    else if (el != null) {
                         el.dataset.fgrequired = "NO";
                     }
 
                     break;
                 }
+
                 case "DATE": {
                     var el = <HTMLElement>(document.getElementById(THEEL.elID));
 
-                    if (typeof THEEL.elScore[0] == 'undefined')
-                    {
+                    if (typeof THEEL.elScore[0] == 'undefined') {
                         el.dataset.fgscore = "0";
 
                     }
-                    else
-                    {
+                    else {
                         el.dataset.fgscore = THEEL.elScore[0].toString();
                     }
                     //el.dataset.fgscore = THEEL.elScore[0].toString();
@@ -752,13 +800,11 @@ class FormGenBS {
                 case "NARRATIVE": {
                     var el = <HTMLElement>(document.getElementById(THEEL.elID));
 
-                    if (typeof THEEL.elScore[0] == 'undefined')
-                    {
+                    if (typeof THEEL.elScore[0] == 'undefined') {
                         el.dataset.fgscore = "0";
 
                     }
-                    else
-                    {
+                    else {
                         el.dataset.fgscore = THEEL.elScore[0].toString();
                     }
                     //el.dataset.fgscore = THEEL.elScore[0].toString();
@@ -780,12 +826,12 @@ class FormGenBS {
 
                         var el = <HTMLElement>(document.getElementById(THEEL.elID + '_' + i.toString()));
 
-                        el.dataset.fgscore = v.toString();
+                        if (el != null) { el.dataset.fgscore = v.toString(); }
 
-                        if (THEEL.elRequired) {
+                        if (THEEL.elRequired && el != null) {
                             el.dataset.fgrequired = "YES";
                         }
-                        else {
+                        else if (el != null) {
                             el.dataset.fgrequired = "NO";
                         }
                     }
@@ -845,7 +891,7 @@ class FormGenBS {
         var UIValues: UIValue[] = [];
 
         // first we want to echo the version as one of the elements
-        
+
         var theversion = new UIValue("FORMVERSIONSTRING", this.theVersionString + "");
 
         UIValues.push(theversion);
@@ -969,9 +1015,9 @@ class FormGenBS {
         var Self = this;
 
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            Self.HydrateForm(JSON.parse(this.responseText));
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                Self.HydrateForm(JSON.parse(this.responseText));
             }
         };
         xmlhttp.open('GET', webUrl);
@@ -986,10 +1032,8 @@ class FormGenBS {
 
         // look for the  version string first and set it
 
-        for (let uivs of UIValues)
-        {
-            if (uivs.uivID.toLocaleUpperCase() == "FORMVERSIONSTRING")
-            {
+        for (let uivs of UIValues) {
+            if (uivs.uivID.toLocaleUpperCase() == "FORMVERSIONSTRING") {
                 this.theVersionString = uivs.uivValue;
                 break;
             }
@@ -1282,17 +1326,16 @@ class FormGenBS {
 
                                 el.classList.remove('is-invalid');
                                 el.classList.remove('is-valid');
-                                
+
 
                                 if (el.value + "" == "") {
                                     isvalid = false;
 
                                     //el.classList.add('.was-validated');
                                     el.classList.add('is-invalid');
-                                    
+
                                 }
-                                else
-                                {
+                                else {
                                     //el.classList.add('.was-validated');
                                     //el.classList.add(':valid');
                                 }
@@ -1315,7 +1358,7 @@ class FormGenBS {
                                     isvalid = false;
 
                                     el.classList.add('is-invalid');
-                                
+
                                 }
                             }
 
@@ -1336,7 +1379,7 @@ class FormGenBS {
                                     isvalid = false;
 
                                     el.classList.add('is-invalid');
-                                
+
                                 }
                             }
 
@@ -1365,11 +1408,10 @@ class FormGenBS {
 
                                 }
 
-                                if (isvalid && !newvalid)
-                                {
+                                if (isvalid && !newvalid) {
                                     isvalid = newvalid;
 
-                                    
+
                                 }
 
                                 i = 0;
@@ -1384,11 +1426,10 @@ class FormGenBS {
                                     el.classList.remove('is-invalid');
                                     el.classList.remove('is-valid');
 
-                                    if (!newvalid)
-                                    {
+                                    if (!newvalid) {
                                         el.classList.add("is-invalid")
                                     }
-                                    
+
                                 }
 
                             }
@@ -1401,7 +1442,7 @@ class FormGenBS {
                             if (!del.hidden) {
 
                                 var eli = <HTMLSelectElement>(document.getElementById(THEEL.elID));
-                                
+
                                 eli.classList.remove('is-invalid');
                                 eli.classList.remove('is-valid');
 
@@ -1440,14 +1481,13 @@ class FormGenBS {
 
                                 }
 
-                                if (isvalid && !newvalid)
-                                {
+                                if (isvalid && !newvalid) {
                                     isvalid = newvalid;
 
-                                    
+
                                 }
 
-                                i=0;
+                                i = 0;
 
                                 for (let vv of THEEL.elContent) {
                                     i += 1;
@@ -1459,8 +1499,7 @@ class FormGenBS {
                                     el.classList.remove('is-invalid');
                                     el.classList.remove('is-valid');
 
-                                    if (!newvalid)
-                                    {
+                                    if (!newvalid) {
                                         el.classList.add("is-invalid")
                                     }
                                 }
@@ -1478,14 +1517,13 @@ class FormGenBS {
     /**
      * ClearFormValidityVisuals
      */
-    public ClearFormValidityVisuals()
-    {
+    public ClearFormValidityVisuals() {
         for (let THEEL of this.theUIElements) {
             switch (THEEL.elType.toUpperCase()) {
                 case "TEXT":
                 case "DATE":
                 case "NARRATIVE":
-                
+
                     {
 
                         var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
@@ -1509,7 +1547,7 @@ class FormGenBS {
 
                             el.classList.remove('is-invalid');
                             el.classList.remove('is-valid');
-                           
+
                         }
 
                         break;
@@ -1517,15 +1555,15 @@ class FormGenBS {
                 case "DROPDOWN":
                     {
                         var eli = <HTMLSelectElement>(document.getElementById(THEEL.elID));
-                            
+
                         eli.classList.remove('is-invalid');
                         eli.classList.remove('is-valid');
 
                         break;
                     }
-                
+
             }
-        
+
         }
 
     }
@@ -1743,7 +1781,7 @@ class FormGenBS {
                             }
                             break;
                         }
-                        
+
                 }
             }
         }
@@ -1756,8 +1794,7 @@ class FormGenBS {
      * SetReadWrite()
      * @param RW True or False will enumerate the form and set the appropriate attributes for RW 
      */
-    public SetReadWrite(RW: boolean)
-    {
+    public SetReadWrite(RW: boolean) {
         for (let THEEL of this.theUIElements) {
             switch (THEEL.elType.toUpperCase()) {
                 case "TEXT":
@@ -1766,14 +1803,12 @@ class FormGenBS {
                     {
 
                         var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
-                        
-                        if (RW)
-                        {
+
+                        if (RW) {
                             el.removeAttribute('readonly');
                         }
-                        else
-                        {
-                            el.setAttribute('readonly','');
+                        else {
+                            el.setAttribute('readonly', '');
                         }
 
                         break;
@@ -1789,35 +1824,31 @@ class FormGenBS {
 
                             var el = <HTMLInputElement>(document.getElementById(theid));
 
-                            if (RW)
-                            {
+                            if (RW) {
                                 el.removeAttribute('disabled');
                             }
-                            else
-                            {
-                                el.setAttribute('disabled','');
+                            else {
+                                el.setAttribute('disabled', '');
                             }
                         }
 
                         break;
                     }
-                
+
                 case "DROPDOWN":
                     {
                         var eli = <HTMLSelectElement>(document.getElementById(THEEL.elID));
-                            
-                        if (RW)
-                        {
+
+                        if (RW) {
                             eli.removeAttribute('disabled');
                         }
-                        else
-                        {
-                            eli.setAttribute('disabled','');
+                        else {
+                            eli.setAttribute('disabled', '');
                         }
 
                         break;
                     }
-                
+
             }
         }
     }
@@ -1829,7 +1860,7 @@ class FormGenBS {
     }
 }
 
-class UIElement {
+export class UIElement {
     public elFormRow: number;
     public elID: string;
     public elType: string;
@@ -1845,11 +1876,11 @@ class UIElement {
     public elAutoSize: boolean;
     public elCustomClass: string;
 
+
     constructor(elformrow: number, elid: string, eltype: string, ellabel: string,
-    elcontent: string[], elrequired: boolean,elinteractions: UIInteraction[], elinitialvisibility: boolean, 
-    elstyle: string, ellabelstyle: string, elformstyle: string, elscore: number[], 
-    elautosize?: boolean, elcustomclass?: string) 
-    {
+        elcontent: string[], elrequired: boolean, elinteractions: UIInteraction[], elinitialvisibility: boolean,
+        elstyle: string, ellabelstyle: string, elformstyle: string, elscore: number[],
+        elautosize?: boolean, elcustomclass?: string) {
         this.elFormRow = elformrow;
         this.elID = elid;
         this.elContent = elcontent;
@@ -1863,28 +1894,25 @@ class UIElement {
         this.elFormStyle = elformstyle;
         this.elScore = elscore;
 
-        if (elautosize == undefined)
-        { 
+        if (elautosize == undefined) {
             this.elAutoSize = false;
         }
-        else
-        {
+        else {
             this.elAutoSize = elautosize;
         }
 
-        if (elcustomclass == undefined)
-        {
+        if (elcustomclass == undefined) {
             this.elCustomClass = "";
         }
-        else
-        {        
+        else {
             this.elCustomClass = elcustomclass;
         }
+
 
     }
 }
 
-class UIInteraction {
+export class UIInteraction {
     public elIDSource: string;
     public elIDTarget: string;
     public elInteractionType: string;
@@ -1898,7 +1926,7 @@ class UIInteraction {
     }
 }
 
-class UIValue {
+export class UIValue {
     public uivID: string;
     public uivValue: string;
 

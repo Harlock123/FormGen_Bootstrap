@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var FormGenBS = /** @class */ (function () {
     function FormGenBS(DomElementID, UIElements, VersionString, JSobjectName) {
         this.theUIInteractions = [];
@@ -38,7 +40,20 @@ var FormGenBS = /** @class */ (function () {
             }
         }
         FROWS.push(cnt);
+        for (var i = FROWS.length; i < UIElements.length; i++) {
+            FROWS.push(cnt);
+            FROWS.push(cnt);
+            FROWS.push(cnt);
+            FROWS.push(cnt);
+            FROWS.push(cnt);
+        }
         cnt = 0;
+        for (var i = FROWS.length; i < UIElements.length; i++) {
+            FROWS.push(cnt);
+            FROWS.push(cnt);
+            FROWS.push(cnt);
+            FROWS.push(cnt);
+        }
         // we now have an array of numbers the ordinal position in that array has the number of
         // elements that are in that forms row as defined by the UIElements array handed in
         // Starting from 1 (The Zero element in the array should have 0 in it so its 1 based)
@@ -162,10 +177,23 @@ var FormGenBS = /** @class */ (function () {
                             else {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
-                            innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
-                            innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
-                            innerhtml += THEEL.elLabel;
-                            innerhtml += '</label>';
+                            if (THEEL.elRequired) {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td valign="top" style="color:red"> * </td>';
+                                innerhtml += '<td>';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                                innerhtml += '</td>';
+                                innerhtml += '</table>';
+                            }
+                            else {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                            }
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
                                 innerhtml += '<input type="text" class="' + CC + '" name = "' + THEEL.elID +
                                     '" id="' + THEEL.elID + '" style="' + THEEL.elFormStyle + '"  > ';
@@ -201,10 +229,23 @@ var FormGenBS = /** @class */ (function () {
                             else {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
-                            innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
-                            innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
-                            innerhtml += THEEL.elLabel;
-                            innerhtml += '</label>';
+                            if (THEEL.elRequired) {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td valign="top" style="color:red"> * </td>';
+                                innerhtml += '<td>';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                                innerhtml += '</td>';
+                                innerhtml += '</table>';
+                            }
+                            else {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                            }
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
                                 innerhtml += '<input type="date" class="' + CC + '" name = "' + THEEL.elID +
                                     '" id="' + THEEL.elID + '" style="' + THEEL.elFormStyle + '" > ';
@@ -240,10 +281,23 @@ var FormGenBS = /** @class */ (function () {
                             else {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
-                            innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
-                            innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
-                            innerhtml += THEEL.elLabel;
-                            innerhtml += '</label>';
+                            if (THEEL.elRequired) {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td valign="top" style="color:red"> * </td>';
+                                innerhtml += '<td>';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                                innerhtml += '</td>';
+                                innerhtml += '</table>';
+                            }
+                            else {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                            }
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
                                 innerhtml += '<textarea rows="5" cols="40" class="' + CC + '" name="' + THEEL.elID + '" id="'
                                     + THEEL.elID + '" style="' + THEEL.elFormStyle + '" ></textarea> ';
@@ -279,10 +333,23 @@ var FormGenBS = /** @class */ (function () {
                             else {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
-                            innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
-                            innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
-                            innerhtml += THEEL.elLabel;
-                            innerhtml += '</label> ';
+                            if (THEEL.elRequired) {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td valign="top" style="color:red"> * </td>';
+                                innerhtml += '<td>';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                                innerhtml += '</td>';
+                                innerhtml += '</table>';
+                            }
+                            else {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                            }
                             var i = 0;
                             for (var _s = 0, _t = THEEL.elContent; _s < _t.length; _s++) {
                                 var v = _t[_s];
@@ -335,12 +402,25 @@ var FormGenBS = /** @class */ (function () {
                             else {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
-                            innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
-                            innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
-                            innerhtml += THEEL.elLabel;
-                            innerhtml += '</label>';
+                            if (THEEL.elRequired) {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td valign="top" style="color:red"> * </td>';
+                                innerhtml += '<td>';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                                innerhtml += '</td>';
+                                innerhtml += '</table>';
+                            }
+                            else {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                            }
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
-                                innerhtml += '<select name="' + THEEL.elID + '" class="' + CC + '" id="' +
+                                innerhtml += '<select name="' + THEEL.elID + '" class="' + CC + '"  id="' +
                                     THEEL.elID + '" style="' + THEEL.elFormStyle + '" >';
                             }
                             else {
@@ -353,7 +433,7 @@ var FormGenBS = /** @class */ (function () {
                                     '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" >';
                             }
                             // Lets put the Watermark in here
-                            innerhtml += '<option value="" disabled selected hidden>Please Choose One...</option>';
+                            innerhtml += '<option value="" disabled selected hidden>Please Select </option>';
                             var i = 0;
                             for (var _y = 0, _z = THEEL.elContent; _y < _z.length; _y++) {
                                 var v = _z[_y];
@@ -387,10 +467,23 @@ var FormGenBS = /** @class */ (function () {
                             else {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
-                            innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
-                            innerhtml += '<label for="div_' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
-                            innerhtml += THEEL.elLabel;
-                            innerhtml += '</label> ';
+                            if (THEEL.elRequired) {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td valign="top" style="color:red"> * </td>';
+                                innerhtml += '<td>';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                                innerhtml += '</td>';
+                                innerhtml += '</table>';
+                            }
+                            else {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                            }
                             var i = 0;
                             for (var _0 = 0, _1 = THEEL.elContent; _0 < _1.length; _0++) {
                                 var v = _1[_0];
@@ -400,7 +493,7 @@ var FormGenBS = /** @class */ (function () {
                                 if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
                                     //innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v ;
                                     innerhtml += '<input type="checkbox" ' +
-                                        'name = "' + THEEL.elID + '" class="' + CC + '" id="' +
+                                        'name = "' + THEEL.elID + '" class="' + CC + '"  id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
                                         'value="' + v + '" style="' + THEEL.elFormStyle + '" >';
                                     innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
@@ -412,7 +505,7 @@ var FormGenBS = /** @class */ (function () {
                                     }
                                     //innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v ;
                                     innerhtml += '<input type="checkbox" ' +
-                                        'name = "' + THEEL.elID + '" class="' + CC + '" id="' +
+                                        'name = "' + THEEL.elID + '" class="' + CC + '"  id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
                                         'value="' + v + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" >';
                                     innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
@@ -518,16 +611,16 @@ var FormGenBS = /** @class */ (function () {
             switch (THEEL.elType.toUpperCase()) {
                 case "TEXT": {
                     var el = (document.getElementById(THEEL.elID));
-                    if (typeof THEEL.elScore[0] == 'undefined') {
+                    if (typeof THEEL.elScore[0] == 'undefined' && el != null && el.dataset["fgscore"] !== undefined) {
                         el.dataset.fgscore = "0";
                     }
-                    else {
+                    else if (el != null && el.dataset["fgscore"] !== undefined) {
                         el.dataset.fgscore = THEEL.elScore[0].toString();
                     }
-                    if (THEEL.elRequired) {
+                    if (THEEL.elRequired && el != null) {
                         el.dataset.fgrequired = "YES";
                     }
-                    else {
+                    else if (el != null) {
                         el.dataset.fgrequired = "NO";
                     }
                     break;
@@ -572,11 +665,13 @@ var FormGenBS = /** @class */ (function () {
                         var v = _8[_7];
                         i += 1;
                         var el = (document.getElementById(THEEL.elID + '_' + i.toString()));
-                        el.dataset.fgscore = v.toString();
-                        if (THEEL.elRequired) {
+                        if (el != null) {
+                            el.dataset.fgscore = v.toString();
+                        }
+                        if (THEEL.elRequired && el != null) {
                             el.dataset.fgrequired = "YES";
                         }
-                        else {
+                        else if (el != null) {
                             el.dataset.fgrequired = "NO";
                         }
                     }
@@ -1354,6 +1449,7 @@ var FormGenBS = /** @class */ (function () {
     };
     return FormGenBS;
 }());
+exports.FormGenBS = FormGenBS;
 var UIElement = /** @class */ (function () {
     function UIElement(elformrow, elid, eltype, ellabel, elcontent, elrequired, elinteractions, elinitialvisibility, elstyle, ellabelstyle, elformstyle, elscore, elautosize, elcustomclass) {
         this.elFormRow = elformrow;
@@ -1383,6 +1479,7 @@ var UIElement = /** @class */ (function () {
     }
     return UIElement;
 }());
+exports.UIElement = UIElement;
 var UIInteraction = /** @class */ (function () {
     function UIInteraction(elidsource, elidtarget, elinteractiontype, elvaluetrigger) {
         this.elIDSource = elidsource;
@@ -1392,6 +1489,7 @@ var UIInteraction = /** @class */ (function () {
     }
     return UIInteraction;
 }());
+exports.UIInteraction = UIInteraction;
 var UIValue = /** @class */ (function () {
     function UIValue(id, value) {
         this.uivID = id;
@@ -1399,4 +1497,5 @@ var UIValue = /** @class */ (function () {
     }
     return UIValue;
 }());
+exports.UIValue = UIValue;
 //# sourceMappingURL=FormGenBS.js.map

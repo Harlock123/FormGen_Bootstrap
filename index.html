@@ -60,6 +60,10 @@
         
     </div>
 
+    <script>var exports = {};</script>  <!-- Hack to get rid of Exports Error from TSC compile -->
+                                        <!-- This preserves the use of the Typuscript source in -->
+                                        <!-- Angular library form for some users of the code library -->
+
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.js"></script>
@@ -88,7 +92,7 @@
             new UIElement(3,"3","radio","Gender",["Male","Female","UNKNOWN"],true,
             [new UIInteraction("3","5","SHOW","Unknown")],true,"background-color: palegreen","","",[2,3,4],true,""));
         ELEs.push(
-            new UIElement(3,"4","dropdown","Select from the dropdown",["1","2","3","4"], true,
+            new UIElement(3,"4","dropdown","Select from the dropdown<br>this is a long form of the label that<br>we want to test the required formatting<br>options in the class",["1","2","3","4"], true,
             [new UIInteraction("4","8","HIDE","4"),new UIInteraction("4","8","HIDE","3"),
              new UIInteraction("4","8","SHOW","1"),new UIInteraction("4","8","SHOW","2")],true,"","","",[5,6,7,8],true,""));
         ELEs.push(

@@ -106,7 +106,7 @@ class UIElement {
 
 - **elcontent**  is an array of strings that get turned into a list of appropriate sub elements for things that have subelements. IE RadioButtons, DropDowns, and CheckBoxes.
 
-- **elrequired** is a boolean used to trigger the required or not check for form validation methods
+- **elrequired** is a boolean used to trigger the required or not check for form validation methods. It will be displayed in a standard required field kind of way as shown in the example below. ![ScreenShot](ScreenShots/SS8.png)
 
 - **elinteractions** is an array of UIInteractions the denote what kind of interactions will be enforced by the forgen class. Primaryly used to show and hide other elements based on selected values. See UIInteractions definition below.
 
@@ -176,10 +176,12 @@ class UIInteraction
 Sample JSON data output from a blank form built via the included HTML file, showing version information as well as each UIElement with its entered values...
 
 ```json
-[{"uivID":"FORMVERSIONSTRING","uivValue":"Version 1"},{"uivID":"1","uivValue":""},
-{"uivID":"2","uivValue":""},{"uivID":"3_1","uivValue":"false"},{"uivID":"3_2","uivValue":"false"},
-{"uivID":"3_3","uivValue":"false"},{"uivID":"4","uivValue":"unset"},{"uivID":"5","uivValue":""},
-{"uivID":"5a","uivValue":""},{"uivID":"6_1","uivValue":"false"},{"uivID":"6_2","uivValue":"false"},
+[{"uivID":"FORMVERSIONSTRING","uivValue":"Version 1"},
+{"uivID":"1","uivValue":""},{"uivID":"2","uivValue":""},{"uivID":"2a","uivValue":""},
+{"uivID":"3_1","uivValue":"false"},{"uivID":"3_2","uivValue":"false"},
+{"uivID":"3_3","uivValue":"false"},{"uivID":"4","uivValue":"Please Select"},
+{"uivID":"5","uivValue":""},{"uivID":"5a","uivValue":""},
+{"uivID":"6_1","uivValue":"false"},{"uivID":"6_2","uivValue":"false"},
 {"uivID":"6_3","uivValue":"false"},{"uivID":"6_4","uivValue":"false"},
 {"uivID":"6_5","uivValue":"false"},{"uivID":"7","uivValue":""},{"uivID":"8","uivValue":""}]
 
@@ -294,7 +296,7 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
                 id="btnValidityGet" value="Fetch Form Validity">
 
         <input type="button" 
-                onclick="FG.GetFormDefinitionFrom('http://localhost:8000/SampleForm.json');" 
+                onclick="FG.GetFormDefinitionFrom('http://localhost:5500/SampleForm.json');" 
                 id="btnPopulateFromURL" value="Form Definition from URL">
 
         <input type="button" 
@@ -309,6 +311,10 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
     <div id="FormGenBody" style="height:90vh; width: 100vw" >
         
     </div>
+
+    <script>var exports = {};</script>  <!-- Hack to get rid of Exports Error from TSC compile -->
+                                        <!-- This preserves the use of the Typuscript source in -->
+                                        <!-- Angular library form for some users of the code library -->
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.js"></script>
@@ -335,12 +341,12 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
             [],true,"","","",[1]));
 
         ELEs.push(
-            new UIElement(3,"3","radio","Gender",["Male","Female","Unknown"],true,
-            [new UIInteraction("3","5","SHOW","Unknown")],true,"background-color: palegreen","","",[2,3,4]));
+            new UIElement(3,"3","radio","Gender",["Male","Female","UNKNOWN"],true,
+            [new UIInteraction("3","5","SHOW","Unknown")],true,"background-color: palegreen","","",[2,3,4],true,""));
         ELEs.push(
-            new UIElement(3,"4","dropdown","Select from the dropdown",["1","2","3","4"], true,
+            new UIElement(3,"4","dropdown","Select from the dropdown<br>this is a long form of the label that<br>we want to test the required formatting<br>options in the class",["1","2","3","4"], true,
             [new UIInteraction("4","8","HIDE","4"),new UIInteraction("4","8","HIDE","3"),
-             new UIInteraction("4","8","SHOW","1"),new UIInteraction("4","8","SHOW","2")],true,"","","",[5,6,7,8]));
+             new UIInteraction("4","8","SHOW","1"),new UIInteraction("4","8","SHOW","2")],true,"","","",[5,6,7,8],true,""));
         ELEs.push(
             new UIElement(4,"5","date","The Label Date",[],true,
             [new UIInteraction("5","5a","SHOW","")],false,"","","",[9]));
@@ -367,7 +373,9 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
         
         var FFG = JSON.stringify(ELEs);
         
-        var FG = new FormGenBS('FormGenBody',ELEs,'Version 1','FG');
+        var FG = new FormGenBS('FormGenBody',ELEs,'Version 1','FG');  
+
+        console.log(FG);
 
         function PopulateFromString() /// assumes the class is instanced as FG
         {
@@ -411,6 +419,9 @@ of you have Python3 installed on your windows machine the simple http server can
 ```bash
 python -m http.server
 ```
+
+Additionally is you are using Visual Studio Code as your editor, (and you could do a lot worse if you are not). You can install the LIVE SERVER addon and it will expose a webserver whos root folder is the base of the current code project on port 5500 by default. A very nice addon that further streamlines development over the older Python Webserver approach. The default INDEX.html page in the project now asumes this approach for the simulated webservice calls making them against localhost:5500 as opposed to localhost:8000.
+
 
 
 
