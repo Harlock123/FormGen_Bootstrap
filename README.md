@@ -86,9 +86,9 @@ class UIElement {
 ```
 
 ### Some Details:
-- **elFormRow** is s chronological grouping of elements to be inserted at a given row in the bootstrap matrix. FormGen will interpret these entries and group them together and decorate their entries with col-md-x where x is 1 2 3 4 6 12 ato attempt to evenly space them across the form in the standard bootstrap way. Start at 1 and number each subsequent rows entries chronologically ie next rows contents would be 2 and then 3 and so on.
+- **elFormRow** is s chronological grouping of elements to be inserted at a given row in the bootstrap matrix. FormGen will interpret these entries and group them together and decorate their entries with col-md-x where x is 1 2 3 4 6 12 also, formgen will attempt to evenly space them across the form in the standard bootstrap way. Start at 1 and number each subsequent rows entries chronologically ie. next rows contents would be 2 and then 3 and so on.
 
-- **elid** is a simple string that will be used to identify the element on the DOM. It can be any alpha numeric be unique for each elemet that is being placed into the form.
+- **elid** is a simple string that will be used to identify the element on the DOM. It can be any alpha numeric, it should be unique for each elemet that is being placed into the form.
 
 - **eltype** is a string representation of the kind of ui element desired. Valid types are
     - TEXT
@@ -108,21 +108,21 @@ class UIElement {
 
 - **elrequired** is a boolean used to trigger the required or not check for form validation methods. It will be displayed in a standard required field kind of way as shown in the example below. ![ScreenShot](ScreenShots/SS8.png)
 
-- **elinteractions** is an array of UIInteractions the denote what kind of interactions will be enforced by the forgen class. Primaryly used to show and hide other elements based on selected values. See UIInteractions definition below.
+- **elinteractions** is an array of UIInteractions the denote what kind of interactions will be enforced by the formgen class. Primarily used to show and hide other elements based on selected values. See UIInteractions definition below.
 
 - **elinitialvisibility** is a boolean used to indicate if the element will be inserted into the DOM visible or hidden
 
-- **elstyle** is a string that will be inserted as an inline style= assertion on the form-row of the element. Note: that the first element for any given row will this style value applied to all other elements place in that row. Useful for things like the whole rows background color for example and is demonstrated in the projects index.html test page. 
+- **elstyle** is a string that will be inserted as an inline style= assertion on the form-row of the element. Note: that the first element for any given row will have this style value applied to all other elements placed in that row. Useful for things like the whole rows background color for example and is demonstrated in the projects index.html test page. 
 
 - **ellabelstyle** is a string that will be inserted as an inline style= assertion on the Label of the element. 
 
 - **elformstyle** is a string that will be inserted as an inline style= assertion on the combination of element and label container. In BootStrap this is a form-group.
 
-- **elscore** is an array of numbers used to associate a weight numerically with each element as its inserted into the page. Used by the GetFormScore method to return a  value if an associated element is populated or selected. So if you have a radiobutton list or checkboxlist or dropdown list, you will have a weight for subelement. Text, Dates and Narrative will have a singular value in this array.
+- **elscore** is an array of numbers used to associate a weight numerically with each element as its inserted into the page. Used by the GetFormScore method to return a  value if an associated element is populated or selected. So if you have a radiobutton list or checkboxlist or dropdown list, you will have a weight for each subelement. Text, Dates and Narrative will have a singular value in this array as they are singular value elements onscreen.
 
 - **elautosize** is a optional boolean that flags the resulting input element type (TEXT,TEXTAREA,SELECT,RADIO,CHECKBOX,DATE) wrapping DIV as a class="col-auto" as opposed to decorating it with the calculated col-md-x value (based on how many other elements are also on that row). Useful when you have some fairly narrow input fields that dont need to be spread across a wide browser screen or a tablet in landscape mode. Its optional so it can be left off the UIELEMENT constructor and defaults to **false**.
 
-- **elcustomclass** is an optional string that will be substituted as the class for the specific input element type (TEXT,TEXTAREA,SELECT,RADIO,CHECKBOX,DATE). Useful when you want to substiture some custome rendeition on these input elements. Is an optional string and defaults toan empty string whit will then defaultto rendering the input element with bootstrap standard classes, form-control input-md andc where appropriate form-check-input (RADIO and CHECKBOX)
+- **elcustomclass** is an optional string that will be substituted as the class for the specific input element type (TEXT,TEXTAREA,SELECT,RADIO,CHECKBOX,DATE). Useful when you want to substiture some custom rendition on these input elements. Is an optional string and defaults to an empty string whict will then default to rendering the input element with bootstrap standard classes, form-control input-md and  where appropriate custom-check-input and custom-radio-input (CHECKBOX and RADIO)
 
 ## UIInteraction definition
 
