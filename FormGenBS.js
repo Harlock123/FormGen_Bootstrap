@@ -316,7 +316,7 @@ var FormGenBS = /** @class */ (function () {
                         case "RADIO": {
                             // here we decode the elFormStyle element if its present
                             var STY = "";
-                            var CC = "form-check-input";
+                            var CC = "custom-control-input";
                             if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined) {
                                 CC = THEEL.elCustomClass;
                             }
@@ -338,7 +338,7 @@ var FormGenBS = /** @class */ (function () {
                                 innerhtml += '<table>';
                                 innerhtml += '<td valign="top" style="color:red"> * </td>';
                                 innerhtml += '<td>';
-                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '"  >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
                                 innerhtml += '</td>';
@@ -346,7 +346,7 @@ var FormGenBS = /** @class */ (function () {
                             }
                             else {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
-                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '"  >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
                             }
@@ -354,28 +354,24 @@ var FormGenBS = /** @class */ (function () {
                             for (var _s = 0, _t = THEEL.elContent; _s < _t.length; _s++) {
                                 var v = _t[_s];
                                 i += 1;
-                                //var vdiv = '<div style="' + THEEL.elLabelStyle + '" >' + v + "</div> ";
-                                //innerhtml += '<div class="custom-control custom-radio custom-control-inline">';
-                                innerhtml += '<div class="form-check form-check-inline">';
+                                innerhtml += '<div class="custom-control custom-radio custom-control-inline">';
                                 if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
-                                    //innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v + '</label>';
                                     innerhtml += '<input type="radio" class="' + CC + '" ' +
                                         'name = "' + THEEL.elID + '" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
                                         'value="' + v + '" style="' + THEEL.elFormStyle + '" >';
-                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
+                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v + '</label>';
                                 }
                                 else {
                                     for (var _u = 0, _v = THEEL.elInteractions; _u < _v.length; _u++) {
                                         var v_1 = _v[_u];
                                         this.theUIInteractions.push(v_1);
                                     }
-                                    //innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v + '</label>';
                                     innerhtml += '<input type="radio" class="' + CC + '" ' +
                                         'name = "' + THEEL.elID + '" id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
                                         'value="' + v + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" >';
-                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
+                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v + '</label>';
                                 }
                                 innerhtml += "</div>";
                             }
@@ -450,7 +446,7 @@ var FormGenBS = /** @class */ (function () {
                         case "CHECKBOX": {
                             // here we decode the elFormStyle element if its present
                             var STY = "";
-                            var CC = "form-check-input";
+                            var CC = "custom-control-input";
                             if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined) {
                                 CC = THEEL.elCustomClass;
                             }
@@ -488,27 +484,24 @@ var FormGenBS = /** @class */ (function () {
                             for (var _0 = 0, _1 = THEEL.elContent; _0 < _1.length; _0++) {
                                 var v = _1[_0];
                                 i += 1;
-                                //innerhtml += '<div class="custom-control custom-checkbox custom-control-inline">';
-                                innerhtml += '<div class="form-check form-check-inline">';
+                                innerhtml += '<div class="custom-control custom-checkbox custom-control-inline">';
                                 if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
-                                    //innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v ;
                                     innerhtml += '<input type="checkbox" ' +
                                         'name = "' + THEEL.elID + '" class="' + CC + '"  id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
                                         'value="' + v + '" style="' + THEEL.elFormStyle + '" >';
-                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
+                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + ' class="custom-control-label"  >' + v + '</label>';
                                 }
                                 else {
                                     for (var _2 = 0, _3 = THEEL.elInteractions; _2 < _3.length; _2++) {
                                         var v_2 = _3[_2];
                                         this.theUIInteractions.push(v_2);
                                     }
-                                    //innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v ;
                                     innerhtml += '<input type="checkbox" ' +
                                         'name = "' + THEEL.elID + '" class="' + CC + '"  id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
                                         'value="' + v + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" >';
-                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="form-check-label" >' + v + '</label>';
+                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v + '</label>';
                                 }
                                 innerhtml += "</div>";
                             }
