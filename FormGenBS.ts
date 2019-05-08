@@ -598,7 +598,7 @@ export class FormGenBS {
                                         'name = "' + THEEL.elID + '" class="' + CC + '"  id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
                                         'value="' + v + '" style="' + THEEL.elFormStyle + '" >';
-                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + ' class="custom-control-label"  >' + v + '</label>';
+                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label"  >' + v + '</label>';
                                 }
                                 else {
                                     for (let v of THEEL.elInteractions) {

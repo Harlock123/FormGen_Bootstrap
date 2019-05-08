@@ -490,7 +490,7 @@ var FormGenBS = /** @class */ (function () {
                                         'name = "' + THEEL.elID + '" class="' + CC + '"  id="' +
                                         THEEL.elID + '_' + i.toString() + '" ' +
                                         'value="' + v + '" style="' + THEEL.elFormStyle + '" >';
-                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + ' class="custom-control-label"  >' + v + '</label>';
+                                    innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label"  >' + v + '</label>';
                                 }
                                 else {
                                     for (var _2 = 0, _3 = THEEL.elInteractions; _2 < _3.length; _2++) {
