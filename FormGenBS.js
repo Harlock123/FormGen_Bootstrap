@@ -180,7 +180,7 @@ var FormGenBS = /** @class */ (function () {
                             if (THEEL.elRequired) {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table>';
-                                innerhtml += '<td valign="top" style="color:red"> * </td>';
+                                innerhtml += '<td valign="top" class="text-red"> * </td>';
                                 innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
@@ -232,7 +232,7 @@ var FormGenBS = /** @class */ (function () {
                             if (THEEL.elRequired) {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table>';
-                                innerhtml += '<td valign="top" style="color:red"> * </td>';
+                                innerhtml += '<td valign="top" class="text-red"> * </td>';
                                 innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
@@ -284,7 +284,7 @@ var FormGenBS = /** @class */ (function () {
                             if (THEEL.elRequired) {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table>';
-                                innerhtml += '<td valign="top" style="color:red"> * </td>';
+                                innerhtml += '<td valign="top" class="text-red"> * </td>';
                                 innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
@@ -336,7 +336,7 @@ var FormGenBS = /** @class */ (function () {
                             if (THEEL.elRequired) {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table>';
-                                innerhtml += '<td valign="top" style="color:red"> * </td>';
+                                innerhtml += '<td valign="top" class="text-red"> * </td>';
                                 innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '"  >';
                                 innerhtml += THEEL.elLabel;
@@ -401,7 +401,7 @@ var FormGenBS = /** @class */ (function () {
                             if (THEEL.elRequired) {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table>';
-                                innerhtml += '<td valign="top" style="color:red"> * </td>';
+                                innerhtml += '<td valign="top" class="text-red"> * </td>';
                                 innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
@@ -466,7 +466,7 @@ var FormGenBS = /** @class */ (function () {
                             if (THEEL.elRequired) {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table>';
-                                innerhtml += '<td valign="top" style="color:red"> * </td>';
+                                innerhtml += '<td valign="top" class="text-red"> * </td>';
                                 innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
