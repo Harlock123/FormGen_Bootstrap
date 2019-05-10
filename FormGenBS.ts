@@ -226,9 +226,13 @@ export class FormGenBS {
                             else
                             {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td>'; 
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
+                                innerhtml += '</td>'; 
+                                innerhtml += '</table>';
                             }
                             
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
@@ -291,9 +295,13 @@ export class FormGenBS {
                             else
                             {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td>'; 
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
+                                innerhtml += '</td>'; 
+                                innerhtml += '</table>';
                             }
 
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
@@ -356,9 +364,13 @@ export class FormGenBS {
                             else
                             {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td>'; 
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
+                                innerhtml += '</td>'; 
+                                innerhtml += '</table>';
                             }
 
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
@@ -423,9 +435,13 @@ export class FormGenBS {
                             else
                             {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '"  >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
+                                innerhtml += '</td>';
+                                innerhtml += '</table>';
                             }
 
                             let i = 0;
@@ -501,9 +517,14 @@ export class FormGenBS {
                             else
                             {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td>'; 
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
+                                innerhtml += '</td>'; 
+                                innerhtml += '</table>';
+
                             }
 
 
@@ -582,9 +603,13 @@ export class FormGenBS {
                             else
                             {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
+                                innerhtml += '</td>';
+                                innerhtml += '</table>';
                             }
 
                             let i = 0;

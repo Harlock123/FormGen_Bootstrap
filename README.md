@@ -341,7 +341,7 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
             [],true,"","","",[1]));
 
         ELEs.push(
-            new UIElement(3,"3","radio","Gender",["Male","Female","UNKNOWN"],true,
+            new UIElement(3,"3","radio","Gender",["Male","Female","Unknown"],true,
             [new UIInteraction("3","5","SHOW","Unknown")],true,"background-color: palegreen","","",[2,3,4],true,""));
         ELEs.push(
             new UIElement(3,"4","dropdown","Select from the dropdown<br>this is a long form of the label that<br>we want to test the required formatting<br>options in the class",["1","2","3","4"], true,
@@ -370,6 +370,63 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
         ELEs.push(
             new UIElement(8,"TheFooter","footer","This Is the footer for this form",[],true,[],true,
             "font-size:18px;font-weight:bold;background-color: lavender","margin-bottom:0","",[0]));
+
+        ELEs.push(
+            new UIElement(9,"LIST","infotext","<br>This demonstrates a Simple Insertion of a passage of text, using an <b>infotext</b> element without a set of subelements in the array of subelements <em>an empty array</em><br> <b>NOTE:</b> that you can embed some standard HTML Tags into the body of the textual passages to have some explicit formatting of the output tags for <b>BOLD</b>, <em>EMPHASIS</em> and even <b>Newlines or Linebreaks</b> can be encoded and enforced this way.",
+            [],true,[],true,"","","",[]));
+
+
+
+        ELEs.push(
+            new UIElement(10,"10","dropdown","Combobox/Dropdown that is flagged as required",["1","2","3","4"], true,
+            [],true,"background-color: palegreen","","",[]));
+        
+        ELEs.push(
+            new UIElement(10,"10a","dropdown","Combobox/Dropdown that is flagged as <b>NOT</b> required",["1","2","3","4"], false,
+            [],true,"background-color: palegreen","","",[]));
+
+        ELEs.push(
+            new UIElement(11,"11","radio","Radio Buttons flagged as required",["Male","Female","Unknown"],true,
+            [],true,"","","",[]));
+        
+        ELEs.push(
+            new UIElement(11,"11a","radio","Radio Buttons flagged as <b>NOT</b> required",["Male","Female","Unknown"],false,
+            [],true,"","","",[]));
+
+        ELEs.push(
+            new UIElement(12,"12","checkbox","A bunch of check boxes Flagged as required",
+            ["Checkbox option 1","Checkbox option 2","Checkbox option 3","Checkbox option 4","Checkbox option 5"],
+            true,[],true,"background-color: palegreen","","",[]));
+
+        ELEs.push(
+            new UIElement(12,"12a","checkbox","A bunch of check boxes Flagged as <b>NOT</b> required",
+            ["Checkbox option 1","Checkbox option 2","Checkbox option 3","Checkbox option 4","Checkbox option 5"],
+            false,[],true,"background-color: palegreen","","",[]));
+
+        ELEs.push(
+            new UIElement(13,"13","text","A Text entry field flagged as required",[],true,
+            [],true,"","","",[]));
+        
+        ELEs.push(
+            new UIElement(13,"13a","text","A Text entry field flagged as <b>NOT</b> required",[],false,
+            [],true,"","","",[]));
+        
+        ELEs.push(
+            new UIElement(14,"14","narrative","A Narrative field flagged as Required",[],true,
+            [],true,"background-color: palegreen","","",[]));
+
+        ELEs.push(
+            new UIElement(14,"14a","narrative","A Narrative field flagged as <b>NOT</b> Required",[],false,
+            [],true,"background-color: palegreen","","",[]));
+
+        ELEs.push(
+            new UIElement(15,"15","date","A Date field flagged as Required",[],true,
+            [],true,"","","",[]));
+
+        ELEs.push(
+            new UIElement(15,"15","date","A Date field flagged as <b>NOT</b> Required",[],false,
+            [],true,"","","",[]));
+        
         
         var FFG = JSON.stringify(ELEs);
         

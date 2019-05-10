@@ -190,9 +190,13 @@ var FormGenBS = /** @class */ (function () {
                             }
                             else {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
+                                innerhtml += '</td>';
+                                innerhtml += '</table>';
                             }
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
                                 innerhtml += '<input type="text" class="' + CC + '" name = "' + THEEL.elID +
@@ -242,9 +246,13 @@ var FormGenBS = /** @class */ (function () {
                             }
                             else {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
+                                innerhtml += '</td>';
+                                innerhtml += '</table>';
                             }
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
                                 innerhtml += '<input type="date" class="' + CC + '" name = "' + THEEL.elID +
@@ -294,9 +302,13 @@ var FormGenBS = /** @class */ (function () {
                             }
                             else {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
+                                innerhtml += '</td>';
+                                innerhtml += '</table>';
                             }
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
                                 innerhtml += '<textarea rows="5" cols="40" class="' + CC + '" name="' + THEEL.elID + '" id="'
@@ -346,9 +358,13 @@ var FormGenBS = /** @class */ (function () {
                             }
                             else {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '"  >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
+                                innerhtml += '</td>';
+                                innerhtml += '</table>';
                             }
                             var i = 0;
                             for (var _s = 0, _t = THEEL.elContent; _s < _t.length; _s++) {
@@ -411,9 +427,13 @@ var FormGenBS = /** @class */ (function () {
                             }
                             else {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
+                                innerhtml += '</td>';
+                                innerhtml += '</table>';
                             }
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
                                 innerhtml += '<select name="' + THEEL.elID + '" class="' + CC + '"  id="' +
@@ -476,9 +496,13 @@ var FormGenBS = /** @class */ (function () {
                             }
                             else {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
+                                innerhtml += '</td>';
+                                innerhtml += '</table>';
                             }
                             var i = 0;
                             for (var _0 = 0, _1 = THEEL.elContent; _0 < _1.length; _0++) {
