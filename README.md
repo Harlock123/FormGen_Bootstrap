@@ -244,7 +244,7 @@ Sample Form Set to READONLY  using FALSE as the Parameter
 
 Same Form set bact to ReadWrite using TRUE as the Parameter
 
-![ScreenShot](ScreenShots/SS7.png)
+![ScreenShot](ScreenShots/SS7a.png)
 
 ### SAMPLE HTML
 (also included in the project)
@@ -260,15 +260,45 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
     <link rel="stylesheet" href="css/bootstrap.css">
 
     <title>FormGen Test</title>
-   
+
+    <style>div{
+        color: rgb(0, 0, 0);
+        font-family: Tahoma, Verdana, Segoe, sans-serif;
+       
+    }
+    .container{
+        width:100vw;
+        display:flex;
+    }
+    .fixed{
+        background-color:rgb(158, 185, 247);
+        padding: 4px;
+        width: 200px;
+    }
+    .flex-item{
+        background-color:rgb(196, 196, 197);
+        flex-grow: 1;
+    }
+    .buttonPadding{
+        padding:4px 4px 4px 4px;
+        margin:4px 2px 4px 2px;
+        border-radius: 8px;
+    }
+    
+    </style>
+    
 </head>
 <body>
     <!--  -->
-    <div id="testbuttons">
-        <input type="button" onclick="alert(FG.GetFormDataAsString());" 
+
+    <div class='container'>
+
+    <div id="testbuttons" class='fixed'>
+        <input  type="button" class="buttonPadding"
+                onclick="alert(FG.GetFormDataAsString());" 
                 id="btnValRetrieve" value="Retrieve the values">
 
-        <input type="button" 
+        <input  type="button" class="buttonPadding"
                 onclick="FG.SetFormData([ new UIValue('3_3','true'),
                                           new UIValue('5','2018-11-01'),
                                           new UIValue('6_1','true'),
@@ -279,38 +309,41 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
                 id="btnValSet" value="Set Some Values">
 
 
-        <input type="button" 
+        <input  type="button" class="buttonPadding"
                 onclick="PopulateFromString();" 
-                id="btnValSet1" value="Set Some Values from a String">
+                id="btnValSet1" value="Set Values from String">
 
-        <input type="button" 
+        <input  type="button" class="buttonPadding"
                 onclick="alert(' The Score is: ' + FG.GetFormScore());" 
                 id="btnScoreGet" value="Fetch Form Score">
 
-        <input type="button" 
+        <input  type="button" class="buttonPadding"
                 onclick=" FG.ClearFormValidityVisuals();" 
                 id="btnValidityClear" value="Clear Form Validity">
 
-        <input type="button" 
+        <input  type="button" class="buttonPadding"
                 onclick="alert(' The Validity is: ' + FG.IsFormValid());" 
                 id="btnValidityGet" value="Fetch Form Validity">
 
-        <input type="button" 
+        <input  type="button" class="buttonPadding"
                 onclick="FG.GetFormDefinitionFrom('http://localhost:5500/SampleForm.json');" 
                 id="btnPopulateFromURL" value="Form Definition from URL">
 
-        <input type="button" 
+        <input  type="button" class="buttonPadding"
                 onclick="FG.SetReadWrite(true);" 
                 id="btnSetReadWriteTrue" value="ReadWrite">
 
-        <input type="button" 
+        <input  type="button" class="buttonPadding"
                 onclick="FG.SetReadWrite(false);" 
                 id="btnSetReadWritefalse" value="ReadOnly">
     </div>
 
-    <div id="FormGenBody" style="height:90vh; width: 100vw" >
+    <div id="FormGenBody" class='flex-item' >
         
     </div>
+
+    </div>
+
 
     <script>var exports = {};</script>  <!-- Hack to get rid of Exports Error from TSC compile -->
                                         <!-- This preserves the use of the Typuscript source in -->
@@ -387,19 +420,19 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
 
 
         ELEs.push(
-            new UIElement(12,"10","dropdown","Combobox/Dropdown that is flagged as required<br>Flagged as <b>AUTOSIZED</b>",["1","2","3","4"], true,
+            new UIElement(12,"10","dropdown","Combobox/Dropdown <br>that is flagged as required<br>Flagged as <b>AUTOSIZED</b>",["1","2","3","4"], true,
             [],true,"background-color: palegreen","","",[],true));
         
         ELEs.push(
-            new UIElement(12,"10a","dropdown","Combobox/Dropdown that is flagged as <b>NOT</b> required<br>Flagged as <b>AUTOSIZED</b>",["1","2","3","4"], false,
+            new UIElement(12,"10a","dropdown","Combobox/Dropdown <br>that is flagged as <b>NOT</b> required<br>Flagged as <b>AUTOSIZED</b>",["1","2","3","4"], false,
             [],true,"background-color: palegreen","","",[],true));
 
         ELEs.push(
-            new UIElement(13,"10","dropdown","Combobox/Dropdown that is flagged as required<br>Flagged as <b>NOT AUTOSIZED</b>",["1","2","3","4"], true,
+            new UIElement(13,"10","dropdown","Combobox/Dropdown <br>that is flagged as required<br>Flagged as <b>NOT AUTOSIZED</b>",["1","2","3","4"], true,
             [],true,"background-color: palegreen","","",[]));
         
         ELEs.push(
-            new UIElement(13,"10a","dropdown","Combobox/Dropdown that is flagged as <b>NOT</b> required<br>Flagged as <b>NOT AUTOSIZED</b>",["1","2","3","4"], false,
+            new UIElement(13,"10a","dropdown","Combobox/Dropdown <br>that is flagged as <b>NOT</b> required<br>Flagged as <b>NOT AUTOSIZED</b>",["1","2","3","4"], false,
             [],true,"background-color: palegreen","","",[]));
 
 
