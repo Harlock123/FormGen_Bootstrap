@@ -514,7 +514,7 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
 
 Sample form output from the HTML above with the indicated UIInteractions activated (IE Stuff entered or selected in the appropriate input elements).
 
-![ScreenShot](ScreenShots/SS4.png)
+![ScreenShot](ScreenShots/SS4a.png)
 
 **Some Other Notes**
 
