@@ -1,4 +1,6 @@
+
 # FormGenBS
+
 Typescript Library to Use Data structures handed to it to interpret and create UI CRUD screens. Tailored for BOOTSTRAP
 
 ```typescript
@@ -6,7 +8,9 @@ constructor(DomElementID: string, UIElements: UIElement[],VersionString: string,
         ...
 }
 ```
+
 Parameters:
+
 - **DomElementID**
 
     This is a container object (Usually a DIV) where you want the Form to be generated. FormGen will hydrate the HTML interface inside of this object automagically...
@@ -22,7 +26,6 @@ Parameters:
 - **JSobjectName**
 
     A simple string the represents the name of the particular instance of FormGen that your code has created this as. Used when FormGen wires up event handlers for objects its creating so the varous onchange events can call into the specific instance of FormGen. (Formerly used a small stub routine to call in that lived out in the global namespace, Tnis is still a hack but is cleaner than the stub alternative)
-
 
 Further documentation regarding FormGens Use and the various objects employed are below
 
@@ -46,9 +49,9 @@ class UIElement {
     public elCustomClass: string;
 
     constructor(elformrow: number, elid: string, eltype: string, ellabel: string,
-    elcontent: string[], elrequired: boolean,elinteractions: UIInteraction[], elinitialvisibility: boolean, 
-    elstyle: string, ellabelstyle: string, elformstyle: string, elscore: number[], 
-    elautosize?: boolean, elcustomclass?: string) 
+    elcontent: string[], elrequired: boolean,elinteractions: UIInteraction[], elinitialvisibility: boolean,
+    elstyle: string, ellabelstyle: string, elformstyle: string, elscore: number[],
+    elautosize?: boolean, elcustomclass?: string)
     {
         this.elFormRow = elformrow;
         this.elID = elid;
@@ -64,7 +67,7 @@ class UIElement {
         this.elScore = elscore;
 
         if (elautosize == undefined)
-        { 
+        {
             this.elAutoSize = false;
         }
         else
@@ -85,7 +88,8 @@ class UIElement {
 }
 ```
 
-### Some Details:
+### UIElement Details
+
 - **elFormRow** is s chronological grouping of elements to be inserted at a given row in the bootstrap matrix. FormGen will interpret these entries and group them together and decorate their entries with col-md-x where x is 1 2 3 4 6 12 also, formgen will attempt to evenly space them across the form in the standard bootstrap way. Start at 1 and number each subsequent rows entries chronologically ie. next rows contents would be 2 and then 3 and so on.
 
 - **elid** is a simple string that will be used to identify the element on the DOM. It can be any alpha numeric, it should be unique for each elemet that is being placed into the form.
@@ -101,7 +105,6 @@ class UIElement {
     - HEADER     This will be a non Input simple item that will be placed on its own row in the form the **ellabel** paremeter will be used for the label
     - FOOTER     This will be a non Input simple item that will be placed on its own row in the form the **ellabel** paremeter will be used for the label
 
-
 - **ellabel** is the string label to be applied to the element being placed on the page
 
 - **elcontent**  is an array of strings that get turned into a list of appropriate sub elements for things that have subelements. IE RadioButtons, DropDowns, and CheckBoxes.
@@ -112,9 +115,9 @@ class UIElement {
 
 - **elinitialvisibility** is a boolean used to indicate if the element will be inserted into the DOM visible or hidden
 
-- **elstyle** is a string that will be inserted as an inline style= assertion on the form-row of the element. Note: that the first element for any given row will have this style value applied to all other elements placed in that row. Useful for things like the whole rows background color for example and is demonstrated in the projects index.html test page. 
+- **elstyle** is a string that will be inserted as an inline style= assertion on the form-row of the element. Note: that the first element for any given row will have this style value applied to all other elements placed in that row. Useful for things like the whole rows background color for example and is demonstrated in the projects index.html test page.
 
-- **ellabelstyle** is a string that will be inserted as an inline style= assertion on the Label of the element. 
+- **ellabelstyle** is a string that will be inserted as an inline style= assertion on the Label of the element.
 
 - **elformstyle** is a string that will be inserted as an inline style= assertion on the combination of element and label container. In BootStrap this is a form-group.
 
@@ -143,7 +146,9 @@ class UIInteraction
     }
 }
 ```
-### Some Details:
+
+### UIInteraction Details
+
 - **elidsource** this represents the identifier for the element that will trigger the interaction. This is usually the elid of the element this is contained within but does not necessarily need to be. IE you can include a UIInteraction in an element that is not part of the UIInteraction chain.
 
 - **elidtarget** this represents the identifier for the element that interacted with.
@@ -173,6 +178,7 @@ class UIInteraction
         }
     }
 ```
+
 Sample JSON data output from a blank form built via the included HTML file, showing version information as well as each UIElement with its entered values...
 
 ```json
@@ -218,20 +224,20 @@ Sample JSON data output from a blank form built via the included HTML file, show
 
 ![ScreenShot](ScreenShots/SS5.png)
 
-- **ClearFormValidityVisuals()** Will clear the validity queues placed on a form vis the **IsFormValid()** call noted above. 
+- **ClearFormValidityVisuals()** Will clear the validity queues placed on a form vis the **IsFormValid()** call noted above.
 
 - **DoFormInteraction(e)** a public internal method that should be wired to a base javascript function outside of the class of the same name that calls the internal method with the same signature.
-IE 
+IE
 If the class is defined as FG then
 
         function DoFormGenInteraction(e)
         {
             FG.DoFormGenInteraction(e);
         }
- 
+
     be somewhere in the base javascript to wire up the UIInteractions..
  TODO: find a cleaner way to do this
- 
+
 - **SetFormVersion(versionstring: string)** Will take versionstring and apply it to the classes internal versioning mechanisim. Echoing this back on **GetFormData** and **GetFormDataAsString**
 
 - **GetFormVersion** Returns the internal version  number either set at constructor or via **SetFormVersion**
@@ -295,7 +301,7 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
 
     <div id="testbuttons" class='fixed'>
         <input  type="button" class="buttonPadding"
-                onclick="alert(FG.GetFormDataAsString());" 
+                onclick="alert(FG.GetFormDataAsString());"
                 id="btnValRetrieve" value="Retrieve the values">
 
         <input  type="button" class="buttonPadding"
@@ -304,37 +310,37 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
                                           new UIValue('6_1','true'),
                                           new UIValue('6_3','true'),
                                           new UIValue('7','This is a test')
-                                        ]);" 
+                                        ]);"
 
                 id="btnValSet" value="Set Some Values">
 
 
         <input  type="button" class="buttonPadding"
-                onclick="PopulateFromString();" 
+                onclick="PopulateFromString();"
                 id="btnValSet1" value="Set Values from String">
 
         <input  type="button" class="buttonPadding"
-                onclick="alert(' The Score is: ' + FG.GetFormScore());" 
+                onclick="alert(' The Score is: ' + FG.GetFormScore());"
                 id="btnScoreGet" value="Fetch Form Score">
 
         <input  type="button" class="buttonPadding"
-                onclick=" FG.ClearFormValidityVisuals();" 
+                onclick=" FG.ClearFormValidityVisuals();"
                 id="btnValidityClear" value="Clear Form Validity">
 
         <input  type="button" class="buttonPadding"
-                onclick="alert(' The Validity is: ' + FG.IsFormValid());" 
+                onclick="alert(' The Validity is: ' + FG.IsFormValid());"
                 id="btnValidityGet" value="Fetch Form Validity">
 
         <input  type="button" class="buttonPadding"
-                onclick="FG.GetFormDefinitionFrom('http://localhost:5500/SampleForm.json');" 
+                onclick="FG.GetFormDefinitionFrom('http://localhost:5500/SampleForm.json');"
                 id="btnPopulateFromURL" value="Form Definition from URL">
 
         <input  type="button" class="buttonPadding"
-                onclick="FG.SetReadWrite(true);" 
+                onclick="FG.SetReadWrite(true);"
                 id="btnSetReadWriteTrue" value="ReadWrite">
 
         <input  type="button" class="buttonPadding"
-                onclick="FG.SetReadWrite(false);" 
+                onclick="FG.SetReadWrite(false);"
                 id="btnSetReadWritefalse" value="ReadOnly">
     </div>
 
@@ -526,10 +532,10 @@ $ python -m SimpleHTTPServer
 
 The default port should be 8000 which is why the sample HTML references localhost:8000 one on of the button click handlers
 
-of you have Python3 installed on your windows machine the simple http server can be launced via the command prompt or powershell prompt using
+if you have Python3 installed on your windows machine the simple http server can be launced via the command prompt or powershell prompt using
 
 ```bash
-python -m http.server
+$ python -m http.server
 ```
 
 Additionally is you are using Visual Studio Code as your editor, (and you could do a lot worse if you are not). You can install the LIVE SERVER addon and it will expose a webserver whos root folder is the base of the current code project on port 5500 by default. A very nice addon that further streamlines development over the older Python Webserver approach. The default INDEX.html page in the project now asumes this approach for the simulated webservice calls making them against localhost:5500 as opposed to localhost:8000.
