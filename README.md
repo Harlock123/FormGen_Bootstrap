@@ -77,7 +77,7 @@ class UIElement {
             this.elCustomClass = "";
         }
         else
-        {        
+        {
             this.elCustomClass = elcustomclass;
         }
 
@@ -205,7 +205,7 @@ Sample JSON data output from a blank form built via the included HTML file, show
     {"elFormRow":8,"elID":"TheFooter","elContent":[],"elLabel":"This Is the footer for this form  taken from the simulated webservice call","elRequired":true,"elType":"footer","elInteractions":[],"elInitialVisibility":true,"elStyle":"font-size:18px;font-weight:bold;background-color: lavender","elLabelStyle":"margin-bottom:0","elFormStyle":"","elScore":[0]}
 ]
 ```
-        
+
 - **GetFormDataAsString()** Essentially returns JSON.Stringify() of the **GetFormData()** method above.
 
 - **SetFormData(UIValues: UIValue[])** Takes an array of UIValues and populates the form. (see **GetFormdata()** above for the definition of the UIValue class )
@@ -264,7 +264,7 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
     <style>div{
         color: rgb(0, 0, 0);
         font-family: Tahoma, Verdana, Segoe, sans-serif;
-       
+
     }
     .container{
         width:100vw;
@@ -284,9 +284,9 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
         margin:4px 2px 4px 2px;
         border-radius: 8px;
     }
-    
+
     </style>
-    
+
 </head>
 <body>
     <!--  -->
@@ -305,7 +305,7 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
                                           new UIValue('6_3','true'),
                                           new UIValue('7','This is a test')
                                         ]);" 
-                                
+
                 id="btnValSet" value="Set Some Values">
 
 
@@ -339,7 +339,7 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
     </div>
 
     <div id="FormGenBody" class='flex-item' >
-        
+
     </div>
 
     </div>
@@ -352,9 +352,9 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.js"></script>
-    
+
     <script src="FormGenBS.js"></script>
-    
+
     <script type="text/javascript">
         var ELEs = new Array();
 
@@ -392,7 +392,7 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
             true,[new UIInteraction("6","7","SHOW","Checkbox option 3")],true,"background-color: palegreen","","",[10,11,12,13,14]));
         ELEs.push(
             new UIElement(6,"7","narrative","Another Narrative is here",[],true,[],false,"","","",[15]));
-        
+
         ELEs.push(
             new UIElement(6,"8","narrative","A Fifth Narrative is here",[],true,[],false,"","","",[16]));
 
@@ -404,7 +404,7 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
             new UIElement(8,"TheFooter","footer","This Is the footer for this form",[],true,[],true,
             "font-size:18px;font-weight:bold;background-color: lavender","margin-bottom:0","",[0]));
 
-        
+
         ELEs.push(
             new UIElement(9,"LIST","infotext","<br>This demonstrates a Simple Insertion of a passage of text, using an <b>infotext</b> element without a set of subelements in the array of subelements <em>an empty array</em><br> <b>NOTE:</b> that you can embed some standard HTML Tags into the body of the textual passages to have some explicit formatting of the output tags for <b>BOLD</b>, <em>EMPHASIS</em> and even <b>Newlines or Linebreaks</b> can be encoded and enforced this way.",
             [],true,[],true,"background-color: teal","","",[]));
@@ -422,7 +422,7 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
         ELEs.push(
             new UIElement(12,"10","dropdown","Combobox/Dropdown <br>that is flagged as required<br>Flagged as <b>AUTOSIZED</b>",["1","2","3","4"], true,
             [],true,"background-color: palegreen","","",[],true));
-        
+
         ELEs.push(
             new UIElement(12,"10a","dropdown","Combobox/Dropdown <br>that is flagged as <b>NOT</b> required<br>Flagged as <b>AUTOSIZED</b>",["1","2","3","4"], false,
             [],true,"background-color: palegreen","","",[],true));
@@ -430,7 +430,7 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
         ELEs.push(
             new UIElement(13,"10","dropdown","Combobox/Dropdown <br>that is flagged as required<br>Flagged as <b>NOT AUTOSIZED</b>",["1","2","3","4"], true,
             [],true,"background-color: palegreen","","",[]));
-        
+
         ELEs.push(
             new UIElement(13,"10a","dropdown","Combobox/Dropdown <br>that is flagged as <b>NOT</b> required<br>Flagged as <b>NOT AUTOSIZED</b>",["1","2","3","4"], false,
             [],true,"background-color: palegreen","","",[]));
@@ -443,7 +443,7 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
         ELEs.push(
             new UIElement(14,"11","radio","Radio Buttons flagged as required",["Male","Female","Unknown"],true,
             [],true,"","","",[]));
-        
+
         ELEs.push(
             new UIElement(14,"11a","radio","Radio Buttons flagged as <b>NOT</b> required",["Male","Female","Unknown"],false,
             [],true,"","","",[]));
@@ -461,11 +461,11 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
         ELEs.push(
             new UIElement(16,"13","text","A Text entry field flagged as required",[],true,
             [],true,"","","",[]));
-        
+
         ELEs.push(
             new UIElement(16,"13a","text","A Text entry field flagged as <b>NOT</b> required",[],false,
             [],true,"","","",[]));
-        
+
         ELEs.push(
             new UIElement(17,"14","narrative","A Narrative field flagged as Required",[],true,
             [],true,"background-color: palegreen","","",[]));
@@ -481,10 +481,10 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
         ELEs.push(
             new UIElement(18,"15","date","A Date field flagged as <b>NOT</b> Required",[],false,
             [],true,"","","",[]));
-        
-        
+
+
         var FFG = JSON.stringify(ELEs);
-        
+
         var FG = new FormGenBS('FormGenBody',ELEs,'Version 1','FG');  
 
         console.log(FG);
@@ -499,13 +499,13 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
                  '{"uivID":"6_4","uivValue":"false"},{"uivID":"6_5","uivValue":"true"},'+
                  '{"uivID":"7","uivValue":"asdfsadfsadf\\nMultiLine\\nMultiLine"},' +
                  '{"uivID":"8","uivValue":"Some More Text Inserted into a Narrative\\nMultiLine\\nMultiLine"}]';
-                 
+
 
             FG.SetFormDataFromString(x);
 
         }
 
-    
+
     </script>
 
 </body>
@@ -533,7 +533,3 @@ python -m http.server
 ```
 
 Additionally is you are using Visual Studio Code as your editor, (and you could do a lot worse if you are not). You can install the LIVE SERVER addon and it will expose a webserver whos root folder is the base of the current code project on port 5500 by default. A very nice addon that further streamlines development over the older Python Webserver approach. The default INDEX.html page in the project now asumes this approach for the simulated webservice calls making them against localhost:5500 as opposed to localhost:8000.
-
-
-
-
