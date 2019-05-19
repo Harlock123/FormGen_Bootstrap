@@ -1020,6 +1020,24 @@ export class FormGenBS {
         return JSON.stringify(this.GetFormData());
     }
 
+    public GetFormDefinition() {
+        return this.theUIElements;
+    }
+
+    public GetFormDefinitionAsString() {
+        return JSON.stringify(this.GetFormDefinition());
+    }
+
+    public SetFormDefinition(TheFormDefinitionAsString: string) {
+        var Self = this;
+        Self.HydrateForm(JSON.parse(TheFormDefinitionAsString));
+    }
+
+    public SetFormDefinitionFromObject(UIElementArray: UIElement[]) {
+        var Self = this;
+        Self.HydrateForm(UIElementArray);
+    }
+
     /**
      * GetFormDefinitionFrom
      * webUrl: string   

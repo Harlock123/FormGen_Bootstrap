@@ -818,6 +818,20 @@ var FormGenBS = /** @class */ (function () {
     FormGenBS.prototype.GetFormDataAsString = function () {
         return JSON.stringify(this.GetFormData());
     };
+    FormGenBS.prototype.GetFormDefinition = function () {
+        return this.theUIElements;
+    };
+    FormGenBS.prototype.GetFormDefinitionAsString = function () {
+        return JSON.stringify(this.GetFormDefinition());
+    };
+    FormGenBS.prototype.SetFormDefinition = function (TheFormDefinitionAsString) {
+        var Self = this;
+        Self.HydrateForm(JSON.parse(TheFormDefinitionAsString));
+    };
+    FormGenBS.prototype.SetFormDefinitionFromObject = function (UIElementArray) {
+        var Self = this;
+        Self.HydrateForm(UIElementArray);
+    };
     /**
      * GetFormDefinitionFrom
      * webUrl: string

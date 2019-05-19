@@ -84,6 +84,10 @@
         <input  type="button" class="buttonPadding"
                 onclick="FG.SetReadWrite(false);" 
                 id="btnSetReadWritefalse" value="ReadOnly">
+
+        <input  type="button" class="buttonPadding"
+                onclick="alert(' The Forms Internal Definition is: ' + FG.GetFormDefinitionAsString());" 
+                id="btnGetFormDefinition" value="Show Form Definition">
     </div>
 
     <div id="FormGenBody" class='flex-item' >
