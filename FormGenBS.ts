@@ -28,6 +28,16 @@ export class FormGenBS {
     }
 
     private HydrateForm(UIElements: UIElement[]) {
+        
+        // sort the array first by the rows
+        UIElements.sort(function(a,b) {
+            if (a.elFormRow < b.elFormRow)
+                return -1;
+            if (a.elFormRow > b.elFormRow)
+                return 1;
+            return 0;
+        });
+        
         // save the handed in UIElements for further processing later
         this.theUIElements = UIElements;
 
@@ -1020,19 +1030,33 @@ export class FormGenBS {
         return JSON.stringify(this.GetFormData());
     }
 
+    /**
+     * GetFormDataAsString
+     */
     public GetFormDefinition() {
         return this.theUIElements;
     }
 
+    /**
+     * GetFormDataAsString
+     */
     public GetFormDefinitionAsString() {
         return JSON.stringify(this.GetFormDefinition());
     }
 
+    /**
+     * GetFormDataAsString
+     * TheFormDefinitionAsString: string
+     */
     public SetFormDefinition(TheFormDefinitionAsString: string) {
         var Self = this;
         Self.HydrateForm(JSON.parse(TheFormDefinitionAsString));
     }
 
+    /**
+     * GetFormDataAsString
+     * UIElementArray: UIElement[]
+     */
     public SetFormDefinitionFromObject(UIElementArray: UIElement[]) {
         var Self = this;
         Self.HydrateForm(UIElementArray);
@@ -1055,6 +1079,33 @@ export class FormGenBS {
         };
         xmlhttp.open('GET', webUrl);
         xmlhttp.send();
+    }
+
+    /**
+     * GetRoAtYCoordinate
+     * @param YCord 
+     */
+    public GetRowAtYCoordinate(YCord: number) {
+        var x = document.getElementsByClassName("form-row");
+        var Row = 0;
+        var THeight = 0;
+        var i = 0;
+
+        for (i = 0; i < x.length; i++) {
+
+            console.log("Iterating through Row " + i + " Height " + (<HTMLElement>x[i]).offsetHeight)
+
+            THeight += (<HTMLElement>x[i]).offsetHeight;
+            if (THeight > YCord && (<HTMLElement>x[i]).offsetHeight > 0)
+            {
+                Row = i+1;
+                break;
+            }
+
+          }
+        
+        console.log("Returned ROW " + Row);
+        return Row;
     }
 
     /**

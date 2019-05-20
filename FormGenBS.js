@@ -16,6 +16,14 @@ var FormGenBS = /** @class */ (function () {
         this.DOINTERACTION = function (e) { this.DoFormGenInteraction(e); };
     }
     FormGenBS.prototype.HydrateForm = function (UIElements) {
+        // sort the array first by the rows
+        UIElements.sort(function (a, b) {
+            if (a.elFormRow < b.elFormRow)
+                return -1;
+            if (a.elFormRow > b.elFormRow)
+                return 1;
+            return 0;
+        });
         // save the handed in UIElements for further processing later
         this.theUIElements = UIElements;
         // here we will preparse the UIElements to determine the formgrouping 
@@ -818,16 +826,30 @@ var FormGenBS = /** @class */ (function () {
     FormGenBS.prototype.GetFormDataAsString = function () {
         return JSON.stringify(this.GetFormData());
     };
+    /**
+     * GetFormDataAsString
+     */
     FormGenBS.prototype.GetFormDefinition = function () {
         return this.theUIElements;
     };
+    /**
+     * GetFormDataAsString
+     */
     FormGenBS.prototype.GetFormDefinitionAsString = function () {
         return JSON.stringify(this.GetFormDefinition());
     };
+    /**
+     * GetFormDataAsString
+     * TheFormDefinitionAsString: string
+     */
     FormGenBS.prototype.SetFormDefinition = function (TheFormDefinitionAsString) {
         var Self = this;
         Self.HydrateForm(JSON.parse(TheFormDefinitionAsString));
     };
+    /**
+     * GetFormDataAsString
+     * UIElementArray: UIElement[]
+     */
     FormGenBS.prototype.SetFormDefinitionFromObject = function (UIElementArray) {
         var Self = this;
         Self.HydrateForm(UIElementArray);
@@ -847,6 +869,26 @@ var FormGenBS = /** @class */ (function () {
         };
         xmlhttp.open('GET', webUrl);
         xmlhttp.send();
+    };
+    /**
+     * GetRoAtYCoordinate
+     * @param YCord
+     */
+    FormGenBS.prototype.GetRowAtYCoordinate = function (YCord) {
+        var x = document.getElementsByClassName("form-row");
+        var Row = 0;
+        var THeight = 0;
+        var i = 0;
+        for (i = 0; i < x.length; i++) {
+            console.log("Iterating through Row " + i + " Height " + x[i].offsetHeight);
+            THeight += x[i].offsetHeight;
+            if (THeight > YCord && x[i].offsetHeight > 0) {
+                Row = i + 1;
+                break;
+            }
+        }
+        console.log("Returned ROW " + Row);
+        return Row;
     };
     /**
      * SetFormData
