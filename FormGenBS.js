@@ -635,7 +635,7 @@ var FormGenBS = /** @class */ (function () {
             switch (THEEL.elType.toUpperCase()) {
                 case "TEXT": {
                     var el = (document.getElementById(THEEL.elID));
-                    if (typeof THEEL.elScore[0] == 'undefined' && el != null && el.dataset["fgscore"] !== undefined) {
+                    if (THEEL.elScore != undefined && typeof THEEL.elScore[0] == 'undefined' && el != null && el.dataset["fgscore"] !== undefined) {
                         el.dataset.fgscore = "0";
                     }
                     else if (el != null && el.dataset["fgscore"] !== undefined) {
@@ -651,7 +651,7 @@ var FormGenBS = /** @class */ (function () {
                 }
                 case "DATE": {
                     var el = (document.getElementById(THEEL.elID));
-                    if (typeof THEEL.elScore[0] == 'undefined') {
+                    if (THEEL.elScore != undefined && typeof THEEL.elScore[0] == 'undefined') {
                         el.dataset.fgscore = "0";
                     }
                     else {
@@ -668,7 +668,7 @@ var FormGenBS = /** @class */ (function () {
                 }
                 case "NARRATIVE": {
                     var el = (document.getElementById(THEEL.elID));
-                    if (typeof THEEL.elScore[0] == 'undefined') {
+                    if (THEEL.elScore != undefined && typeof THEEL.elScore[0] == 'undefined') {
                         el.dataset.fgscore = "0";
                     }
                     else {

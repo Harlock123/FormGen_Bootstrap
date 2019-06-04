@@ -787,7 +787,7 @@ export class FormGenBS {
 
                     var el = <HTMLElement>(document.getElementById(THEEL.elID));
 
-                    if (typeof THEEL.elScore[0] == 'undefined' && el != null && el.dataset["fgscore"] !== undefined) {
+                    if (THEEL.elScore != undefined && typeof THEEL.elScore[0] == 'undefined' && el != null && el.dataset["fgscore"] !== undefined) {
                         el.dataset.fgscore = "0";
 
                     }
@@ -808,7 +808,7 @@ export class FormGenBS {
                 case "DATE": {
                     var el = <HTMLElement>(document.getElementById(THEEL.elID));
 
-                    if (typeof THEEL.elScore[0] == 'undefined') {
+                    if (THEEL.elScore != undefined && typeof THEEL.elScore[0] == 'undefined') {
                         el.dataset.fgscore = "0";
 
                     }
@@ -830,7 +830,7 @@ export class FormGenBS {
                 case "NARRATIVE": {
                     var el = <HTMLElement>(document.getElementById(THEEL.elID));
 
-                    if (typeof THEEL.elScore[0] == 'undefined') {
+                    if (THEEL.elScore != undefined && typeof THEEL.elScore[0] == 'undefined') {
                         el.dataset.fgscore = "0";
 
                     }
