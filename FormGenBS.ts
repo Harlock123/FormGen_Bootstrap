@@ -66,15 +66,16 @@ export class FormGenBS {
         }
 
         FROWS.push(cnt);
-        for (let i = FROWS.length; i < UIElements.length; i++) {
-            FROWS.push(cnt);
-            FROWS.push(cnt);
-            FROWS.push(cnt);
-            FROWS.push(cnt);
-            FROWS.push(cnt);
-        }
+        //for (let i = FROWS.length; i < UIElements.length; i++) {
+        //    FROWS.push(cnt);
+        //    FROWS.push(cnt);
+        //    FROWS.push(cnt);
+        //    FROWS.push(cnt);
+        //    FROWS.push(cnt);
+       // }
         cnt = 0;
-        for (let i = FROWS.length; i < UIElements.length; i++) { FROWS.push(cnt); FROWS.push(cnt); FROWS.push(cnt); FROWS.push(cnt); }
+        
+        //for (let i = FROWS.length; i < UIElements.length; i++) { FROWS.push(cnt); FROWS.push(cnt); FROWS.push(cnt); FROWS.push(cnt); }
 
         // we now have an array of numbers the ordinal position in that array has the number of
         // elements that are in that forms row as defined by the UIElements array handed in

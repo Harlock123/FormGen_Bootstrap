@@ -48,20 +48,15 @@ var FormGenBS = /** @class */ (function () {
             }
         }
         FROWS.push(cnt);
-        for (var i = FROWS.length; i < UIElements.length; i++) {
-            FROWS.push(cnt);
-            FROWS.push(cnt);
-            FROWS.push(cnt);
-            FROWS.push(cnt);
-            FROWS.push(cnt);
-        }
+        //for (let i = FROWS.length; i < UIElements.length; i++) {
+        //    FROWS.push(cnt);
+        //    FROWS.push(cnt);
+        //    FROWS.push(cnt);
+        //    FROWS.push(cnt);
+        //    FROWS.push(cnt);
+        // }
         cnt = 0;
-        for (var i = FROWS.length; i < UIElements.length; i++) {
-            FROWS.push(cnt);
-            FROWS.push(cnt);
-            FROWS.push(cnt);
-            FROWS.push(cnt);
-        }
+        //for (let i = FROWS.length; i < UIElements.length; i++) { FROWS.push(cnt); FROWS.push(cnt); FROWS.push(cnt); FROWS.push(cnt); }
         // we now have an array of numbers the ordinal position in that array has the number of
         // elements that are in that forms row as defined by the UIElements array handed in
         // Starting from 1 (The Zero element in the array should have 0 in it so its 1 based)
