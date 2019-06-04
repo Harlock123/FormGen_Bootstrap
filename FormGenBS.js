@@ -155,7 +155,11 @@ var FormGenBS = /** @class */ (function () {
         for (var _j = 0, BOOTSTRAPTAGS_1 = BOOTSTRAPTAGS; _j < BOOTSTRAPTAGS_1.length; _j++) {
             var CBTAG = BOOTSTRAPTAGS_1[_j];
             CURROW += 1;
-            innerhtml += '<div class="form-row" style="' + FROWTAGS[CURROW - 1] + '" >';
+            // If the calculated style for the Current Row is empty dont emit a STYLE tag
+            if (FROWTAGS[CURROW - 1] !== '')
+                innerhtml += '<div class="form-row" style="' + FROWTAGS[CURROW - 1] + '" >';
+            else
+                innerhtml += '<div class="form-row" >';
             for (var _k = 0, UIElements_9 = UIElements; _k < UIElements_9.length; _k++) {
                 var THEEL = UIElements_9[_k];
                 if (THEEL.elFormRow == CURROW) { // We have an element that is going into the curent row

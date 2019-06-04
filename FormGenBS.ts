@@ -187,7 +187,11 @@ export class FormGenBS {
         for (let CBTAG of BOOTSTRAPTAGS) {
             CURROW += 1;
 
-            innerhtml += '<div class="form-row" style="' + FROWTAGS[CURROW - 1] + '" >';
+            // If the calculated style for the Current Row is empty dont emit a STYLE tag
+            if (FROWTAGS[CURROW - 1] !== '')
+                innerhtml += '<div class="form-row" style="' + FROWTAGS[CURROW - 1] + '" >';
+            else
+                innerhtml += '<div class="form-row" >';
 
             for (let THEEL of UIElements) {
 
