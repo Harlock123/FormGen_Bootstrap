@@ -47,7 +47,20 @@
                 onclick="window.location.href = 'index.html';" 
                 id="btnReturn" value="Return to Main">
 
-        
+        <input  type="button" class="buttonPadding"
+                onclick="FG.GreenBarEnabled();" 
+                id="btnGBE" value="Turn On GreenBar">
+
+        <input  type="button" class="buttonPadding"
+                onclick="FG.GreenBarDisabled();" 
+                id="btnGBD" value="Turn Off GreenBar">
+
+        <input type="color" id="TheGreenBarColorSelected" name="TheGreenBarColorSelected"
+                value="#e66465" 
+                onchange="var el = document.getElementById('TheGreenBarColorSelected'); FG.SetGreenBarColor(el.value);">
+                <label for="TheGreenBarColorSelected">Color?</label>
+
+
     </div>
 
     <div id="FormGenBody" class='flex-item' >
@@ -92,6 +105,8 @@
         var FFG = JSON.stringify(ELEs);
         
         var FG = new FormGenBS('FormGenBody',ELEs,'Version 1','FG');  
+
+        FG.GreenBarEnabled();
 
     </script>
 

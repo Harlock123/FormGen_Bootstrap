@@ -5,6 +5,8 @@ export class FormGenBS {
     private theUIElements: UIElement[];
     private theVersionString: string = "";
     private JSOBJECTNAME: string = "";
+    private EnableGreenbar: boolean = false;
+    private GreenBarColor: string = "lightgreen";
     private DOINTERACTION;
 
     constructor(DomElementID: string, UIElements: UIElement[], VersionString: string, JSobjectName: string) {
@@ -187,11 +189,27 @@ export class FormGenBS {
         for (let CBTAG of BOOTSTRAPTAGS) {
             CURROW += 1;
 
-            // If the calculated style for the Current Row is empty dont emit a STYLE tag
-            if (FROWTAGS[CURROW - 1] !== '')
-                innerhtml += '<div class="form-row" style="' + FROWTAGS[CURROW - 1] + '" >';
+
+            if (this.EnableGreenbar)
+            {
+                if (CURROW % 2 === 0) // even
+                {
+                    innerhtml += '<div class="form-row" >';
+                }
+                else
+                {
+                    innerhtml += '<div class="form-row" style="background-color:' + this.GreenBarColor + '" >';
+                }
+
+            }
             else
-                innerhtml += '<div class="form-row" >';
+            {
+            // If the calculated style for the Current Row is empty dont emit a STYLE tag
+                if (FROWTAGS[CURROW - 1] !== '')
+                    innerhtml += '<div class="form-row" style="' + FROWTAGS[CURROW - 1] + '" >';
+                else
+                    innerhtml += '<div class="form-row" >';
+            }
 
             for (let THEEL of UIElements) {
 
@@ -1939,6 +1957,34 @@ export class FormGenBS {
                     }
 
             }
+        }
+    }
+
+    public GreenBarEnabled() {
+        this.EnableGreenbar = true;
+
+        var Self = this;
+
+        Self.HydrateForm(Self.theUIElements);
+
+    }
+
+    public GreenBarDisabled() {
+        this.EnableGreenbar = false;
+
+        var Self = this;
+
+        Self.HydrateForm(Self.theUIElements);
+    }
+
+    public SetGreenBarColor(TheColor: string) {
+        this.GreenBarColor = TheColor;
+
+        if (this.EnableGreenbar)
+        {
+            var Self = this;
+
+            Self.HydrateForm(Self.theUIElements);
         }
     }
 

@@ -5,6 +5,8 @@ var FormGenBS = /** @class */ (function () {
         this.theUIInteractions = [];
         this.theVersionString = "";
         this.JSOBJECTNAME = "";
+        this.EnableGreenbar = false;
+        this.GreenBarColor = "lightgreen";
         // set the form version here
         this.theVersionString = VersionString;
         // DomElementID will be the container for all the inserted form content
@@ -155,11 +157,22 @@ var FormGenBS = /** @class */ (function () {
         for (var _j = 0, BOOTSTRAPTAGS_1 = BOOTSTRAPTAGS; _j < BOOTSTRAPTAGS_1.length; _j++) {
             var CBTAG = BOOTSTRAPTAGS_1[_j];
             CURROW += 1;
-            // If the calculated style for the Current Row is empty dont emit a STYLE tag
-            if (FROWTAGS[CURROW - 1] !== '')
-                innerhtml += '<div class="form-row" style="' + FROWTAGS[CURROW - 1] + '" >';
-            else
-                innerhtml += '<div class="form-row" >';
+            if (this.EnableGreenbar) {
+                if (CURROW % 2 === 0) // even
+                 {
+                    innerhtml += '<div class="form-row" >';
+                }
+                else {
+                    innerhtml += '<div class="form-row" style="background-color:' + this.GreenBarColor + '" >';
+                }
+            }
+            else {
+                // If the calculated style for the Current Row is empty dont emit a STYLE tag
+                if (FROWTAGS[CURROW - 1] !== '')
+                    innerhtml += '<div class="form-row" style="' + FROWTAGS[CURROW - 1] + '" >';
+                else
+                    innerhtml += '<div class="form-row" >';
+            }
             for (var _k = 0, UIElements_9 = UIElements; _k < UIElements_9.length; _k++) {
                 var THEEL = UIElements_9[_k];
                 if (THEEL.elFormRow == CURROW) { // We have an element that is going into the curent row
@@ -1513,6 +1526,23 @@ var FormGenBS = /** @class */ (function () {
                         break;
                     }
             }
+        }
+    };
+    FormGenBS.prototype.GreenBarEnabled = function () {
+        this.EnableGreenbar = true;
+        var Self = this;
+        Self.HydrateForm(Self.theUIElements);
+    };
+    FormGenBS.prototype.GreenBarDisabled = function () {
+        this.EnableGreenbar = false;
+        var Self = this;
+        Self.HydrateForm(Self.theUIElements);
+    };
+    FormGenBS.prototype.SetGreenBarColor = function (TheColor) {
+        this.GreenBarColor = TheColor;
+        if (this.EnableGreenbar) {
+            var Self = this;
+            Self.HydrateForm(Self.theUIElements);
         }
     };
     // use in propigation of UIInteractions on visibiliy checks
