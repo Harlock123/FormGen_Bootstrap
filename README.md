@@ -252,6 +252,29 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
 
 ![ScreenShot](ScreenShots/SS7a.png)
 
+- **GetWholeForm()** Returns a serialized **FormGenDefCon** object the represents the both the current forms definition and its answers
+as entered by the user. Used for persisting both a forms actual shape and the answers in a single bundle
+
+- **SetWholeForm(TheFormDefCon: string)** Takes a serialized **FormGenDefCon** object and rehydrates a the forms shape and fills in the 
+answers so the forms state is preserved from the prior call to **GetWholeForm**
+
+FormGenDefCon (stands for the Formgens Definition and Content) Definition shown below
+
+```typescript
+class FormGenDefCon {
+    public FGDFDefinition: string;
+    public FGDFContent: string;
+
+    constructor(FGDFD: string, FGDFC: string)
+    {
+        this.FGDFDefinition = FGDFD;
+        this.FGDFContent = FGDFC;
+    }
+}
+
+```
+
+
 ### SAMPLE HTML
 (also included in the project)
 

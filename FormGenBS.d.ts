@@ -73,6 +73,33 @@ export declare class FormGenBS {
      */
     IsFormValid(): boolean;
     /**
+     * GetWholeForm
+     *      Returns the JSON.stringify of a FormGenDefCon object representing
+     *      The Forms current definition with all of its controls and interactions
+     *      The Forms current answers made by the user of the forms
+     *
+     * Used to persist the data of the current forms state in cases where we want to save completed forms for example.
+     * leverages the existing sub calls that get Forms definition and the answers seperately so as they are augmented
+     * this will also carry those augmentations automatically
+     *
+     * @returns FormGenDefCon object that has been serialized into a simple string
+     *
+     */
+    GetWholeForm(): string;
+    /**
+     * SetWholeForm
+     * @param TheFormDefCon
+     *      Takes a JSON.Stringify of a FormGenDefCon object and rehydrates a forms definition and fills in the answers
+     *      entered into that forms definition in one fell swoop
+     *
+     * used to rehydrate both a forms content and the answerd entered into that content and is essentially the reverse
+     * of the GetWholeForm method above.
+     * leverages the existing sub calls that set Forms definition and fills answers seperately so as they are augmented
+     * this will also carry those augmentations automatically
+     *
+     */
+    SetWholeForm(TheFormDefCon: string): void;
+    /**
      * ClearFormValidityVisuals
      */
     ClearFormValidityVisuals(): void;
@@ -118,4 +145,9 @@ export declare class UIValue {
     uivID: string;
     uivValue: string;
     constructor(id: string, value: string);
+}
+export declare class FormGenDefCon {
+    FGDFDefinition: string;
+    FGDFContent: string;
+    constructor(FGDFD: string, FGDFC: string);
 }

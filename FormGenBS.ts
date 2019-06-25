@@ -1622,6 +1622,51 @@ export class FormGenBS {
     }
 
     /**
+     * GetWholeForm
+     *      Returns the JSON.stringify of a FormGenDefCon object representing
+     *      The Forms current definition with all of its controls and interactions
+     *      The Forms current answers made by the user of the forms
+     * 
+     * Used to persist the data of the current forms state in cases where we want to save completed forms for example.
+     * leverages the existing sub calls that get Forms definition and the answers seperately so as they are augmented
+     * this will also carry those augmentations automatically
+     * 
+     * @returns FormGenDefCon object that has been serialized into a simple string
+     * 
+     */
+    public GetWholeForm() {
+
+        var TheForm: FormGenDefCon = new FormGenDefCon("","");
+
+        TheForm.FGDFDefinition = this.GetFormDefinitionAsString();
+        TheForm.FGDFContent = this.GetFormDataAsString();
+
+        return JSON.stringify(TheForm);
+
+    }
+
+    /**
+     * SetWholeForm
+     * @param TheFormDefCon 
+     *      Takes a JSON.Stringify of a FormGenDefCon object and rehydrates a forms definition and fills in the answers
+     *      entered into that forms definition in one fell swoop
+     * 
+     * used to rehydrate both a forms content and the answerd entered into that content and is essentially the reverse
+     * of the GetWholeForm method above.
+     * leverages the existing sub calls that set Forms definition and fills answers seperately so as they are augmented
+     * this will also carry those augmentations automatically
+     *  
+     */
+    public SetWholeForm(TheFormDefCon: string)
+    {
+        var TheForm: FormGenDefCon = new FormGenDefCon("","");
+        TheForm = JSON.parse(TheFormDefCon);
+
+        this.SetFormDefinition(TheForm.FGDFDefinition);
+        this.SetFormDataFromString(TheForm.FGDFContent);
+    }
+
+    /**
      * ClearFormValidityVisuals
      */
     public ClearFormValidityVisuals() {
@@ -2068,5 +2113,16 @@ export class UIValue {
     constructor(id: string, value: string) {
         this.uivID = id;
         this.uivValue = value;
+    }
+}
+
+export class FormGenDefCon {
+    public FGDFDefinition: string;
+    public FGDFContent: string;
+
+    constructor(FGDFD: string, FGDFC: string)
+    {
+        this.FGDFDefinition = FGDFD;
+        this.FGDFContent = FGDFC;
     }
 }
