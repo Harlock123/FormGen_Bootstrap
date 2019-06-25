@@ -92,6 +92,14 @@
         <input  type="button" class="buttonPadding"
                 onclick="window.location.href = 'testmassiveload.html';" 
                 id="btnTestMassiveLoad" value="Test Massive Load">
+
+        <input  type="button" class="buttonPadding"
+                onclick="var a = FG.GetWholeForm(); console.log(a); alert('The Whole Form is: ' + a);"
+                id="btnGetWholeForm" value="Get Whole Form">
+
+        <input  type="button" class="buttonPadding"
+                onclick="DoCompleteFormPopulate();"
+                id="btnGetWholeForm" value="Set Whole Form">
     </div>
 
     <div id="FormGenBody" class='flex-item' >
@@ -259,6 +267,17 @@
 
             FG.SetFormDataFromString(x);
 
+        }
+        function DoCompleteFormPopulate()
+        {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    FG.SetWholeForm(this.responseText);
+                }
+            };
+            xmlhttp.open('GET', 'http://localhost:5500/LargeFormDefinitionWithData.json');
+            xmlhttp.send();
         }
 
     
