@@ -230,12 +230,15 @@ Sample JSON data output from a blank form built via the included HTML file, show
 IE
 If the class is defined as FG then
 
-        function DoFormGenInteraction(e)
-        {
-            FG.DoFormGenInteraction(e);
-        }
+```typescript
 
-    be somewhere in the base javascript to wire up the UIInteractions..
+function DoFormGenInteraction(e)  
+{  
+    FG.DoFormGenInteraction(e);  
+}  
+```
+
+be somewhere in the base javascript to wire up the UIInteractions..
  TODO: find a cleaner way to do this
 
 - **SetFormVersion(versionstring: string)** Will take versionstring and apply it to the classes internal versioning mechanisim. Echoing this back on **GetFormData** and **GetFormDataAsString**
@@ -255,7 +258,7 @@ Same Form set bact to ReadWrite using TRUE as the Parameter
 - **GetWholeForm()** Returns a serialized **FormGenDefCon** object the represents the both the current forms definition and its answers
 as entered by the user. Used for persisting both a forms actual shape and the answers in a single bundle
 
-- **SetWholeForm(TheFormDefCon: string)** Takes a serialized **FormGenDefCon** object and rehydrates a the forms shape and fills in the 
+- **SetWholeForm(TheFormDefCon: string)** Takes a serialized **FormGenDefCon** object and rehydrates a the forms shape and fills in the
 answers so the forms state is preserved from the prior call to **GetWholeForm**
 
 FormGenDefCon (stands for the Formgens Definition and Content) Definition shown below
@@ -273,7 +276,6 @@ class FormGenDefCon {
 }
 
 ```
-
 
 ### SAMPLE HTML
 (also included in the project)
@@ -365,6 +367,22 @@ class FormGenDefCon {
         <input  type="button" class="buttonPadding"
                 onclick="FG.SetReadWrite(false);"
                 id="btnSetReadWritefalse" value="ReadOnly">
+
+        <input  type="button" class="buttonPadding"
+                onclick="alert(' The Forms Internal Definition is: ' + FG.GetFormDefinitionAsString());"
+                id="btnGetFormDefinition" value="Show Form Definition">
+
+        <input  type="button" class="buttonPadding"
+                onclick="window.location.href = 'testmassiveload.html';"
+                id="btnTestMassiveLoad" value="Test Massive Load">
+
+        <input  type="button" class="buttonPadding"
+                onclick="var a = FG.GetWholeForm(); console.log(a); alert('The Whole Form is: ' + a);"
+                id="btnGetWholeForm" value="Get Whole Form">
+
+        <input  type="button" class="buttonPadding"
+                onclick="DoCompleteFormPopulate();"
+                id="btnGetWholeForm" value="Set Whole Form">
     </div>
 
     <div id="FormGenBody" class='flex-item' >
@@ -375,7 +393,7 @@ class FormGenDefCon {
 
 
     <script>var exports = {};</script>  <!-- Hack to get rid of Exports Error from TSC compile -->
-                                        <!-- This preserves the use of the Typuscript source in -->
+                                        <!-- This preserves the use of the Typescript source in -->
                                         <!-- Angular library form for some users of the code library -->
 
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -446,8 +464,6 @@ class FormGenDefCon {
             new UIElement(11,"LIST","infotext","<br>First a serias of combo boxes showing REQUIRED rendering and NON REQUIRED rendering AUTO Sized and Standard BOOTSTRAP columing based on the number of elemenmts that are indicated to exist on the same line.",
             [],true,[],true,"background-color: teal","","",[]));
 
-
-
         ELEs.push(
             new UIElement(12,"10","dropdown","Combobox/Dropdown <br>that is flagged as required<br>Flagged as <b>AUTOSIZED</b>",["1","2","3","4"], true,
             [],true,"background-color: palegreen","","",[],true));
@@ -463,11 +479,6 @@ class FormGenDefCon {
         ELEs.push(
             new UIElement(13,"10a","dropdown","Combobox/Dropdown <br>that is flagged as <b>NOT</b> required<br>Flagged as <b>NOT AUTOSIZED</b>",["1","2","3","4"], false,
             [],true,"background-color: palegreen","","",[]));
-
-
-
-
-
 
         ELEs.push(
             new UIElement(14,"11","radio","Radio Buttons flagged as required",["Male","Female","Unknown"],true,
@@ -533,7 +544,17 @@ class FormGenDefCon {
             FG.SetFormDataFromString(x);
 
         }
-
+        function DoCompleteFormPopulate()
+        {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    FG.SetWholeForm(this.responseText);
+                }
+            };
+            xmlhttp.open('GET', 'http://localhost:5500/LargeFormDefinitionWithData.json');
+            xmlhttp.send();
+        }
 
     </script>
 
