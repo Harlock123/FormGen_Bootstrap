@@ -7,6 +7,8 @@ export declare class FormGenBS {
     private EnableGreenbar;
     private GreenBarColor;
     private DOINTERACTION;
+    private AllowInteractions;
+    private TheInputIDs;
     constructor(DomElementID: string, UIElements: UIElement[], VersionString: string, JSobjectName: string);
     private HydrateForm;
     /**
