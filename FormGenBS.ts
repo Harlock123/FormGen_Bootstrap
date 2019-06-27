@@ -1891,13 +1891,13 @@ export class FormGenBS {
                                             if (UIi.elInteractionType == "HIDE") {
                                                 thetriggeredelement.style.display = "none";
 
-                                                e.value = "";
+                                                //e.value = "";
 
                                                 // here we want to recursively call itself to propigate UIInteractions down the chain
 
                                                 //var telement = document.getElementById(UIi.elIDTarget);
 
-                                                this.DoFormGenInteraction(e);
+                                                //this.DoFormGenInteraction(e);
                                             }
                                         }
                                     }
@@ -1905,7 +1905,7 @@ export class FormGenBS {
                                         if (UIi.elInteractionType == "SHOW") {
                                             thetriggeredelement.style.display = "none";
 
-                                            e.value = "";
+                                            //e.value = "";
 
                                             // here we want to recursively call itself to propigate UIInteractions down the chain
 
