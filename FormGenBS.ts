@@ -964,6 +964,8 @@ export class FormGenBS {
 
     /**
      * GetFormData
+     * 
+     * @returns UIValue[] of the forms current answers to the question elements on the current form
      */
     public GetFormData() {
         var UIValues: UIValue[] = [];
@@ -1078,28 +1080,38 @@ export class FormGenBS {
 
     /**
      * GetFormDataAsString
+     * 
+     * @returns JSON.Stringify() result of the GetFormData() method.
      */
     public GetFormDataAsString() {
         return JSON.stringify(this.GetFormData());
     }
 
     /**
-     * GetFormDataAsString
+     * GetFormDefinition
+     * 
+     * @returns a UIElement[] of the forms current content for its definition.
      */
     public GetFormDefinition() {
         return this.theUIElements;
     }
 
     /**
-     * GetFormDataAsString
+     * GetFormDefinitionAsString
+     * Returns the JSON.Stringify() result of the GetFormDefinition() call.
+     * Used to save a forms definition elsewhere so it can restored with a call to SetFormDefinition().
+     * 
+     * @returns JSON.Stringify() array of UIElements
      */
     public GetFormDefinitionAsString() {
         return JSON.stringify(this.GetFormDefinition());
     }
 
     /**
-     * GetFormDataAsString
-     * TheFormDefinitionAsString: string
+     * SetFormDefinition
+     * @param TheFormDefinitionAsString: string
+     * 
+     * Takes a JSON.Stringify result of the GetFormDefinition() call and rehydrates the form to restore its content.
      */
     public SetFormDefinition(TheFormDefinitionAsString: string) {
         var Self = this;
@@ -1107,8 +1119,10 @@ export class FormGenBS {
     }
 
     /**
-     * GetFormDataAsString
-     * UIElementArray: UIElement[]
+     * SetFormDefinitionFromObject
+     * @param UIElementArray: UIElement[]
+     * 
+     * Takes an array of UUElements and applys that to the forms definition overwriting the existing forms definition
      */
     public SetFormDefinitionFromObject(UIElementArray: UIElement[]) {
         var Self = this;
@@ -1117,7 +1131,9 @@ export class FormGenBS {
 
     /**
      * GetFormDefinitionFrom
-     * webUrl: string   
+     * @param webUrl: string  
+     * Attempts to do a simple GET from the supplied URL to fetch the definition for a form as a JSON.Stringify() 
+     * result of an array of UIElements. Used to fetch forms definition from webservice endpoints. 
     */
     public GetFormDefinitionFrom(webUrl: string) {
         // Will attempt to populate the for by doung an HTTP GET from the webUrl
@@ -1163,7 +1179,7 @@ export class FormGenBS {
 
     /**
      * SetFormData
-     *  UIValues: UIValue[]
+     *  @param UIValues: UIValue[]
      */
     public SetFormData(UIValues: UIValue[]) {
 
@@ -1301,7 +1317,7 @@ export class FormGenBS {
 
     /**
      * SetFormVersion
-     * versionstring: string
+     * @param versionstring: string
      */
     public SetFormVersion(versionstring: string) {
         this.theVersionString = versionstring;
@@ -1316,7 +1332,11 @@ export class FormGenBS {
 
     /**
      * SetFormDataFromString
-     *  theString: string
+     *  @param theString: string
+     * 
+     * Takes a JSON serialization (Stringify) of an array of UIValue elements and attempts to apply
+     * the vakues to the current form. Used to restore a forms entries gathered by a call to 
+     * GetFormDataAsString()
      */
     public SetFormDataFromString(theString: string) {
 
@@ -1327,6 +1347,11 @@ export class FormGenBS {
 
     /**
      * GetFormScore
+     * 
+     * Walks the forms content and for elements that had a weight to be applied to them in the SCORE Array for the element will
+     * calculate the SUM score
+     * 
+     * @return score as a number.
      */
     public GetFormScore() {
 
@@ -1445,6 +1470,14 @@ export class FormGenBS {
 
     /**
      * IsFormValid
+     * 
+     * Walks the forms contents and seeks to apply simple valitity rules to the contained elements
+     * I.E. Text field have something in them, Radio and Checkbox button groups have something selected,
+     * Dropdowns have something selected, Dates have a selected value. This based on if the forms
+     * definition indicated that the element was required. Will engage HTML highlighting on invalid
+     * items
+     * 
+     * @returns Boolean validity indication True or False
      */
     public IsFormValid() {
 
@@ -1705,6 +1738,8 @@ export class FormGenBS {
 
     /**
      * ClearFormValidityVisuals
+     * 
+     * Will clear the elemet validity cue's applied tothe forms visuals by IsFormValid()
      */
     public ClearFormValidityVisuals() {
         for (let THEEL of this.theUIElements) {
@@ -1759,6 +1794,9 @@ export class FormGenBS {
 
     /**
      * DoFormGenInteraction
+     * @param e HtmlElement that triggered the event or empty string
+     * 
+     * Walks the interaction tree and engages all interaction logic based on values entered into the current form
      */
     private DoFormGenInteraction(e) {
 
@@ -2037,6 +2075,11 @@ export class FormGenBS {
         }
     }
 
+    /**
+     * GreenBarEnabled()
+     * Turns on the automatic alternate coloring scheme for renderd rows. The default color LightGreen
+     * can be changed by using SetGreenBarColor()
+     */
     public GreenBarEnabled() {
         this.EnableGreenbar = true;
 
@@ -2046,6 +2089,10 @@ export class FormGenBS {
 
     }
 
+    /**
+     * GreenBarDisabled()
+     * Turns off the automatic alternate coloring scheme for renderd rows. 
+     */
     public GreenBarDisabled() {
         this.EnableGreenbar = false;
 
@@ -2054,6 +2101,11 @@ export class FormGenBS {
         Self.HydrateForm(Self.theUIElements);
     }
 
+    /**
+     * SetGreenBarColor()
+     * @param TheColor a string representation of the color to employ for the greenbar coloration. HTML compatable string representation of the color
+     * 
+     */
     public SetGreenBarColor(TheColor: string) {
         this.GreenBarColor = TheColor;
 

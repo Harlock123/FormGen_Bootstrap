@@ -767,6 +767,8 @@ var FormGenBS = /** @class */ (function () {
     };
     /**
      * GetFormData
+     *
+     * @returns UIValue[] of the forms current answers to the question elements on the current form
      */
     FormGenBS.prototype.GetFormData = function () {
         var UIValues = [];
@@ -850,33 +852,45 @@ var FormGenBS = /** @class */ (function () {
     };
     /**
      * GetFormDataAsString
+     *
+     * @returns JSON.Stringify() result of the GetFormData() method.
      */
     FormGenBS.prototype.GetFormDataAsString = function () {
         return JSON.stringify(this.GetFormData());
     };
     /**
-     * GetFormDataAsString
+     * GetFormDefinition
+     *
+     * @returns a UIElement[] of the forms current content for its definition.
      */
     FormGenBS.prototype.GetFormDefinition = function () {
         return this.theUIElements;
     };
     /**
-     * GetFormDataAsString
+     * GetFormDefinitionAsString
+     * Returns the JSON.Stringify() result of the GetFormDefinition() call.
+     * Used to save a forms definition elsewhere so it can restored with a call to SetFormDefinition().
+     *
+     * @returns JSON.Stringify() array of UIElements
      */
     FormGenBS.prototype.GetFormDefinitionAsString = function () {
         return JSON.stringify(this.GetFormDefinition());
     };
     /**
-     * GetFormDataAsString
-     * TheFormDefinitionAsString: string
+     * SetFormDefinition
+     * @param TheFormDefinitionAsString: string
+     *
+     * Takes a JSON.Stringify result of the GetFormDefinition() call and rehydrates the form to restore its content.
      */
     FormGenBS.prototype.SetFormDefinition = function (TheFormDefinitionAsString) {
         var Self = this;
         Self.HydrateForm(JSON.parse(TheFormDefinitionAsString));
     };
     /**
-     * GetFormDataAsString
-     * UIElementArray: UIElement[]
+     * SetFormDefinitionFromObject
+     * @param UIElementArray: UIElement[]
+     *
+     * Takes an array of UUElements and applys that to the forms definition overwriting the existing forms definition
      */
     FormGenBS.prototype.SetFormDefinitionFromObject = function (UIElementArray) {
         var Self = this;
@@ -884,7 +898,9 @@ var FormGenBS = /** @class */ (function () {
     };
     /**
      * GetFormDefinitionFrom
-     * webUrl: string
+     * @param webUrl: string
+     * Attempts to do a simple GET from the supplied URL to fetch the definition for a form as a JSON.Stringify()
+     * result of an array of UIElements. Used to fetch forms definition from webservice endpoints.
     */
     FormGenBS.prototype.GetFormDefinitionFrom = function (webUrl) {
         // Will attempt to populate the for by doung an HTTP GET from the webUrl
@@ -920,7 +936,7 @@ var FormGenBS = /** @class */ (function () {
     };
     /**
      * SetFormData
-     *  UIValues: UIValue[]
+     *  @param UIValues: UIValue[]
      */
     FormGenBS.prototype.SetFormData = function (UIValues) {
         // look for the  version string first and set it
@@ -1045,7 +1061,7 @@ var FormGenBS = /** @class */ (function () {
     };
     /**
      * SetFormVersion
-     * versionstring: string
+     * @param versionstring: string
      */
     FormGenBS.prototype.SetFormVersion = function (versionstring) {
         this.theVersionString = versionstring;
@@ -1058,7 +1074,11 @@ var FormGenBS = /** @class */ (function () {
     };
     /**
      * SetFormDataFromString
-     *  theString: string
+     *  @param theString: string
+     *
+     * Takes a JSON serialization (Stringify) of an array of UIValue elements and attempts to apply
+     * the vakues to the current form. Used to restore a forms entries gathered by a call to
+     * GetFormDataAsString()
      */
     FormGenBS.prototype.SetFormDataFromString = function (theString) {
         var v = (JSON.parse(theString));
@@ -1066,6 +1086,11 @@ var FormGenBS = /** @class */ (function () {
     };
     /**
      * GetFormScore
+     *
+     * Walks the forms content and for elements that had a weight to be applied to them in the SCORE Array for the element will
+     * calculate the SUM score
+     *
+     * @return score as a number.
      */
     FormGenBS.prototype.GetFormScore = function () {
         var score = 0;
@@ -1152,6 +1177,14 @@ var FormGenBS = /** @class */ (function () {
     };
     /**
      * IsFormValid
+     *
+     * Walks the forms contents and seeks to apply simple valitity rules to the contained elements
+     * I.E. Text field have something in them, Radio and Checkbox button groups have something selected,
+     * Dropdowns have something selected, Dates have a selected value. This based on if the forms
+     * definition indicated that the element was required. Will engage HTML highlighting on invalid
+     * items
+     *
+     * @returns Boolean validity indication True or False
      */
     FormGenBS.prototype.IsFormValid = function () {
         var isvalid = true;
@@ -1334,6 +1367,8 @@ var FormGenBS = /** @class */ (function () {
     };
     /**
      * ClearFormValidityVisuals
+     *
+     * Will clear the elemet validity cue's applied tothe forms visuals by IsFormValid()
      */
     FormGenBS.prototype.ClearFormValidityVisuals = function () {
         for (var _i = 0, _a = this.theUIElements; _i < _a.length; _i++) {
@@ -1374,6 +1409,9 @@ var FormGenBS = /** @class */ (function () {
     };
     /**
      * DoFormGenInteraction
+     * @param e HtmlElement that triggered the event or empty string
+     *
+     * Walks the interaction tree and engages all interaction logic based on values entered into the current form
      */
     FormGenBS.prototype.DoFormGenInteraction = function (e) {
         if (this.AllowInteractions) {
@@ -1590,16 +1628,30 @@ var FormGenBS = /** @class */ (function () {
             }
         }
     };
+    /**
+     * GreenBarEnabled()
+     * Turns on the automatic alternate coloring scheme for renderd rows. The default color LightGreen
+     * can be changed by using SetGreenBarColor()
+     */
     FormGenBS.prototype.GreenBarEnabled = function () {
         this.EnableGreenbar = true;
         var Self = this;
         Self.HydrateForm(Self.theUIElements);
     };
+    /**
+     * GreenBarDisabled()
+     * Turns off the automatic alternate coloring scheme for renderd rows.
+     */
     FormGenBS.prototype.GreenBarDisabled = function () {
         this.EnableGreenbar = false;
         var Self = this;
         Self.HydrateForm(Self.theUIElements);
     };
+    /**
+     * SetGreenBarColor()
+     * @param TheColor a string representation of the color to employ for the greenbar coloration. HTML compatable string representation of the color
+     *
+     */
     FormGenBS.prototype.SetGreenBarColor = function (TheColor) {
         this.GreenBarColor = TheColor;
         if (this.EnableGreenbar) {
