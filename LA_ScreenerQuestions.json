@@ -1,0 +1,2285 @@
+[
+    {
+        "elFormRow": 1,
+        "elID": "0",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "Health Risk Screener - Adult",
+        "elRequired": false,
+        "elType": "header",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "font-size: 22px; padding-bottom: 15px;",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 2,
+        "elID": "0",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "This health assessment will help us learn about your health so we can coordinate your care in a way that meets your personal needs. We know some of the questions are sensitive and we value your privacy. Your answers will only be shared with those who can help you get the care you need. ",
+        "elRequired": false,
+        "elType": "infotext",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "font-family: Open Sans; font-size: 14px; font-weight: 400; color:#333;",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 3,
+        "elID": "0",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "If you have questions or would like to complete this assessment over the phone, please contact Member Services. You can call us at 1-844-521-6941 (TTY 711) Monday through Friday between 7 a.m. and 7 p.m. We can also send you a paper copy.",
+        "elRequired": false,
+        "elType": "infotext",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "font-family: Open Sans; font-size: 14px; font-weight: 400; color:#333;",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 4,
+        "elID": "0",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "Member Information",
+        "elRequired": false,
+        "elType": "infotext",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "font-size: 18px;text-align: left;",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 5,
+        "elID": "98",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "First Name: ",
+        "elRequired": false,
+        "elType": "text",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 5,
+        "elID": "99",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "Last Name:",
+        "elRequired": false,
+        "elType": "text",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 5,
+        "elID": "509451",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "Member ID#:",
+        "elRequired": false,
+        "elType": "text",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 6,
+        "elID": "100",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "DOB:",
+        "elRequired": false,
+        "elType": "text",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 6,
+        "elID": "547009",
+        "elContent": [
+            "White alone",
+            "Black/African American alone ",
+            "American Indian/Alaska Native alone ",
+            "Asian alone ",
+            "Native Hawaiian /Other Pacific Islander alone ",
+            "Two or More Races",
+            "Hispanic/Latino "
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"
+        ],
+        "elLabel": "Ethnicity:",
+        "elRequired": true,
+        "elType": "dropdown",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 6,
+        "elID": "109",
+        "elContent": [
+            "Female",
+            "Male",
+            "Unknown"
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3"
+        ],
+        "elLabel": "Gender:",
+        "elRequired": false,
+        "elType": "text",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 7,
+        "elID": "546820",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "Street Address:",
+        "elRequired": false,
+        "elType": "text",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 7,
+        "elID": "546821",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "City:",
+        "elRequired": false,
+        "elType": "text",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 8,
+        "elID": "546822",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "State:",
+        "elRequired": false,
+        "elType": "text",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 8,
+        "elID": "546823",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "Zip Code:",
+        "elRequired": false,
+        "elType": "text",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 8,
+        "elID": "546824",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "Home Phone Number:",
+        "elRequired": false,
+        "elType": "text",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 9,
+        "elID": "546812",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "How many children live in your home? ",
+        "elRequired": true,
+        "elType": "text",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 9,
+        "elID": "546813",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "What are their ages?",
+        "elRequired": true,
+        "elType": "text",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 15,
+        "elID": "502045",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "Age:",
+        "elRequired": false,
+        "elType": "text",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": false,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 17,
+        "elID": "561012",
+        "elContent": [
+            "Disabled and not employed",
+            "Employed full-time",
+            "Employed part-time",
+            "Homemaker",
+            "Employed in the armed forces",
+            "Currently in the hospital",
+            "In jail/prison/training institution",
+            "Occasional/seasonal worker",
+            "Other"
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+        ],
+        "elLabel": "Employment Status:",
+        "elRequired": true,
+        "elType": "dropdown",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 17,
+        "elID": "561013",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "If Other, please specify:",
+        "elRequired": false,
+        "elType": "text",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 19,
+        "elID": "561014",
+        "elContent": [
+            "Private Residence - Dependent Living",
+            "Group Home, Halfway House, Rehabilitation Center",
+            "Homeless Shelter",
+            "Hospital",
+            "Private Residence - Independent Living",
+            "In jail/prison/training institution",
+            "No Permanent Residence",
+            "Nursing Home or Intermediate Care Facility",
+            "Other Quarters",
+            "Residential Hotel",
+            "With Family/Extended Family or Non-Relative",
+            "Foster Home/Foster Care",
+            "Unknown"
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13"
+        ],
+        "elLabel": "Residence Type:",
+        "elRequired": true,
+        "elType": "dropdown",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 20,
+        "elID": "0",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "Health Assessment",
+        "elRequired": false,
+        "elType": "infotext",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "font-size: 18px;text-align: left;",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 21,
+        "elID": "0",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "Please read each question. Please select the answer or answers that best describe you.",
+        "elRequired": false,
+        "elType": "infotext",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "text-align: left; font-family: Open Sans; font-size: 14px; font-weight: 400; color:#333;",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 22,
+        "elID": "542193",
+        "elContent": [
+            "Excellent",
+            "Very Good",
+            "Good",
+            "Fair",
+            "Poor"
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+        ],
+        "elLabel": "How would you describe your health recently?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "2",
+            "3",
+            "5"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 23,
+        "elID": "542195",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Do you use four or more prescription medications on a regular basis?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "3",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 24,
+        "elID": "542196",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Do you use any medical equipment? This could include a wheelchair, hospital bed, home oxygen, or breathing machine such as an inhaler or nebulizer?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "1",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 25,
+        "elID": "542197",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Do you need help with daily activities like taking your medications, bathing or eating?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "1",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 26,
+        "elID": "542198",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Do you currently get any home care services?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "1",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 27,
+        "elID": "542203",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Do you currently use tobacco?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [
+            {
+                "elIDSource": 542203,
+                "elIDTarget": 542204,
+                "elInteractionType": "SHOW",
+                "elValueTrigger": "Yes"
+            }
+        ],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "2",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 28,
+        "elID": "542204",
+        "elContent": [
+            "0 -5 years",
+            "5-15 years",
+            "More than 15 years"
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3"
+        ],
+        "elLabel": "If you said \"Yes\", how many years have you used tobacco?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": false,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 29,
+        "elID": "542205",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Do you have an emergency plan for your medical needs if there's a hurricane or other natural disaster?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 30,
+        "elID": "547011",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Have you been admitted to the hospital in the last six months for a medical condition? This could include uncontrolled diabetes, asthma, heart problems and more.",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [
+            {
+                "elIDSource": 547011,
+                "elIDTarget": 547119,
+                "elInteractionType": "SHOW",
+                "elValueTrigger": "Yes"
+            }
+        ],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 31,
+        "elID": "547119",
+        "elContent": [
+            "Once",
+            "Two to four times",
+            "Five or more times"
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3"
+        ],
+        "elLabel": "If you said \"Yes\", how many times in the last six months have you been admitted to the hospital for a medical condition?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": false,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "1",
+            "3",
+            "6"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 32,
+        "elID": "547018",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Have you visited the emergency room for a medical condition within the past six months? This could include a visit for uncontrolled diabetes, asthma, heart problems, headaches, a chest cold and more.",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [
+            {
+                "elIDSource": 547018,
+                "elIDTarget": 547024,
+                "elInteractionType": "SHOW",
+                "elValueTrigger": "Yes"
+            }
+        ],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 33,
+        "elID": "547024",
+        "elContent": [
+            "Once",
+            "Two to four times",
+            "Five or more times"
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3"
+        ],
+        "elLabel": "If you said \"Yes\", how many times in the last six months have you visited the emergency room for a medical condition?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": false,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 34,
+        "elID": "547100",
+        "elContent": [
+            "Combined (PH/BH)",
+            "BH Only"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Assessment Type: ",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": false,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 35,
+        "elID": "547025",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Have you been treated for an emotional or mental health condition in the last six months?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [
+            {
+                "elIDSource": 547025,
+                "elIDTarget": 547262,
+                "elInteractionType": "SHOW",
+                "elValueTrigger": "Yes"
+            }
+        ],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 36,
+        "elID": "547262",
+        "elContent": [
+            "I was admitted to the hospital for my nerves, depression, anxiety, thoughts of wanting to kill myself or someone else, hearing or seeing things that aren't there, mood swings or bipolar episodes.",
+            "I went to the emergency room two to four times for my nerves, depression, anxiety, thoughts of wanting to kill myself or someone else, hearing or seeing things that aren't there, mood swings or bipolar episodes. ",
+            "I see a psychiatrist, psychologist, social worker or other behavioral health treatment provider on a regular basis or other behavioral health treatment provider on a regular basis",
+            "My primary care provider or my behavioral health specialist gives me medication for my nerves, depression or to help with sleep."
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3",
+            "4"
+        ],
+        "elLabel": "If you said \"Yes\", please check all that apply below:",
+        "elRequired": true,
+        "elType": "checkbox",
+        "elLabelBold": false,
+        "elInteractions": [
+            {
+                "elIDSource": 547262,
+                "elIDTarget": 700000,
+                "elInteractionType": "SHOW",
+                "elValueTrigger": "My primary care provider or my behavioral health specialist gives me medication for my nerves, depression or to help with sleep."
+            }
+        ],
+        "elInitialVisibility": false,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "1",
+            "1"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 37,
+        "elID": "700000",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "If you selected \"My primary care provider or my behavioral health specialist gives me medication for my nerves, depression or to help with sleep.\", what medication are you currently using for your nerves, depression or to help with sleep?",
+        "elRequired": false,
+        "elType": "text",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": false,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 38,
+        "elID": "547035",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Have you ever been treated for an alcohol or substance use problem?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "9",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 39,
+        "elID": "547040",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Has anyone ever said you need to drink less or use fewer drugs?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "9",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 40,
+        "elID": "547044",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Do you feel guilty about your drug use or alcohol use?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "9",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 41,
+        "elID": "547047",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Do you get upset or angry when people talk to you about your alcohol or drug use?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "9",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 42,
+        "elID": "547051",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Do you have to drink in the morning or other times to calm your nerves or to treat a hangover? ",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "9",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 43,
+        "elID": "547077",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Do you use IV drugs or \"shoot up\" heroin, cocaine, methamphetamine or other street drugs with a syringe?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 44,
+        "elID": "547081",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Have you used recreational drugs or taken prescription medications for non-medical reasons in the past year? Examples can include drugs like: marijuana, ecstasy, heroin, pain pills, solvents such as glue, paint thinner and varnish, Valium, Klonopin or Xanax, cocaine or crack.",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [
+            {
+                "elIDSource": 547081,
+                "elIDTarget": 547082,
+                "elInteractionType": "SHOW",
+                "elValueTrigger": "Yes"
+            }
+        ],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 45,
+        "elID": "547082",
+        "elContent": [
+            "Today",
+            "In the last week",
+            "In the past month",
+            "In the last year"
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3",
+            "4"
+        ],
+        "elLabel": "If you said \"Yes\", please check when you have used recreational drugs or taken prescription medications for non-medical reasons: ",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": false,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 46,
+        "elID": "547083",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Have you taken medicine for chronic pain, headaches, toothaches, backache, hip or knee pain?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [
+            {
+                "elIDSource": 547083,
+                "elIDTarget": 547177,
+                "elInteractionType": "SHOW",
+                "elValueTrigger": "Yes"
+            }
+        ],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 47,
+        "elID": "547177",
+        "elContent": [
+            "Today",
+            "In the last week",
+            "In the last month",
+            "In the last year"
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3",
+            "4"
+        ],
+        "elLabel": "If you said \"Yes\", please check when you took medicines like hydrocodone, morphine, OxyContin, Percocet, Vicodin or similar for pain:",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": false,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 48,
+        "elID": "546836",
+        "elContent": [
+            "Not at all",
+            "Once",
+            "More than twice a month",
+            "Nearly every day"
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3",
+            "4"
+        ],
+        "elLabel": "Do you have trouble concentrating on things like reading, watching TV or concentrating at work?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "1",
+            "8"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 49,
+        "elID": "547058",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Have you been treated for a gambling problem?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [
+            {
+                "elIDSource": 547058,
+                "elIDTarget": 547065,
+                "elInteractionType": "SHOW",
+                "elValueTrigger": "Yes"
+            }
+        ],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 50,
+        "elID": "547065",
+        "elContent": [
+            "I called a 1-800 gambling phone number for help.",
+            "I asked casinos to keep me from getting more money after I lost my money.",
+            "My family and/or friends told me to get help for my gambling.",
+            "My family or friends won't talk to me or they avoid me because of my gambling."
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3",
+            "4"
+        ],
+        "elLabel": "If you said \"Yes\", please check all that apply below:",
+        "elRequired": true,
+        "elType": "checkbox",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": false,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 51,
+        "elID": "547069",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Are you currently pregnant or do you plan to get pregnant within the next year?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [
+            {
+                "elIDSource": 547069,
+                "elIDTarget": 547074,
+                "elInteractionType": "SHOW",
+                "elValueTrigger": "Yes"
+            },
+            {
+                "elIDSource": 547069,
+                "elIDTarget": 547076,
+                "elInteractionType": "SHOW",
+                "elValueTrigger": "Yes"
+            }
+        ],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 52,
+        "elID": "547074",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "If \"Yes\", are you taking any medications for nerves, depression, anxiety, bipolar, schizophrenia or any other behavioral problem?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": false,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 53,
+        "elID": "547076",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "If \"Yes\", have you been treated for postpartum depression before?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": false,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 54,
+        "elID": "547078",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Do you drink alcohol or use any other drugs like cocaine, marijuana or pain pills?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [
+            {
+                "elIDSource": 547078,
+                "elIDTarget": 547079,
+                "elInteractionType": "SHOW",
+                "elValueTrigger": "Yes"
+            }
+        ],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 55,
+        "elID": "547079",
+        "elContent": [
+            "Alcohol",
+            "Cocaine",
+            "Marijuana",
+            "Pain pills"
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3",
+            "4"
+        ],
+        "elLabel": "If \"Yes\", please check which substance(s) you currently use:",
+        "elRequired": true,
+        "elType": "checkbox",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": false,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 56,
+        "elID": "546848",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Do you live in a nursing home? ",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [
+            {
+                "elIDSource": 546848,
+                "elIDTarget": 546850,
+                "elInteractionType": "SHOW",
+                "elValueTrigger": "Yes"
+            }
+        ],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 57,
+        "elID": "546850",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "If \"Yes\", do you think you have a behavioral health or substance abuse problem?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": false,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 58,
+        "elID": "547090",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Are you older than 21?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [
+            {
+                "elIDSource": 547090,
+                "elIDTarget": 546851,
+                "elInteractionType": "SHOW",
+                "elValueTrigger": "Yes"
+            }
+        ],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 59,
+        "elID": "546851",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "If you said \"Yes\", are you currently being treated by a behavioral health provider?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": false,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 60,
+        "elID": "546852",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Do you need help finding a permanent home and also getting behavioral health services?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 61,
+        "elID": "542207",
+        "elContent": [
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "1",
+            "2"
+        ],
+        "elLabel": "Would you like for one of our nurse case managers to contact you to talk about our free Case Management Program? ",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 62,
+        "elID": "567336",
+        "elContent": [
+            "Yes",
+            "No",
+            "Not applicable to me, my age is greater than 20"
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3"
+        ],
+        "elLabel": "Only for members age 18-20: Did you, a family member or a teacher ever say you should be evaluated for or diagnosed with autism?",
+        "elRequired": false,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 63,
+        "elID": "567337",
+        "elContent": [
+            "Yes",
+            "No",
+            "Not applicable to me, my age is greater than 20"
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3"
+        ],
+        "elLabel": "Only for members age 18-20: Do you have worrisome or difficult behavior that you need help with or that prevents you from functioning in the community?",
+        "elRequired": false,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 64,
+        "elID": "567338",
+        "elContent": [
+            "Yes",
+            "No",
+            "Not applicable to me, my age is greater than 20"
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3"
+        ],
+        "elLabel": "Only for members age 18-20: Do you get upset by everyday noise? (Noises such as a child screaming or crying, loud noises or loud music.)",
+        "elRequired": false,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 65,
+        "elID": "567360",
+        "elContent": [
+            "Yes",
+            "No",
+            "Not applicable to me, my age is greater than 20"
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3"
+        ],
+        "elLabel": "Only for members age 18-20: Are you interested in talking to or engaging with other people? (Engage, interact, smile with other adults or children?)",
+        "elRequired": false,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 66,
+        "elID": "700002",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "What is your height?",
+        "elRequired": false,
+        "elType": "infotext",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": true,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 67,
+        "elID": "547564",
+        "elContent": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"
+        ],
+        "elLabel": "Height (Ft):",
+        "elRequired": false,
+        "elType": "dropdown",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": true,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 67,
+        "elID": "700001",
+        "elContent": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11"
+        ],
+        "eloption": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+        ],
+        "elLabel": "Height (in):",
+        "elRequired": false,
+        "elType": "dropdown",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": true,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 68,
+        "elID": "0",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "What is your weight?",
+        "elRequired": false,
+        "elType": "infotext",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": true,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 69,
+        "elID": "547565",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "Weight (in lbs.):",
+        "elRequired": false,
+        "elType": "text",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": true,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": true,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 70,
+        "elID": "542228",
+        "elContent": [],
+        "eloption": [],
+        "elLabel": "BMI Calculation:",
+        "elRequired": false,
+        "elType": "text",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": false,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    },
+    {
+        "elFormRow": 72,
+        "elID": "543259",
+        "elContent": [
+            "NULL",
+            "",
+            "Yes",
+            "No"
+        ],
+        "eloption": [
+            "0",
+            "0",
+            "1",
+            "2"
+        ],
+        "elLabel": "Is member already assigned?",
+        "elRequired": true,
+        "elType": "radio",
+        "elLabelBold": false,
+        "elInteractions": [],
+        "elInitialVisibility": false,
+        "elStyle": "",
+        "elLabelStyle": "",
+        "elFormStyle": "",
+        "elScore": [
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "elHraKey": 2446,
+        "elHraId": 2032,
+        "asca_version": 2,
+        "elAutoSize": false,
+        "elCustomClass": ""
+    }
+]

@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var FormGenBS = /** @class */ (function () {
     function FormGenBS(DomElementID, UIElements, VersionString, JSobjectName) {
         this.theUIInteractions = [];
+        this.theUIElements = [];
         this.theVersionString = "";
         this.JSOBJECTNAME = "";
         this.EnableGreenbar = false;
@@ -28,10 +29,33 @@ var FormGenBS = /** @class */ (function () {
                 return 1;
             return 0;
         });
-        // Lets kill the existing strig array of InputIDs to clear the list for repopulation
+        // Clear the existing arrays of other stuff 
+        this.theUIElements = [];
+        this.theUIInteractions = [];
+        // Lets kill the existing string array of InputIDs to clear the list for repopulation
         this.TheInputIDs = [];
+        // Now we want to Pupulate the Saved UIELEMENTS array with each element from the sorted handed in
+        // uielements but we want to renumber the ROWIDs so they are not sparce and are ordinal.
+        // This should prevent Holes in the output
+        var rc = 0;
+        var oldID = 0;
+        for (var _i = 0, UIElements_1 = UIElements; _i < UIElements_1.length; _i++) {
+            var THEEL = UIElements_1[_i];
+            if (THEEL.elFormRow != oldID) {
+                rc += 1;
+                oldID = THEEL.elFormRow;
+                THEEL.elFormRow = rc;
+                this.theUIElements.push(THEEL);
+            }
+            else {
+                THEEL.elFormRow = rc;
+                this.theUIElements.push(THEEL);
+            }
+        }
+        // this.theUIElements should now contain a renumbered array of stuff
+        UIElements = this.theUIElements;
         // save the handed in UIElements for further processing later
-        this.theUIElements = UIElements;
+        // this.theUIElements = UIElements;
         // here we will preparse the UIElements to determine the formgrouping 
         // for the purposes of selecting the appropriate columnar layout characteristics
         // to employ for each form row
@@ -41,8 +65,8 @@ var FormGenBS = /** @class */ (function () {
         var row = 0;
         var cnt = 0;
         var eventwirup = this.JSOBJECTNAME + ".DOINTERACTION(this)";
-        for (var _i = 0, UIElements_1 = UIElements; _i < UIElements_1.length; _i++) {
-            var THEEL = UIElements_1[_i];
+        for (var _a = 0, UIElements_2 = UIElements; _a < UIElements_2.length; _a++) {
+            var THEEL = UIElements_2[_a];
             if (THEEL.elFormRow != row) {
                 // we have a new row lets push the old row
                 FROWS.push(cnt);
@@ -68,23 +92,12 @@ var FormGenBS = /** @class */ (function () {
         // Starting from 1 (The Zero element in the array should have 0 in it so its 1 based)
         // assuming that the numbered rows handed in started at 1...
         // now lets iterate over the list of FORM ROWS and determine the BOOTSTRAP Tags to employ on each of those rows
-        for (var _a = 0, FROWS_1 = FROWS; _a < FROWS_1.length; _a++) {
-            var RRR = FROWS_1[_a];
+        for (var _b = 0, FROWS_1 = FROWS; _b < FROWS_1.length; _b++) {
+            var RRR = FROWS_1[_b];
             if (RRR != 0) {
                 switch (RRR) {
                     case 1: {
                         BOOTSTRAPTAGS.push("col-md-12");
-                        for (var _b = 0, UIElements_2 = UIElements; _b < UIElements_2.length; _b++) {
-                            var THEEL = UIElements_2[_b];
-                            if (THEEL.elFormRow == cnt) {
-                                FROWTAGS.push(THEEL.elStyle);
-                                break;
-                            }
-                        }
-                        break;
-                    }
-                    case 2: {
-                        BOOTSTRAPTAGS.push("col-md-6");
                         for (var _c = 0, UIElements_3 = UIElements; _c < UIElements_3.length; _c++) {
                             var THEEL = UIElements_3[_c];
                             if (THEEL.elFormRow == cnt) {
@@ -94,8 +107,8 @@ var FormGenBS = /** @class */ (function () {
                         }
                         break;
                     }
-                    case 3: {
-                        BOOTSTRAPTAGS.push("col-md-4");
+                    case 2: {
+                        BOOTSTRAPTAGS.push("col-md-6");
                         for (var _d = 0, UIElements_4 = UIElements; _d < UIElements_4.length; _d++) {
                             var THEEL = UIElements_4[_d];
                             if (THEEL.elFormRow == cnt) {
@@ -105,8 +118,8 @@ var FormGenBS = /** @class */ (function () {
                         }
                         break;
                     }
-                    case 4: {
-                        BOOTSTRAPTAGS.push("col-md-3");
+                    case 3: {
+                        BOOTSTRAPTAGS.push("col-md-4");
                         for (var _e = 0, UIElements_5 = UIElements; _e < UIElements_5.length; _e++) {
                             var THEEL = UIElements_5[_e];
                             if (THEEL.elFormRow == cnt) {
@@ -116,8 +129,8 @@ var FormGenBS = /** @class */ (function () {
                         }
                         break;
                     }
-                    case 6: {
-                        BOOTSTRAPTAGS.push("col-md-2");
+                    case 4: {
+                        BOOTSTRAPTAGS.push("col-md-3");
                         for (var _f = 0, UIElements_6 = UIElements; _f < UIElements_6.length; _f++) {
                             var THEEL = UIElements_6[_f];
                             if (THEEL.elFormRow == cnt) {
@@ -127,8 +140,8 @@ var FormGenBS = /** @class */ (function () {
                         }
                         break;
                     }
-                    case 12: {
-                        BOOTSTRAPTAGS.push("col-md-1");
+                    case 6: {
+                        BOOTSTRAPTAGS.push("col-md-2");
                         for (var _g = 0, UIElements_7 = UIElements; _g < UIElements_7.length; _g++) {
                             var THEEL = UIElements_7[_g];
                             if (THEEL.elFormRow == cnt) {
@@ -138,10 +151,21 @@ var FormGenBS = /** @class */ (function () {
                         }
                         break;
                     }
-                    default: {
+                    case 12: {
                         BOOTSTRAPTAGS.push("col-md-1");
                         for (var _h = 0, UIElements_8 = UIElements; _h < UIElements_8.length; _h++) {
                             var THEEL = UIElements_8[_h];
+                            if (THEEL.elFormRow == cnt) {
+                                FROWTAGS.push(THEEL.elStyle);
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                    default: {
+                        BOOTSTRAPTAGS.push("col-md-1");
+                        for (var _j = 0, UIElements_9 = UIElements; _j < UIElements_9.length; _j++) {
+                            var THEEL = UIElements_9[_j];
                             if (THEEL.elFormRow == cnt) {
                                 FROWTAGS.push(THEEL.elStyle);
                                 break;
@@ -158,8 +182,8 @@ var FormGenBS = /** @class */ (function () {
         var el = document.getElementById(this.theContainer);
         var innerhtml = '<div class="card-body"><form> ';
         var CURROW = 0;
-        for (var _j = 0, BOOTSTRAPTAGS_1 = BOOTSTRAPTAGS; _j < BOOTSTRAPTAGS_1.length; _j++) {
-            var CBTAG = BOOTSTRAPTAGS_1[_j];
+        for (var _k = 0, BOOTSTRAPTAGS_1 = BOOTSTRAPTAGS; _k < BOOTSTRAPTAGS_1.length; _k++) {
+            var CBTAG = BOOTSTRAPTAGS_1[_k];
             CURROW += 1;
             if (this.EnableGreenbar) {
                 if (CURROW % 2 === 0) // even
@@ -177,8 +201,8 @@ var FormGenBS = /** @class */ (function () {
                 else
                     innerhtml += '<div class="form-row" >';
             }
-            for (var _k = 0, UIElements_9 = UIElements; _k < UIElements_9.length; _k++) {
-                var THEEL = UIElements_9[_k];
+            for (var _l = 0, UIElements_10 = UIElements; _l < UIElements_10.length; _l++) {
+                var THEEL = UIElements_10[_l];
                 if (THEEL.elFormRow == CURROW) { // We have an element that is going into the curent row
                     switch (THEEL.elType.toUpperCase()) {
                         case "TEXT": {
@@ -227,8 +251,8 @@ var FormGenBS = /** @class */ (function () {
                                     '" id="' + THEEL.elID + '" style="' + THEEL.elFormStyle + '"  > ';
                             }
                             else {
-                                for (var _l = 0, _m = THEEL.elInteractions; _l < _m.length; _l++) {
-                                    var v = _m[_l];
+                                for (var _m = 0, _o = THEEL.elInteractions; _m < _o.length; _m++) {
+                                    var v = _o[_m];
                                     this.theUIInteractions.push(v);
                                 }
                                 innerhtml += '<input type="text" class="' + CC + '" name = "' + THEEL.elID +
@@ -285,8 +309,8 @@ var FormGenBS = /** @class */ (function () {
                                     '" id="' + THEEL.elID + '" style="' + THEEL.elFormStyle + '" > ';
                             }
                             else {
-                                for (var _o = 0, _p = THEEL.elInteractions; _o < _p.length; _o++) {
-                                    var v = _p[_o];
+                                for (var _p = 0, _q = THEEL.elInteractions; _p < _q.length; _p++) {
+                                    var v = _q[_p];
                                     this.theUIInteractions.push(v);
                                 }
                                 innerhtml += '<input type="date" class="' + CC + '" name = "' + THEEL.elID +
@@ -343,8 +367,8 @@ var FormGenBS = /** @class */ (function () {
                                     + THEEL.elID + '" style="' + THEEL.elFormStyle + '" ></textarea> ';
                             }
                             else {
-                                for (var _q = 0, _r = THEEL.elInteractions; _q < _r.length; _q++) {
-                                    var v = _r[_q];
+                                for (var _r = 0, _s = THEEL.elInteractions; _r < _s.length; _r++) {
+                                    var v = _s[_r];
                                     this.theUIInteractions.push(v);
                                 }
                                 innerhtml += '<textarea rows="5" cols="40" class="' + CC + '" name="' + THEEL.elID + '" id="'
@@ -397,8 +421,8 @@ var FormGenBS = /** @class */ (function () {
                                 innerhtml += '</table>';
                             }
                             var i = 0;
-                            for (var _s = 0, _t = THEEL.elContent; _s < _t.length; _s++) {
-                                var v = _t[_s];
+                            for (var _t = 0, _u = THEEL.elContent; _t < _u.length; _t++) {
+                                var v = _u[_t];
                                 i += 1;
                                 innerhtml += '<div class="custom-control custom-radio custom-control-inline">';
                                 if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
@@ -409,8 +433,8 @@ var FormGenBS = /** @class */ (function () {
                                     innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v + '</label>';
                                 }
                                 else {
-                                    for (var _u = 0, _v = THEEL.elInteractions; _u < _v.length; _u++) {
-                                        var v_1 = _v[_u];
+                                    for (var _v = 0, _w = THEEL.elInteractions; _v < _w.length; _v++) {
+                                        var v_1 = _w[_v];
                                         this.theUIInteractions.push(v_1);
                                     }
                                     innerhtml += '<input type="radio" class="' + CC + '" ' +
@@ -472,8 +496,8 @@ var FormGenBS = /** @class */ (function () {
                                     THEEL.elID + '" style="' + THEEL.elFormStyle + '" >';
                             }
                             else {
-                                for (var _w = 0, _x = THEEL.elInteractions; _w < _x.length; _w++) {
-                                    var v = _x[_w];
+                                for (var _x = 0, _y = THEEL.elInteractions; _x < _y.length; _x++) {
+                                    var v = _y[_x];
                                     this.theUIInteractions.push(v);
                                 }
                                 innerhtml += '<select name="' + THEEL.elID +
@@ -485,8 +509,8 @@ var FormGenBS = /** @class */ (function () {
                             // Lets put the Watermark in here
                             innerhtml += '<option value="" disabled selected hidden>Please Select </option>';
                             var i = 0;
-                            for (var _y = 0, _z = THEEL.elContent; _y < _z.length; _y++) {
-                                var v = _z[_y];
+                            for (var _z = 0, _0 = THEEL.elContent; _z < _0.length; _z++) {
+                                var v = _0[_z];
                                 i += 1;
                                 innerhtml += '<option ' +
                                     'name = "' + THEEL.elID + '" id="' +
@@ -539,8 +563,8 @@ var FormGenBS = /** @class */ (function () {
                                 innerhtml += '</table>';
                             }
                             var i = 0;
-                            for (var _0 = 0, _1 = THEEL.elContent; _0 < _1.length; _0++) {
-                                var v = _1[_0];
+                            for (var _1 = 0, _2 = THEEL.elContent; _1 < _2.length; _1++) {
+                                var v = _2[_1];
                                 i += 1;
                                 innerhtml += '<div class="custom-control custom-checkbox custom-control-inline">';
                                 if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
@@ -551,8 +575,8 @@ var FormGenBS = /** @class */ (function () {
                                     innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label"  >' + v + '</label>';
                                 }
                                 else {
-                                    for (var _2 = 0, _3 = THEEL.elInteractions; _2 < _3.length; _2++) {
-                                        var v_2 = _3[_2];
+                                    for (var _3 = 0, _4 = THEEL.elInteractions; _3 < _4.length; _3++) {
+                                        var v_2 = _4[_3];
                                         this.theUIInteractions.push(v_2);
                                     }
                                     innerhtml += '<input type="checkbox" ' +
@@ -590,8 +614,8 @@ var FormGenBS = /** @class */ (function () {
                             if (THEEL.elContent.length != 0) {
                                 // we have some items for an actual list
                                 innerhtml += '<ul style="' + THEEL.elFormStyle + '">';
-                                for (var _4 = 0, _5 = THEEL.elContent; _4 < _5.length; _4++) {
-                                    var v = _5[_4];
+                                for (var _5 = 0, _6 = THEEL.elContent; _5 < _6.length; _5++) {
+                                    var v = _6[_5];
                                     innerhtml += '<li>' + v + '</li>';
                                 }
                                 innerhtml += '</ul>';
@@ -659,8 +683,8 @@ var FormGenBS = /** @class */ (function () {
         el.innerHTML = innerhtml;
         // Ok now all of the elements should be in the DOM
         // now we want to iterate over everything again to set any scoring and any required bits
-        for (var _6 = 0, UIElements_10 = UIElements; _6 < UIElements_10.length; _6++) {
-            var THEEL = UIElements_10[_6];
+        for (var _7 = 0, UIElements_11 = UIElements; _7 < UIElements_11.length; _7++) {
+            var THEEL = UIElements_11[_7];
             switch (THEEL.elType.toUpperCase()) {
                 case "TEXT": {
                     var el = (document.getElementById(THEEL.elID));
@@ -714,50 +738,56 @@ var FormGenBS = /** @class */ (function () {
                 }
                 case "RADIO": {
                     var i = 0;
-                    for (var _7 = 0, _8 = THEEL.elScore; _7 < _8.length; _7++) {
-                        var v = _8[_7];
+                    for (var _8 = 0, _9 = THEEL.elScore; _8 < _9.length; _8++) {
+                        var v = _9[_8];
                         i += 1;
                         var el = (document.getElementById(THEEL.elID + '_' + i.toString()));
-                        if (el != null) {
-                            el.dataset.fgscore = v.toString();
-                        }
-                        if (THEEL.elRequired && el != null) {
-                            el.dataset.fgrequired = "YES";
-                        }
-                        else if (el != null) {
-                            el.dataset.fgrequired = "NO";
+                        if (el !== null) {
+                            if (el != null) {
+                                el.dataset.fgscore = v.toString();
+                            }
+                            if (THEEL.elRequired && el != null) {
+                                el.dataset.fgrequired = "YES";
+                            }
+                            else if (el != null) {
+                                el.dataset.fgrequired = "NO";
+                            }
                         }
                     }
                     break;
                 }
                 case "DROPDOWN": {
                     var i = 0;
-                    for (var _9 = 0, _10 = THEEL.elScore; _9 < _10.length; _9++) {
-                        var v = _10[_9];
+                    for (var _10 = 0, _11 = THEEL.elScore; _10 < _11.length; _10++) {
+                        var v = _11[_10];
                         i += 1;
                         var ell = (document.getElementById(THEEL.elID + '_' + i.toString()));
-                        ell.dataset.fgscore = v.toString();
-                        if (THEEL.elRequired) {
-                            ell.dataset.fgrequired = "YES";
-                        }
-                        else {
-                            ell.dataset.fgrequired = "NO";
+                        if (ell !== null) {
+                            ell.dataset.fgscore = v.toString();
+                            if (THEEL.elRequired) {
+                                ell.dataset.fgrequired = "YES";
+                            }
+                            else {
+                                ell.dataset.fgrequired = "NO";
+                            }
                         }
                     }
                     break;
                 }
                 case "CHECKBOX": {
                     var i = 0;
-                    for (var _11 = 0, _12 = THEEL.elScore; _11 < _12.length; _11++) {
-                        var v = _12[_11];
+                    for (var _12 = 0, _13 = THEEL.elScore; _12 < _13.length; _12++) {
+                        var v = _13[_12];
                         i += 1;
                         var el = (document.getElementById(THEEL.elID + '_' + i.toString()));
-                        el.dataset.fgscore = v.toString();
-                        if (THEEL.elRequired) {
-                            el.dataset.fgrequired = "YES";
-                        }
-                        else {
-                            el.dataset.fgrequired = "NO";
+                        if (el !== null) {
+                            el.dataset.fgscore = v.toString();
+                            if (THEEL.elRequired) {
+                                el.dataset.fgrequired = "YES";
+                            }
+                            else {
+                                el.dataset.fgrequired = "NO";
+                            }
                         }
                     }
                     break;

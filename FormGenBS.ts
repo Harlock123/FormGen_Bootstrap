@@ -2,7 +2,7 @@ export class FormGenBS {
 
     private theUIInteractions: UIInteraction[] = [];
     private theContainer: string;
-    private theUIElements: UIElement[];
+    private theUIElements: UIElement[] = [];
     private theVersionString: string = "";
     private JSOBJECTNAME: string = "";
     private EnableGreenbar: boolean = false;
@@ -42,11 +42,43 @@ export class FormGenBS {
             return 0;
         });
 
-        // Lets kill the existing strig array of InputIDs to clear the list for repopulation
+        // Clear the existing arrays of other stuff 
+
+        this.theUIElements = [];
+        this.theUIInteractions = [];
+
+        // Lets kill the existing string array of InputIDs to clear the list for repopulation
         this.TheInputIDs = [];
+
+        // Now we want to Pupulate the Saved UIELEMENTS array with each element from the sorted handed in
+        // uielements but we want to renumber the ROWIDs so they are not sparce and are ordinal.
+        // This should prevent Holes in the output
+
+        var rc = 0;
+        var oldID = 0;
+
+        for (let THEEL of UIElements) {
+            if (THEEL.elFormRow != oldID)
+            {
+                rc += 1;
+                oldID = THEEL.elFormRow;
+                THEEL.elFormRow = rc;
+                this.theUIElements.push(THEEL);
+            }
+            else
+            {
+                THEEL.elFormRow = rc;
+                this.theUIElements.push(THEEL);
+            }
+        }
+
+        // this.theUIElements should now contain a renumbered array of stuff
+
+        UIElements = this.theUIElements;
+
         
         // save the handed in UIElements for further processing later
-        this.theUIElements = UIElements;
+        // this.theUIElements = UIElements;
 
         // here we will preparse the UIElements to determine the formgrouping 
         // for the purposes of selecting the appropriate columnar layout characteristics
@@ -852,7 +884,6 @@ export class FormGenBS {
 
                     break;
                 }
-
                 case "DATE": {
                     var el = <HTMLElement>(document.getElementById(THEEL.elID));
 
@@ -904,13 +935,15 @@ export class FormGenBS {
 
                         var el = <HTMLElement>(document.getElementById(THEEL.elID + '_' + i.toString()));
 
-                        if (el != null) { el.dataset.fgscore = v.toString(); }
+                        if (el !== null) {
+                            if (el != null) { el.dataset.fgscore = v.toString(); }
 
-                        if (THEEL.elRequired && el != null) {
-                            el.dataset.fgrequired = "YES";
-                        }
-                        else if (el != null) {
-                            el.dataset.fgrequired = "NO";
+                            if (THEEL.elRequired && el != null) {
+                                el.dataset.fgrequired = "YES";
+                            }
+                            else if (el != null) {
+                                el.dataset.fgrequired = "NO";
+                            }
                         }
                     }
 
@@ -923,14 +956,15 @@ export class FormGenBS {
                         i += 1;
 
                         var ell = <HTMLOptionElement>(document.getElementById(THEEL.elID + '_' + i.toString()));
+                        if (ell !== null) {
+                            ell.dataset.fgscore = v.toString();
 
-                        ell.dataset.fgscore = v.toString();
-
-                        if (THEEL.elRequired) {
-                            ell.dataset.fgrequired = "YES";
-                        }
-                        else {
-                            ell.dataset.fgrequired = "NO";
+                            if (THEEL.elRequired) {
+                                ell.dataset.fgrequired = "YES";
+                            }
+                            else {
+                                ell.dataset.fgrequired = "NO";
+                            }
                         }
                     }
 
@@ -944,13 +978,15 @@ export class FormGenBS {
 
                         var el = <HTMLElement>(document.getElementById(THEEL.elID + '_' + i.toString()));
 
-                        el.dataset.fgscore = v.toString();
+                        if (el !== null) {
+                            el.dataset.fgscore = v.toString();
 
-                        if (THEEL.elRequired) {
-                            el.dataset.fgrequired = "YES";
-                        }
-                        else {
-                            el.dataset.fgrequired = "NO";
+                            if (THEEL.elRequired) {
+                                el.dataset.fgrequired = "YES";
+                            }
+                            else {
+                                el.dataset.fgrequired = "NO";
+                            }
                         }
                     }
 
