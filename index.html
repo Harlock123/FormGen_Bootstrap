@@ -90,15 +90,17 @@
                 id="btnSetReadWritefalse" value="ReadOnly">
 
         <input  type="button" class="buttonPadding"
-                onclick="alert(' The Forms Internal Definition is: ' + FG.GetFormDefinitionAsString());"
+                onclick="DoLongTextDisplayInNewTab(FG.GetFormDefinitionAsString());" 
                 id="btnGetFormDefinition" value="Show Form Definition">
+
+                <!-- onclick="alert(' The Forms Internal Definition is: ' + FG.GetFormDefinitionAsString());" -->
 
         <input  type="button" class="buttonPadding"
                 onclick="window.location.href = 'testmassiveload.html';"
                 id="btnTestMassiveLoad" value="Test Massive Load">
 
         <input  type="button" class="buttonPadding"
-                onclick="var a = FG.GetWholeForm(); console.log(a); alert('The Whole Form is: ' + a);"
+                onclick="var a = FG.GetWholeForm(); console.log(a); DoLongTextDisplayInNewTab(a);"
                 id="btnGetWholeForm" value="Get Whole Form">
 
         <input  type="button" class="buttonPadding"
@@ -275,6 +277,11 @@
             };
             xmlhttp.open('GET', 'http://localhost:5500/LargeFormDefinitionWithData.json');
             xmlhttp.send();
+        }
+        function DoLongTextDisplayInNewTab(TheLongAssedText)
+        {
+            var wnd = window.open("about:blank", "", "_blank");
+            wnd.document.write(TheLongAssedText);
         }
 
     </script>
