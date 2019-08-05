@@ -1,3 +1,6 @@
+/// <reference path="node_modules/@types/jquery/index.d.ts" />;
+/// <reference path="node_modules/@types/bootstrap/index.d.ts" />;
+
 export class FormGenBS {
 
     private theUIInteractions: UIInteraction[] = [];
@@ -2151,6 +2154,80 @@ export class FormGenBS {
 
             Self.HydrateForm(Self.theUIElements);
         }
+    }
+
+    public TestModalCrap()
+    {
+
+
+
+        let elem = document.createElement('div') as HTMLDivElement;
+        let elem1a = document.createElement('div') as HTMLDivElement;
+        let elem1 = document.createElement('div') as HTMLDivElement;
+        let elem2 = document.createElement('div') as HTMLDivElement;
+        let elem3 = document.createElement('h5') as HTMLHeadingElement;
+        let elem4 = document.createElement('button') as HTMLButtonElement;
+        let elem5 = document.createElement('span') as HTMLSpanElement;
+        let elem6 = document.createElement('div') as HTMLDivElement;
+
+        let TheMainObject = document.getElementById(this.theContainer);
+
+        // First we want to  try to remove the existing Dialog element if one is there
+
+        var elem2Remove = document.querySelector('#FormGenGeneratedModalDialog');
+
+        if (elem2Remove !== null)
+        {
+            // Ok we got something so lets give it he axe...
+
+            TheMainObject.removeChild(elem2Remove);
+        }
+
+        // Move on now and make a new one and insert it
+        
+        elem.id = "FormGenGeneratedModalDialog";
+        elem.setAttribute("class","modal fade");
+        //elem.className = "modal fade";
+        elem.tabIndex = -1;
+        elem.setAttribute("aria-labelledby","FormGenGeneratedModalDialogLabel");
+        elem.setAttribute("aria-hidden","true");
+
+        elem1.setAttribute("class","modal-dialog");
+        elem1.setAttribute("role","document");
+
+        elem1a.setAttribute("class","modal-content");
+
+        elem2.setAttribute("class","modal-header");
+        
+        elem3.setAttribute("class","modal-title");
+        elem3.id = "FormGenGeneratedModalDialogTitle"
+        elem3.textContent = "Sample Title Goes Here";
+
+        elem4.setAttribute("class","close");
+        elem4.setAttribute("data-dismiss","modal");
+        elem4.setAttribute("aria-label","close");
+
+        elem5.setAttribute("aria-hidden","true")
+        elem5.textContent= "X";
+
+        elem6.setAttribute("class","modal-body");
+        elem6.textContent = "Sample Body of the dialog will go here";
+
+        elem1.appendChild(elem1a);
+        elem1a.appendChild(elem2);
+        elem2.appendChild(elem3);
+        elem2.appendChild(elem4);
+
+        elem4.appendChild(elem5);
+
+        elem1a.appendChild(elem6);
+        
+        elem.appendChild(elem1);
+
+        TheMainObject.appendChild(elem);
+        
+        $('#FormGenGeneratedModalDialog').modal('show');
+        
     }
 
 
