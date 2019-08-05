@@ -2230,7 +2230,6 @@ export class FormGenBS {
         
     }
 
-
     // use in propigation of UIInteractions on visibiliy checks
     private isVisible(e) {
         return !!(e.offsetWidth || e.offsetHeight || e.getClientRects().length);
