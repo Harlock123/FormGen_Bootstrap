@@ -2251,12 +2251,13 @@ export class UIElement {
     public elScore: number[];
     public elAutoSize: boolean;
     public elCustomClass: string;
+    public elRecords: string[];
 
 
     constructor(elformrow: number, elid: string, eltype: string, ellabel: string,
         elcontent: string[], elrequired: boolean, elinteractions: UIInteraction[], elinitialvisibility: boolean,
         elstyle: string, ellabelstyle: string, elformstyle: string, elscore: number[],
-        elautosize?: boolean, elcustomclass?: string) {
+        elautosize?: boolean, elcustomclass?: string, elrecords?: string[]) {
         this.elFormRow = elformrow;
         this.elID = elid;
         this.elContent = elcontent;
@@ -2282,6 +2283,13 @@ export class UIElement {
         }
         else {
             this.elCustomClass = elcustomclass;
+        }
+
+        if (elrecords == undefined) {
+            this.elRecords = [];
+        }
+        else {
+            this.elRecords = elrecords;
         }
 
 

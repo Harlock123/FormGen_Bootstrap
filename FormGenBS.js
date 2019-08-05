@@ -1746,7 +1746,7 @@ var FormGenBS = /** @class */ (function () {
 }());
 exports.FormGenBS = FormGenBS;
 var UIElement = /** @class */ (function () {
-    function UIElement(elformrow, elid, eltype, ellabel, elcontent, elrequired, elinteractions, elinitialvisibility, elstyle, ellabelstyle, elformstyle, elscore, elautosize, elcustomclass) {
+    function UIElement(elformrow, elid, eltype, ellabel, elcontent, elrequired, elinteractions, elinitialvisibility, elstyle, ellabelstyle, elformstyle, elscore, elautosize, elcustomclass, elrecords) {
         this.elFormRow = elformrow;
         this.elID = elid;
         this.elContent = elcontent;
@@ -1770,6 +1770,12 @@ var UIElement = /** @class */ (function () {
         }
         else {
             this.elCustomClass = elcustomclass;
+        }
+        if (elrecords == undefined) {
+            this.elRecords = [];
+        }
+        else {
+            this.elRecords = elrecords;
         }
     }
     return UIElement;

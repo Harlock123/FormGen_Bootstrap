@@ -187,7 +187,8 @@ export declare class UIElement {
     elScore: number[];
     elAutoSize: boolean;
     elCustomClass: string;
-    constructor(elformrow: number, elid: string, eltype: string, ellabel: string, elcontent: string[], elrequired: boolean, elinteractions: UIInteraction[], elinitialvisibility: boolean, elstyle: string, ellabelstyle: string, elformstyle: string, elscore: number[], elautosize?: boolean, elcustomclass?: string);
+    elRecords: string[];
+    constructor(elformrow: number, elid: string, eltype: string, ellabel: string, elcontent: string[], elrequired: boolean, elinteractions: UIInteraction[], elinitialvisibility: boolean, elstyle: string, ellabelstyle: string, elformstyle: string, elscore: number[], elautosize?: boolean, elcustomclass?: string, elrecords?: string[]);
 }
 export declare class UIInteraction {
     elIDSource: string;
