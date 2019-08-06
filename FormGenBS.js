@@ -696,26 +696,28 @@ var FormGenBS = /** @class */ (function () {
                             }
                             if (THEEL.elRequired) {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
-                                innerhtml += '<table>';
+                                innerhtml += '<table style="width:100%">';
                                 innerhtml += '<td valign="top" class="text-red"> * </td>';
                                 innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
                                 innerhtml += '</td>';
+                                innerhtml += '<td style="float:right">' + ' + ' + '</td>';
                                 innerhtml += '</table>';
                             }
                             else {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
-                                innerhtml += '<table>';
+                                innerhtml += '<table style="width: 100%">';
                                 innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
                                 innerhtml += '</td>';
+                                innerhtml += '<td style="float:right">' + ' + ' + '</td>';
                                 innerhtml += '</table>';
                             }
-                            innerhtml += '<table style="width:100%">';
+                            innerhtml += '<table style="width:100%;background-color:white">';
                             innerhtml += '<tr>';
                             for (var _7 = 0, _8 = THEEL.elContent; _7 < _8.length; _7++) {
                                 var v = _8[_7];
