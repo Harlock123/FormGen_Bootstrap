@@ -169,7 +169,7 @@ export declare class FormGenBS {
      *
      */
     SetGreenBarColor(TheColor: string): void;
-    TestModalCrap(): void;
+    TestModalCrap(e: any): void;
     private isVisible;
 }
 export declare class UIElement {

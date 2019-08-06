@@ -885,7 +885,7 @@ export class FormGenBS {
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
                                 innerhtml += '</td>';
-                                innerhtml += '<td style="float:right">' + ' + ' + '</td>'; 
+                                innerhtml += '<td style="float:right"><span class="RECXofYSPAN" id="span_' + THEEL.elID +'"style="background-color:white">' + ' + ' + '</span></td>'; 
                                 innerhtml += '</table>';
 
                             }
@@ -898,7 +898,7 @@ export class FormGenBS {
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
                                 innerhtml += '</td>';
-                                innerhtml += '<td style="float:right">' + ' + ' + '</td>'; 
+                                innerhtml += '<td style="float:right"><span class="RECXofYSPAN" id="span_' + THEEL.elID +'"style="background-color:white">' + ' + ' + '</span></td>'; 
                                 innerhtml += '</table>';
                             }
 
@@ -1096,6 +1096,15 @@ export class FormGenBS {
                             }
                         }
                     }
+
+                    break;
+                }
+                case "RECXOFY": {
+                    // here we want to wire up the event handlers for the new yecords 
+
+                    var SPANELEMENT = document.getElementById("span_" + THEEL.elID);
+
+                    SPANELEMENT.addEventListener('click',this.TestModalCrap)
 
                     break;
                 }
@@ -2260,10 +2269,8 @@ export class FormGenBS {
         }
     }
 
-    public TestModalCrap()
+    public TestModalCrap(e: any)
     {
-
-
 
         let elem = document.createElement('div') as HTMLDivElement;
         let elem1a = document.createElement('div') as HTMLDivElement;
@@ -2274,7 +2281,7 @@ export class FormGenBS {
         let elem5 = document.createElement('span') as HTMLSpanElement;
         let elem6 = document.createElement('div') as HTMLDivElement;
 
-        let TheMainObject = document.getElementById(this.theContainer);
+        let TheMainObject = document.getElementById("FormGenBody");
 
         // First we want to  try to remove the existing Dialog element if one is there
 
@@ -2315,7 +2322,17 @@ export class FormGenBS {
         elem5.textContent= "X";
 
         elem6.setAttribute("class","modal-body");
-        elem6.textContent = "Sample Body of the dialog will go here";
+
+        if (e!== undefined)
+        {
+            elem6.innerHTML = "The body of this dialog will contain<br>a series of input elements<br>that will allow you to fill<br>out a record";
+        }
+        else
+        {
+            elem6.innerHTML = "Sample Body of the dialog will go here";
+        }
+
+        //elem6.textContent = "Sample Body of the dialog will go here";
 
         elem1.appendChild(elem1a);
         elem1a.appendChild(elem2);

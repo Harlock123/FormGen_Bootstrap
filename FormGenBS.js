@@ -703,7 +703,7 @@ var FormGenBS = /** @class */ (function () {
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
                                 innerhtml += '</td>';
-                                innerhtml += '<td style="float:right">' + ' + ' + '</td>';
+                                innerhtml += '<td style="float:right"><span class="RECXofYSPAN" id="span_' + THEEL.elID + '"style="background-color:white">' + ' + ' + '</span></td>';
                                 innerhtml += '</table>';
                             }
                             else {
@@ -714,7 +714,7 @@ var FormGenBS = /** @class */ (function () {
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
                                 innerhtml += '</td>';
-                                innerhtml += '<td style="float:right">' + ' + ' + '</td>';
+                                innerhtml += '<td style="float:right"><span class="RECXofYSPAN" id="span_' + THEEL.elID + '"style="background-color:white">' + ' + ' + '</span></td>';
                                 innerhtml += '</table>';
                             }
                             innerhtml += '<table style="width:100%;background-color:white">';
@@ -875,6 +875,12 @@ var FormGenBS = /** @class */ (function () {
                             }
                         }
                     }
+                    break;
+                }
+                case "RECXOFY": {
+                    // here we want to wire up the event handlers for the new yecords 
+                    var SPANELEMENT = document.getElementById("span_" + THEEL.elID);
+                    SPANELEMENT.addEventListener('click', this.TestModalCrap);
                     break;
                 }
             }
@@ -1774,7 +1780,7 @@ var FormGenBS = /** @class */ (function () {
             Self.HydrateForm(Self.theUIElements);
         }
     };
-    FormGenBS.prototype.TestModalCrap = function () {
+    FormGenBS.prototype.TestModalCrap = function (e) {
         var elem = document.createElement('div');
         var elem1a = document.createElement('div');
         var elem1 = document.createElement('div');
@@ -1783,7 +1789,7 @@ var FormGenBS = /** @class */ (function () {
         var elem4 = document.createElement('button');
         var elem5 = document.createElement('span');
         var elem6 = document.createElement('div');
-        var TheMainObject = document.getElementById(this.theContainer);
+        var TheMainObject = document.getElementById("FormGenBody");
         // First we want to  try to remove the existing Dialog element if one is there
         var elem2Remove = document.querySelector('#FormGenGeneratedModalDialog');
         if (elem2Remove !== null) {
@@ -1810,7 +1816,13 @@ var FormGenBS = /** @class */ (function () {
         elem5.setAttribute("aria-hidden", "true");
         elem5.textContent = "X";
         elem6.setAttribute("class", "modal-body");
-        elem6.textContent = "Sample Body of the dialog will go here";
+        if (e !== undefined) {
+            elem6.innerHTML = "The body of this dialog will contain<br>a series of input elements<br>that will allow you to fill<br>out a record";
+        }
+        else {
+            elem6.innerHTML = "Sample Body of the dialog will go here";
+        }
+        //elem6.textContent = "Sample Body of the dialog will go here";
         elem1.appendChild(elem1a);
         elem1a.appendChild(elem2);
         elem2.appendChild(elem3);
