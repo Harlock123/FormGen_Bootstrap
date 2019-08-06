@@ -850,6 +850,108 @@ export class FormGenBS {
 
                             break;
                         }
+                        case "RECXOFY": {
+                            var STY = "";
+                            var CC = "custom-control-input";
+
+                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined) {
+                                CC = THEEL.elCustomClass;
+                            }
+
+                            if (THEEL.elStyle != "") {
+                                STY = ' style="' + THEEL.elStyle + '" ';
+                            }
+
+                            var VIS = "";//'style="display:block"';
+
+                            if (!THEEL.elInitialVisibility) {
+                                VIS = 'style="display:none"';
+                            }
+
+                            if (THEEL.elAutoSize) {
+                                innerhtml += '<div class="col-auto" >';
+                            }
+                            else {
+                                innerhtml += '<div class="' + CBTAG + '" >';
+                            }
+
+                            if (THEEL.elRequired)
+                            {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td valign="top" class="text-red"> * </td>';
+                                innerhtml += '<td>'; 
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                                innerhtml += '</td>'; 
+                                innerhtml += '</table>';
+
+                            }
+                            else
+                            {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td>';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                                innerhtml += '</td>';
+                                innerhtml += '</table>';
+                            }
+
+                            innerhtml += '<table style="width:100%">';
+                            innerhtml += '<tr>';
+
+                            for (let v of THEEL.elContent) {
+                                innerhtml += '<th>' + v + '</th>';
+                            }
+                            innerhtml += '</tr>';
+
+                            innerhtml += '<tr>';
+
+                            for (let v of THEEL.elContent) {
+                                innerhtml += '<td>' + ' ' + '</td>';
+                            }
+                            innerhtml += '</tr>';
+                            
+                            // let i = 0;
+                            // for (let v of THEEL.elContent) {
+                            //     i += 1;
+
+                            //     innerhtml += '<div class="custom-control custom-checkbox custom-control-inline">';
+
+                            //     if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
+                            //         innerhtml += '<input type="checkbox" ' +
+                            //             'name = "' + THEEL.elID + '" class="' + CC + '"  id="' +
+                            //             THEEL.elID + '_' + i.toString() + '" ' +
+                            //             'value="' + v + '" style="' + THEEL.elFormStyle + '" >';
+                            //         innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label"  >' + v + '</label>';
+                            //     }
+                            //     else {
+                            //         for (let v of THEEL.elInteractions) {
+                            //             this.theUIInteractions.push(v);
+                            //         }
+                            //         innerhtml += '<input type="checkbox" ' +
+                            //             'name = "' + THEEL.elID + '" class="' + CC + '"  id="' +
+                            //             THEEL.elID + '_' + i.toString() + '" ' +
+                            //             'value="' + v + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" >';
+                            //         innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v + '</label>';
+                            //     }
+
+                            //     // store the ID for Interactivity processing
+
+                            //     this.TheInputIDs.push(THEEL.elID + '_' + i.toString());
+
+                            //     innerhtml += "</div>";
+                            // }
+
+                            innerhtml += '</div></div> ';
+
+                            break;
+
+
+                        }
                     }
                 }
             } // end of for (let THEEL of UIElements) 

@@ -675,6 +675,87 @@ var FormGenBS = /** @class */ (function () {
                             innerhtml += '</div></div> ';
                             break;
                         }
+                        case "RECXOFY": {
+                            var STY = "";
+                            var CC = "custom-control-input";
+                            if (THEEL.elCustomClass != "" && THEEL.elCustomClass != undefined) {
+                                CC = THEEL.elCustomClass;
+                            }
+                            if (THEEL.elStyle != "") {
+                                STY = ' style="' + THEEL.elStyle + '" ';
+                            }
+                            var VIS = ""; //'style="display:block"';
+                            if (!THEEL.elInitialVisibility) {
+                                VIS = 'style="display:none"';
+                            }
+                            if (THEEL.elAutoSize) {
+                                innerhtml += '<div class="col-auto" >';
+                            }
+                            else {
+                                innerhtml += '<div class="' + CBTAG + '" >';
+                            }
+                            if (THEEL.elRequired) {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td valign="top" class="text-red"> * </td>';
+                                innerhtml += '<td>';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                                innerhtml += '</td>';
+                                innerhtml += '</table>';
+                            }
+                            else {
+                                innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
+                                innerhtml += '<table>';
+                                innerhtml += '<td>';
+                                innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
+                                innerhtml += THEEL.elLabel;
+                                innerhtml += '</label>';
+                                innerhtml += '</td>';
+                                innerhtml += '</table>';
+                            }
+                            innerhtml += '<table style="width:100%">';
+                            innerhtml += '<tr>';
+                            for (var _7 = 0, _8 = THEEL.elContent; _7 < _8.length; _7++) {
+                                var v = _8[_7];
+                                innerhtml += '<th>' + v + '</th>';
+                            }
+                            innerhtml += '</tr>';
+                            innerhtml += '<tr>';
+                            for (var _9 = 0, _10 = THEEL.elContent; _9 < _10.length; _9++) {
+                                var v = _10[_9];
+                                innerhtml += '<td>' + ' ' + '</td>';
+                            }
+                            innerhtml += '</tr>';
+                            // let i = 0;
+                            // for (let v of THEEL.elContent) {
+                            //     i += 1;
+                            //     innerhtml += '<div class="custom-control custom-checkbox custom-control-inline">';
+                            //     if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
+                            //         innerhtml += '<input type="checkbox" ' +
+                            //             'name = "' + THEEL.elID + '" class="' + CC + '"  id="' +
+                            //             THEEL.elID + '_' + i.toString() + '" ' +
+                            //             'value="' + v + '" style="' + THEEL.elFormStyle + '" >';
+                            //         innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label"  >' + v + '</label>';
+                            //     }
+                            //     else {
+                            //         for (let v of THEEL.elInteractions) {
+                            //             this.theUIInteractions.push(v);
+                            //         }
+                            //         innerhtml += '<input type="checkbox" ' +
+                            //             'name = "' + THEEL.elID + '" class="' + CC + '"  id="' +
+                            //             THEEL.elID + '_' + i.toString() + '" ' +
+                            //             'value="' + v + '" onchange="' + eventwirup + '" style="' + THEEL.elFormStyle + '" >';
+                            //         innerhtml += '<label for="' + THEEL.elID + '_' + i.toString() + '" class="custom-control-label" >' + v + '</label>';
+                            //     }
+                            //     // store the ID for Interactivity processing
+                            //     this.TheInputIDs.push(THEEL.elID + '_' + i.toString());
+                            //     innerhtml += "</div>";
+                            // }
+                            innerhtml += '</div></div> ';
+                            break;
+                        }
                     }
                 }
             } // end of for (let THEEL of UIElements) 
@@ -685,8 +766,8 @@ var FormGenBS = /** @class */ (function () {
         el.innerHTML = innerhtml;
         // Ok now all of the elements should be in the DOM
         // now we want to iterate over everything again to set any scoring and any required bits
-        for (var _7 = 0, UIElements_11 = UIElements; _7 < UIElements_11.length; _7++) {
-            var THEEL = UIElements_11[_7];
+        for (var _11 = 0, UIElements_11 = UIElements; _11 < UIElements_11.length; _11++) {
+            var THEEL = UIElements_11[_11];
             switch (THEEL.elType.toUpperCase()) {
                 case "TEXT": {
                     var el = (document.getElementById(THEEL.elID));
@@ -740,8 +821,8 @@ var FormGenBS = /** @class */ (function () {
                 }
                 case "RADIO": {
                     var i = 0;
-                    for (var _8 = 0, _9 = THEEL.elScore; _8 < _9.length; _8++) {
-                        var v = _9[_8];
+                    for (var _12 = 0, _13 = THEEL.elScore; _12 < _13.length; _12++) {
+                        var v = _13[_12];
                         i += 1;
                         var el = (document.getElementById(THEEL.elID + '_' + i.toString()));
                         if (el !== null) {
@@ -760,8 +841,8 @@ var FormGenBS = /** @class */ (function () {
                 }
                 case "DROPDOWN": {
                     var i = 0;
-                    for (var _10 = 0, _11 = THEEL.elScore; _10 < _11.length; _10++) {
-                        var v = _11[_10];
+                    for (var _14 = 0, _15 = THEEL.elScore; _14 < _15.length; _14++) {
+                        var v = _15[_14];
                         i += 1;
                         var ell = (document.getElementById(THEEL.elID + '_' + i.toString()));
                         if (ell !== null) {
@@ -778,8 +859,8 @@ var FormGenBS = /** @class */ (function () {
                 }
                 case "CHECKBOX": {
                     var i = 0;
-                    for (var _12 = 0, _13 = THEEL.elScore; _12 < _13.length; _12++) {
-                        var v = _13[_12];
+                    for (var _16 = 0, _17 = THEEL.elScore; _16 < _17.length; _16++) {
+                        var v = _17[_16];
                         i += 1;
                         var el = (document.getElementById(THEEL.elID + '_' + i.toString()));
                         if (el !== null) {
