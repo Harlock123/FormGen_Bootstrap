@@ -1036,6 +1036,24 @@ var FormGenBS = /** @class */ (function () {
         xmlhttp.send();
     };
     /**
+     * GetWholeFormFrom
+     * @param webUrl: string
+     * Attempts to do a simple GET from the supplied URL to fetch the definition and the data for a completed form from
+     * the supplied WEBURL
+    */
+    FormGenBS.prototype.GetWholeFormFrom = function (webUrl) {
+        // Will attempt to populate the for by doung an HTTP GET from the webUrl
+        var Self = this;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                Self.SetWholeForm(this.responseText);
+            }
+        };
+        xmlhttp.open('GET', webUrl);
+        xmlhttp.send();
+    };
+    /**
      * GetRoAtYCoordinate
      * @param YCord
      */
@@ -1674,17 +1692,18 @@ var FormGenBS = /** @class */ (function () {
                                             }
                                         }
                                         else {
-                                            if (UIi.elInteractionType == "SHOW") {
-                                                thetriggeredelement.style.display = "none";
-                                                // here we want to recursively call itself to propigate UIInteractions down the chain
-                                                var telement = document.getElementById(UIi.elIDTarget);
-                                                //this.DoFormGenInteraction(telement);
-                                            }
-                                            else {
-                                                if (UIi.elInteractionType == "HIDE") {
-                                                    thetriggeredelement.style.display = ""; //"block";
-                                                }
-                                            }
+                                            // if (UIi.elInteractionType == "SHOW") {
+                                            //     thetriggeredelement.style.display = "none";
+                                            //     // here we want to recursively call itself to propigate UIInteractions down the chain
+                                            //     var telement = document.getElementById(UIi.elIDTarget);
+                                            //     //this.DoFormGenInteraction(telement);
+                                            // }
+                                            // else {
+                                            //     if (UIi.elInteractionType == "HIDE") {
+                                            //         thetriggeredelement.style.display = "";//"block";
+                                            //     }
+                                            // }
+                                            break;
                                         }
                                     }
                                     break;

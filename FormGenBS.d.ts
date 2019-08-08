@@ -59,6 +59,13 @@ export declare class FormGenBS {
     */
     GetFormDefinitionFrom(webUrl: string): void;
     /**
+     * GetWholeFormFrom
+     * @param webUrl: string
+     * Attempts to do a simple GET from the supplied URL to fetch the definition and the data for a completed form from
+     * the supplied WEBURL
+    */
+    GetWholeFormFrom(webUrl: string): void;
+    /**
      * GetRoAtYCoordinate
      * @param YCord
      */
