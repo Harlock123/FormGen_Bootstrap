@@ -25,7 +25,7 @@ Parameters:
 
 - **JSobjectName**
 
-    A simple string the represents the name of the particular instance of FormGen that your code has created this as. Used when FormGen wires up event handlers for objects its creating so the varous onchange events can call into the specific instance of FormGen. (Formerly used a small stub routine to call in that lived out in the global namespace, Tnis is still a hack but is cleaner than the stub alternative)
+    A simple string the represents the name of the particular instance of FormGen that your code has created this as. Used when FormGen wires up event handlers for objects its creating so the varous onchange events can call into the specific instance of FormGen. (Formerly used a small stub routine to call in that lived out in the global namespace, This is still a hack but is cleaner than the stub alternative)
 
 Further documentation regarding FormGens Use and the various objects employed are below
 
@@ -90,7 +90,7 @@ class UIElement {
 
 ### UIElement Details
 
-- **elFormRow** is s chronological grouping of elements to be inserted at a given row in the bootstrap matrix. FormGen will interpret these entries and group them together and decorate their entries with col-md-x where x is 1 2 3 4 6 12 also, formgen will attempt to evenly space them across the form in the standard bootstrap way. Start at 1 and number each subsequent rows entries chronologically ie. next rows contents would be 2 and then 3 and so on.
+- **elFormRow** is s chronological grouping of elements to be inserted at a given row in the bootstrap matrix. FormGen will interpret these entries and group them together and decorate their entries with col-md-x where x is 1 2 3 4 6 12 also, formgen will attempt to evenly space them across the form in the standard bootstrap way. Start at 1 and number each subsequent rows entries chronologically ie. next rows contents would be 2 and then 3 and so on. This sequential ordering need not be pure, IE 1,2,3,4... but as long as they are ordinal coule be 1,2,4,5,7,8... for example. Internally Formgen will re-order the rows to fill in he holes. Also the attempt to align the contents evenly across a row can be overridden and the rows content float via the **elautosize** option described below.
 
 - **elid** is a simple string that will be used to identify the element on the DOM. It can be any alpha numeric, it should be unique for each elemet that is being placed into the form.
 
@@ -101,13 +101,14 @@ class UIElement {
     - RADIO
     - DROPDOWN
     - CHECKBOX
+    - RECXOFY    Added 8-2019 to allow for additions of new grids of records One or Many with built in management of adding new records to the grids, and editing of existing records in the grid as well as removal existing records. The shape of the records being dealt with also being defined in the RECXOFY element itself.
     - INFOTEXT   This will be a NON Input Simple Label that can also contain Bullet lists of submitems using **elcontent** Array for the list items. The **ellabel** item will carry the main message and each elcontent item will be in the bullet list
     - HEADER     This will be a non Input simple item that will be placed on its own row in the form the **ellabel** paremeter will be used for the label
     - FOOTER     This will be a non Input simple item that will be placed on its own row in the form the **ellabel** paremeter will be used for the label
 
 - **ellabel** is the string label to be applied to the element being placed on the page
 
-- **elcontent**  is an array of strings that get turned into a list of appropriate sub elements for things that have subelements. IE RadioButtons, DropDowns, and CheckBoxes.
+- **elcontent**  is an array of strings that get turned into a list of appropriate sub elements for things that have subelements. IE RadioButtons, DropDowns, and CheckBoxes. In the case of RECXOFY elements this array consists of the Labels to be applied to each of the sub-elements in the GRID of things managed by the RECXOFY element.
 
 - **elrequired** is a boolean used to trigger the required or not check for form validation methods. It will be displayed in a standard required field kind of way as shown in the example below. ![ScreenShot](ScreenShots/SS8.png)
 
