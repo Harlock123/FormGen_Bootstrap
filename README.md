@@ -17,7 +17,7 @@ Parameters:
 
 - **UIElements**
 
-    This simple ARRAY of elements in the form of UIElement. These elements represent the actual objects that FormGen will ge erate inside of the form. UIElement also contains definitions for the various interactions between elements, the scoreing values used in FormGens scoring functions, and Style parameters to apply to the generated objects and their labels...
+    This simple ARRAY of elements in the form of UIElement. These elements represent the actual objects that FormGen will generate inside of the form. UIElement also contains definitions for the various interactions between elements, the scoreing values used in FormGens scoring functions, and Style parameters to apply to the generated objects and their labels...
 
 - **VersionString**
 
