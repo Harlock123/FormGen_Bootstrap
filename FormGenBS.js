@@ -2,6 +2,7 @@
 /// <reference path="node_modules/@types/jquery/index.d.ts" />;
 /// <reference path="node_modules/@types/bootstrap/index.d.ts" />;
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.FormGenDefCon = exports.UIValue = exports.UIInteraction = exports.UIElement = exports.FormGenBS = void 0;
 var FormGenBS = /** @class */ (function () {
     function FormGenBS(DomElementID, UIElements, VersionString, JSobjectName) {
         this.theUIInteractions = [];
@@ -1896,11 +1897,12 @@ var UIElement = /** @class */ (function () {
 }());
 exports.UIElement = UIElement;
 var UIInteraction = /** @class */ (function () {
-    function UIInteraction(elidsource, elidtarget, elinteractiontype, elvaluetrigger) {
+    function UIInteraction(elidsource, elidtarget, elinteractiontype, elvaluetrigger, elvaluetracker) {
         this.elIDSource = elidsource;
         this.elIDTarget = elidtarget;
         this.elInteractionType = elinteractiontype;
         this.elValueTrigger = elvaluetrigger;
+        this.elValueTracker = this.elValueTracker;
     }
     return UIInteraction;
 }());

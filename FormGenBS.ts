@@ -2445,13 +2445,17 @@ export class UIInteraction {
     public elIDTarget: string;
     public elInteractionType: string;
     public elValueTrigger: string;
+    public elValueTracker: string;
 
-    constructor(elidsource: string, elidtarget: string, elinteractiontype: string, elvaluetrigger: string) {
+    constructor(elidsource: string, elidtarget: string, elinteractiontype: string, elvaluetrigger: string, elvaluetracker?: string) {
         this.elIDSource = elidsource;
         this.elIDTarget = elidtarget;
         this.elInteractionType = elinteractiontype;
         this.elValueTrigger = elvaluetrigger;
+        this.elValueTracker = this.elValueTracker;
     }
+
+    
 }
 
 export class UIValue {

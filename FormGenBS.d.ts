@@ -202,7 +202,8 @@ export declare class UIInteraction {
     elIDTarget: string;
     elInteractionType: string;
     elValueTrigger: string;
-    constructor(elidsource: string, elidtarget: string, elinteractiontype: string, elvaluetrigger: string);
+    elValueTracker: string;
+    constructor(elidsource: string, elidtarget: string, elinteractiontype: string, elvaluetrigger: string, elvaluetracker?: string);
 }
 export declare class UIValue {
     uivID: string;
