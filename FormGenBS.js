@@ -1334,6 +1334,8 @@ var FormGenBS = /** @class */ (function () {
                         var el = (document.getElementById(THEEL.elID));
                         if (el.value != "") {
                             var v = Number(el.dataset.fgscore);
+                            if (v === NaN)
+                                break;
                             score += v;
                         }
                         break;
@@ -1343,6 +1345,8 @@ var FormGenBS = /** @class */ (function () {
                         var el = (document.getElementById(THEEL.elID));
                         if (el.value != "") {
                             var v = Number(el.dataset.fgscore);
+                            if (v === NaN)
+                                break;
                             score += v;
                         }
                         break;
@@ -1352,6 +1356,8 @@ var FormGenBS = /** @class */ (function () {
                         var el = (document.getElementById(THEEL.elID));
                         if (el.value != "") {
                             var v = Number(el.dataset.fgscore);
+                            if (v === NaN)
+                                break;
                             score += v;
                         }
                         break;
@@ -1366,7 +1372,10 @@ var FormGenBS = /** @class */ (function () {
                             var el = (document.getElementById(theid));
                             if (el.checked) {
                                 var v = Number(el.dataset.fgscore);
-                                score += v;
+                                if (v === NaN) {
+                                }
+                                else
+                                    score += v;
                             }
                         }
                         break;
@@ -1382,6 +1391,8 @@ var FormGenBS = /** @class */ (function () {
                             if (vv == seltext) {
                                 var eli1 = (document.getElementById(THEEL.elID + '_' + i.toString()));
                                 var v = Number(eli1.dataset.fgscore);
+                                if (v === NaN)
+                                    break;
                                 score += v;
                                 break;
                             }
@@ -1398,7 +1409,10 @@ var FormGenBS = /** @class */ (function () {
                             var el = (document.getElementById(theid));
                             if (el.checked) {
                                 var v = Number(el.dataset.fgscore);
-                                score += v;
+                                if (v === NaN) {
+                                }
+                                else
+                                    score += v;
                             }
                         }
                         break;

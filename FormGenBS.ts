@@ -1664,6 +1664,9 @@ export class FormGenBS {
                         if (el.value != "") {
                             var v = Number(el.dataset.fgscore);
 
+                            if (v===NaN)
+                                break;
+
                             score += v;
                         }
 
@@ -1675,6 +1678,8 @@ export class FormGenBS {
 
                         if (el.value != "") {
                             var v = Number(el.dataset.fgscore);
+                            if (v===NaN)
+                                break;
 
                             score += v;
                         }
@@ -1687,6 +1692,9 @@ export class FormGenBS {
 
                         if (el.value != "") {
                             var v = Number(el.dataset.fgscore);
+
+                            if (v===NaN)
+                                break;
 
                             score += v;
                         }
@@ -1706,8 +1714,12 @@ export class FormGenBS {
 
                             if (el.checked) {
                                 var v = Number(el.dataset.fgscore);
+                                if (v===NaN)
+                                {
 
-                                score += v;
+                                }
+                                else
+                                    score += v;
                             }
 
                         }
@@ -1729,6 +1741,9 @@ export class FormGenBS {
                                 var eli1 = <HTMLOptionElement>(document.getElementById(THEEL.elID + '_' + i.toString()));
 
                                 var v = Number(eli1.dataset.fgscore);
+
+                                if (v===NaN)
+                                break;
 
                                 score += v;
 
@@ -1753,7 +1768,12 @@ export class FormGenBS {
                             if (el.checked) {
                                 var v = Number(el.dataset.fgscore);
 
-                                score += v;
+                                if (v===NaN)
+                                {
+
+                                }
+                                else
+                                    score += v;
                             }
 
                         }
