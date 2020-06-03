@@ -887,6 +887,97 @@ var FormGenBS = /** @class */ (function () {
             }
         }
     };
+    FormGenBS.prototype.EvaluateTRACKS = function () {
+        // Iterate over all of the UIInteractions stored
+        for (var _i = 0, _a = this.theUIInteractions; _i < _a.length; _i++) {
+            var UIi = _a[_i];
+            if (UIi.elInteractionType == "TRACK") {
+                // we have a tracking UIi so lets decode it
+                for (var _b = 0, _c = this.theUIElements; _b < _c.length; _b++) {
+                    var THEEL = _c[_b];
+                    if (THEEL.elID == UIi.elIDSource) {
+                        // we have the actual User Interface control that is the source for this TRACKING
+                        var v = new UIValue(THEEL.elID, "");
+                        switch (THEEL.elType.toUpperCase()) {
+                            case "TEXT":
+                                {
+                                    var el = (document.getElementById(THEEL.elID));
+                                    v = new UIValue(THEEL.elID, el.value);
+                                    break;
+                                }
+                            case "DATE":
+                                {
+                                    var el = (document.getElementById(THEEL.elID));
+                                    v = new UIValue(THEEL.elID, el.value);
+                                    break;
+                                }
+                            case "NARRATIVE":
+                                {
+                                    var el = (document.getElementById(THEEL.elID));
+                                    var tv = el.value;
+                                    var v = new UIValue(THEEL.elID, tv);
+                                    break;
+                                }
+                            case "RADIO":
+                                {
+                                    var i = 0;
+                                    for (var _d = 0, _e = THEEL.elContent; _d < _e.length; _d++) {
+                                        var vv = _e[_d];
+                                        i += 1;
+                                        var theid = THEEL.elID + "_" + i.toString();
+                                        var el = (document.getElementById(theid));
+                                        if (el.checked) {
+                                            v = new UIValue(THEEL.elID + "_" + i.toString(), "true");
+                                        }
+                                        else {
+                                            v = new UIValue(THEEL.elID + "_" + i.toString(), "false");
+                                        }
+                                        if (v.uivID == UIi.elIDSource) {
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                }
+                            case "DROPDOWN":
+                                {
+                                    var eli = (document.getElementById(THEEL.elID));
+                                    v = new UIValue(THEEL.elID, eli.options[eli.selectedIndex].text);
+                                    break;
+                                }
+                            case "CHECKBOX":
+                                {
+                                    var i = 0;
+                                    for (var _f = 0, _g = THEEL.elContent; _f < _g.length; _f++) {
+                                        var vv = _g[_f];
+                                        i += 1;
+                                        var theid = THEEL.elID + "_" + i.toString();
+                                        var el = (document.getElementById(theid));
+                                        if (el.checked) {
+                                            v = new UIValue(THEEL.elID + "_" + i.toString(), "true");
+                                        }
+                                        else {
+                                            v = new UIValue(THEEL.elID + "_" + i.toString(), "false");
+                                        }
+                                        if (v.uivID == UIi.elIDSource) {
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                }
+                        }
+                        // Now v should contain a UIVALUE that we can look at to see if it matches the TRACK and if so we can
+                        // set said value 
+                        if (v.uivValue == UIi.elValueTrigger) {
+                            // We have a match
+                            var eel = (document.getElementById(UIi.elIDTarget));
+                            eel.value = UIi.elValueTracker;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+    };
     /**
      * GetFormData
      *
@@ -897,6 +988,7 @@ var FormGenBS = /** @class */ (function () {
         // first we want to echo the version as one of the elements
         var theversion = new UIValue("FORMVERSIONSTRING", this.theVersionString + "");
         UIValues.push(theversion);
+        this.EvaluateTRACKS();
         for (var _i = 0, _a = this.theUIElements; _i < _a.length; _i++) {
             var THEEL = _a[_i];
             switch (THEEL.elType.toUpperCase()) {
@@ -1561,125 +1653,59 @@ var FormGenBS = /** @class */ (function () {
                 for (var _b = 0, _c = this.theUIInteractions; _b < _c.length; _b++) {
                     var UIi = _c[_b];
                     // parse each noted interaction to see if we need to act on it
-                    if (e.name == UIi.elIDSource) {
-                        switch (e.type.toUpperCase()) {
-                            case "RADIO":
-                            case "CHECKBOX":
-                                {
-                                    var radios = document.getElementsByName(e.name);
-                                    for (var i = 0; i < radios.length; i++) {
-                                        var it = radios[i];
-                                        if (it.value == UIi.elValueTrigger || it.hidden) {
-                                            // we have the specific one that is supposed to trigger this action
-                                            // first lets get the thing we are gonna trigger
-                                            var thetriggeredelement = document.getElementById("div_" + UIi.elIDTarget);
-                                            if (it.checked && UIi.elInteractionType == "SHOW") {
-                                                // we are gonna make sure something is visible
-                                                thetriggeredelement.style.display = ""; //"block";
-                                            }
-                                            else {
-                                                if (it.checked && UIi.elInteractionType == "HIDE") {
-                                                    // we are gonna make sure something is hidden
-                                                    thetriggeredelement.style.display = "none";
-                                                    // here we want to recursively call itself to propigate UIInteractions down the chain
-                                                    var telement = document.getElementById(UIi.elIDTarget);
-                                                    //this.DoFormGenInteraction(telement);
+                    if (UIi.elInteractionType == "TRACK") {
+                        // we want to skip tracking elements for now
+                        //console.log(UIi);
+                    }
+                    else { // here we will process all the other UIinteraction types
+                        if (e.name == UIi.elIDSource) {
+                            switch (e.type.toUpperCase()) {
+                                case "RADIO":
+                                case "CHECKBOX":
+                                    {
+                                        var radios = document.getElementsByName(e.name);
+                                        for (var i = 0; i < radios.length; i++) {
+                                            var it = radios[i];
+                                            if (it.value == UIi.elValueTrigger || it.hidden) {
+                                                // we have the specific one that is supposed to trigger this action
+                                                // first lets get the thing we are gonna trigger
+                                                var thetriggeredelement = document.getElementById("div_" + UIi.elIDTarget);
+                                                if (it.checked && UIi.elInteractionType == "SHOW") {
+                                                    // we are gonna make sure something is visible
+                                                    thetriggeredelement.style.display = ""; //"block";
                                                 }
                                                 else {
-                                                    if (!it.checked && UIi.elInteractionType == "HIDE") {
-                                                        // we are gonna make sure something is visible
-                                                        thetriggeredelement.style.display = ""; // "block";
-                                                    }
-                                                    else {
+                                                    if (it.checked && UIi.elInteractionType == "HIDE") {
                                                         // we are gonna make sure something is hidden
                                                         thetriggeredelement.style.display = "none";
                                                         // here we want to recursively call itself to propigate UIInteractions down the chain
                                                         var telement = document.getElementById(UIi.elIDTarget);
                                                         //this.DoFormGenInteraction(telement);
                                                     }
+                                                    else {
+                                                        if (!it.checked && UIi.elInteractionType == "HIDE") {
+                                                            // we are gonna make sure something is visible
+                                                            thetriggeredelement.style.display = ""; // "block";
+                                                        }
+                                                        else {
+                                                            // we are gonna make sure something is hidden
+                                                            thetriggeredelement.style.display = "none";
+                                                            // here we want to recursively call itself to propigate UIInteractions down the chain
+                                                            var telement = document.getElementById(UIi.elIDTarget);
+                                                            //this.DoFormGenInteraction(telement);
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }
+                                        break;
                                     }
-                                    break;
-                                }
-                            case "TEXT":
-                            case "TEXTAREA":
-                                {
-                                    var v = e.value.toUpperCase();
-                                    var thetriggeredelement = document.getElementById("div_" + UIi.elIDTarget);
-                                    if (v == UIi.elValueTrigger.toUpperCase()) {
-                                        if (UIi.elInteractionType == "SHOW") {
-                                            thetriggeredelement.style.display = ""; //"block";
-                                        }
-                                        else {
-                                            if (UIi.elInteractionType == "HIDE") {
-                                                thetriggeredelement.style.display = "none";
-                                                // here we want to recursively call itself to propigate UIInteractions down the chain
-                                                var telement = document.getElementById(UIi.elIDTarget);
-                                                //this.DoFormGenInteraction(telement);
-                                            }
-                                        }
-                                    }
-                                    else {
-                                        if (UIi.elInteractionType == "SHOW") {
-                                            thetriggeredelement.style.display = "none";
-                                            // here we want to recursively call itself to propigate UIInteractions down the chain
-                                            var telement = document.getElementById(UIi.elIDTarget);
-                                            //this.DoFormGenInteraction(telement);
-                                        }
-                                        else {
-                                            if (UIi.elInteractionType == "HIDE") {
-                                                thetriggeredelement.style.display = ""; //"block";
-                                            }
-                                        }
-                                    }
-                                    break;
-                                }
-                            case "DATE":
-                                {
-                                    var v = e.value.toUpperCase();
-                                    var thetriggeredelement = document.getElementById("div_" + UIi.elIDTarget);
-                                    var vis = this.isVisible(e);
-                                    if (!vis)
-                                        v = "";
-                                    if (v != "") {
-                                        if (UIi.elInteractionType == "SHOW") {
-                                            thetriggeredelement.style.display = ""; //"block";
-                                        }
-                                        else {
-                                            if (UIi.elInteractionType == "HIDE") {
-                                                thetriggeredelement.style.display = "none";
-                                                //e.value = "";
-                                                // here we want to recursively call itself to propigate UIInteractions down the chain
-                                                //var telement = document.getElementById(UIi.elIDTarget);
-                                                //this.DoFormGenInteraction(e);
-                                            }
-                                        }
-                                    }
-                                    else {
-                                        if (UIi.elInteractionType == "SHOW") {
-                                            thetriggeredelement.style.display = "none";
-                                            //e.value = "";
-                                            // here we want to recursively call itself to propigate UIInteractions down the chain
-                                            //var telement = document.getElementById(UIi.elIDTarget);
-                                            //this.DoFormGenInteraction(e);
-                                        }
-                                        else {
-                                            if (UIi.elInteractionType == "HIDE") {
-                                                thetriggeredelement.style.display = ""; //"block";
-                                            }
-                                        }
-                                    }
-                                    break;
-                                }
-                            default: // SELECT HANDLED HERE
-                                {
-                                    // this will be the select check for dropdowns
-                                    if (e.type.toUpperCase().startsWith("SELECT")) {
-                                        var v = e.value;
+                                case "TEXT":
+                                case "TEXTAREA":
+                                    {
+                                        var v = e.value.toUpperCase();
                                         var thetriggeredelement = document.getElementById("div_" + UIi.elIDTarget);
-                                        if (v == UIi.elValueTrigger) {
+                                        if (v == UIi.elValueTrigger.toUpperCase()) {
                                             if (UIi.elInteractionType == "SHOW") {
                                                 thetriggeredelement.style.display = ""; //"block";
                                             }
@@ -1693,22 +1719,94 @@ var FormGenBS = /** @class */ (function () {
                                             }
                                         }
                                         else {
-                                            // if (UIi.elInteractionType == "SHOW") {
-                                            //     thetriggeredelement.style.display = "none";
-                                            //     // here we want to recursively call itself to propigate UIInteractions down the chain
-                                            //     var telement = document.getElementById(UIi.elIDTarget);
-                                            //     //this.DoFormGenInteraction(telement);
-                                            // }
-                                            // else {
-                                            //     if (UIi.elInteractionType == "HIDE") {
-                                            //         thetriggeredelement.style.display = "";//"block";
-                                            //     }
-                                            // }
-                                            break;
+                                            if (UIi.elInteractionType == "SHOW") {
+                                                thetriggeredelement.style.display = "none";
+                                                // here we want to recursively call itself to propigate UIInteractions down the chain
+                                                var telement = document.getElementById(UIi.elIDTarget);
+                                                //this.DoFormGenInteraction(telement);
+                                            }
+                                            else {
+                                                if (UIi.elInteractionType == "HIDE") {
+                                                    thetriggeredelement.style.display = ""; //"block";
+                                                }
+                                            }
                                         }
+                                        break;
                                     }
-                                    break;
-                                }
+                                case "DATE":
+                                    {
+                                        var v = e.value.toUpperCase();
+                                        var thetriggeredelement = document.getElementById("div_" + UIi.elIDTarget);
+                                        var vis = this.isVisible(e);
+                                        if (!vis)
+                                            v = "";
+                                        if (v != "") {
+                                            if (UIi.elInteractionType == "SHOW") {
+                                                thetriggeredelement.style.display = ""; //"block";
+                                            }
+                                            else {
+                                                if (UIi.elInteractionType == "HIDE") {
+                                                    thetriggeredelement.style.display = "none";
+                                                    //e.value = "";
+                                                    // here we want to recursively call itself to propigate UIInteractions down the chain
+                                                    //var telement = document.getElementById(UIi.elIDTarget);
+                                                    //this.DoFormGenInteraction(e);
+                                                }
+                                            }
+                                        }
+                                        else {
+                                            if (UIi.elInteractionType == "SHOW") {
+                                                thetriggeredelement.style.display = "none";
+                                                //e.value = "";
+                                                // here we want to recursively call itself to propigate UIInteractions down the chain
+                                                //var telement = document.getElementById(UIi.elIDTarget);
+                                                //this.DoFormGenInteraction(e);
+                                            }
+                                            else {
+                                                if (UIi.elInteractionType == "HIDE") {
+                                                    thetriggeredelement.style.display = ""; //"block";
+                                                }
+                                            }
+                                        }
+                                        break;
+                                    }
+                                default: // SELECT HANDLED HERE
+                                    {
+                                        // this will be the select check for dropdowns
+                                        if (e.type.toUpperCase().startsWith("SELECT")) {
+                                            var v = e.value;
+                                            var thetriggeredelement = document.getElementById("div_" + UIi.elIDTarget);
+                                            if (v == UIi.elValueTrigger) {
+                                                if (UIi.elInteractionType == "SHOW") {
+                                                    thetriggeredelement.style.display = ""; //"block";
+                                                }
+                                                else {
+                                                    if (UIi.elInteractionType == "HIDE") {
+                                                        thetriggeredelement.style.display = "none";
+                                                        // here we want to recursively call itself to propigate UIInteractions down the chain
+                                                        var telement = document.getElementById(UIi.elIDTarget);
+                                                        //this.DoFormGenInteraction(telement);
+                                                    }
+                                                }
+                                            }
+                                            else {
+                                                // if (UIi.elInteractionType == "SHOW") {
+                                                //     thetriggeredelement.style.display = "none";
+                                                //     // here we want to recursively call itself to propigate UIInteractions down the chain
+                                                //     var telement = document.getElementById(UIi.elIDTarget);
+                                                //     //this.DoFormGenInteraction(telement);
+                                                // }
+                                                // else {
+                                                //     if (UIi.elInteractionType == "HIDE") {
+                                                //         thetriggeredelement.style.display = "";//"block";
+                                                //     }
+                                                // }
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    }
+                            }
                         }
                     }
                 }
@@ -1902,7 +2000,7 @@ var UIInteraction = /** @class */ (function () {
         this.elIDTarget = elidtarget;
         this.elInteractionType = elinteractiontype;
         this.elValueTrigger = elvaluetrigger;
-        this.elValueTracker = this.elValueTracker;
+        this.elValueTracker = elvaluetracker;
     }
     return UIInteraction;
 }());

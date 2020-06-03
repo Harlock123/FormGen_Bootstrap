@@ -11,6 +11,7 @@ export declare class FormGenBS {
     private TheInputIDs;
     constructor(DomElementID: string, UIElements: UIElement[], VersionString: string, JSobjectName: string);
     private HydrateForm;
+    private EvaluateTRACKS;
     /**
      * GetFormData
      *
