@@ -1334,8 +1334,8 @@ var FormGenBS = /** @class */ (function () {
                         var el = (document.getElementById(THEEL.elID));
                         if (el.value != "") {
                             var v = Number(el.dataset.fgscore);
-                            if (v === NaN)
-                                break;
+                            if (isNaN(v))
+                                v = 0;
                             score += v;
                         }
                         break;
@@ -1345,8 +1345,8 @@ var FormGenBS = /** @class */ (function () {
                         var el = (document.getElementById(THEEL.elID));
                         if (el.value != "") {
                             var v = Number(el.dataset.fgscore);
-                            if (v === NaN)
-                                break;
+                            if (isNaN(v))
+                                v = 0;
                             score += v;
                         }
                         break;
@@ -1356,8 +1356,8 @@ var FormGenBS = /** @class */ (function () {
                         var el = (document.getElementById(THEEL.elID));
                         if (el.value != "") {
                             var v = Number(el.dataset.fgscore);
-                            if (v === NaN)
-                                break;
+                            if (isNaN(v))
+                                0;
                             score += v;
                         }
                         break;
@@ -1372,10 +1372,9 @@ var FormGenBS = /** @class */ (function () {
                             var el = (document.getElementById(theid));
                             if (el.checked) {
                                 var v = Number(el.dataset.fgscore);
-                                if (v === NaN) {
-                                }
-                                else
-                                    score += v;
+                                if (isNaN(v))
+                                    v = 0;
+                                score += v;
                             }
                         }
                         break;
@@ -1391,8 +1390,8 @@ var FormGenBS = /** @class */ (function () {
                             if (vv == seltext) {
                                 var eli1 = (document.getElementById(THEEL.elID + '_' + i.toString()));
                                 var v = Number(eli1.dataset.fgscore);
-                                if (v === NaN)
-                                    break;
+                                if (isNaN(v))
+                                    v = 0;
                                 score += v;
                                 break;
                             }
@@ -1409,10 +1408,9 @@ var FormGenBS = /** @class */ (function () {
                             var el = (document.getElementById(theid));
                             if (el.checked) {
                                 var v = Number(el.dataset.fgscore);
-                                if (v === NaN) {
-                                }
-                                else
-                                    score += v;
+                                if (isNaN(v))
+                                    v = 0;
+                                score += v;
                             }
                         }
                         break;
@@ -1661,6 +1659,8 @@ var FormGenBS = /** @class */ (function () {
      */
     FormGenBS.prototype.DoFormGenInteraction = function (e) {
         if (this.AllowInteractions) {
+            // first off lets process the TRACK interactions
+            this.EvaluateTRACKS();
             for (var _i = 0, _a = this.TheInputIDs; _i < _a.length; _i++) {
                 var INPUTIDELEMENT = _a[_i];
                 e = document.getElementById(INPUTIDELEMENT);

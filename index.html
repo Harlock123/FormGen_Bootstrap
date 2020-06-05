@@ -156,13 +156,13 @@
             new UIElement(3,"4","dropdown","Select from the dropdown<br>this is a long form of the label that<br>we want to test the required formatting<br>options in the class",["1","2","3","4"], true,
             [new UIInteraction("4","8","HIDE","4"),new UIInteraction("4","8","HIDE","3"),
              new UIInteraction("4","8","SHOW","1"),new UIInteraction("4","8","SHOW","2"),
-             new UIInteraction("4","5a","TRACK","4","4")],true,"","","",[5,6,7,8],true,""));
+             new UIInteraction("4","5a","TRACK","4","SOME OTHER THING")],true,"","","",[5,6,7,8],true,""));
         ELEs.push(
             new UIElement(4,"5","date","The Label Date",[],true,
             [new UIInteraction("5","5a","SHOW","")],false,"","","",[9]));
         ELEs.push(
             new UIElement(4,"5a","text","What was the curcumstances for the date noted above",[],true,
-            [],false,"","","",[0]));
+            [0],false,"","","",[0]));
         ELEs.push(
             new UIElement(5,"6","checkbox","A bunch of check boxes",
             ["Checkbox option 1","Checkbox option 2","Checkbox option 3","Checkbox option 4","Checkbox option 5"],

@@ -1664,8 +1664,8 @@ export class FormGenBS {
                         if (el.value != "") {
                             var v = Number(el.dataset.fgscore);
 
-                            if (v===NaN)
-                                break;
+                            if (isNaN(v))
+                                v=0;
 
                             score += v;
                         }
@@ -1678,8 +1678,8 @@ export class FormGenBS {
 
                         if (el.value != "") {
                             var v = Number(el.dataset.fgscore);
-                            if (v===NaN)
-                                break;
+                            if (isNaN(v))
+                                v=0;
 
                             score += v;
                         }
@@ -1693,8 +1693,8 @@ export class FormGenBS {
                         if (el.value != "") {
                             var v = Number(el.dataset.fgscore);
 
-                            if (v===NaN)
-                                break;
+                            if (isNaN(v))
+                                0;
 
                             score += v;
                         }
@@ -1714,12 +1714,9 @@ export class FormGenBS {
 
                             if (el.checked) {
                                 var v = Number(el.dataset.fgscore);
-                                if (v===NaN)
-                                {
-
-                                }
-                                else
-                                    score += v;
+                                if (isNaN(v))
+                                    v=0;
+                                score += v;
                             }
 
                         }
@@ -1742,8 +1739,8 @@ export class FormGenBS {
 
                                 var v = Number(eli1.dataset.fgscore);
 
-                                if (v===NaN)
-                                break;
+                                if (isNaN(v))
+                                    v=0;
 
                                 score += v;
 
@@ -1768,12 +1765,9 @@ export class FormGenBS {
                             if (el.checked) {
                                 var v = Number(el.dataset.fgscore);
 
-                                if (v===NaN)
-                                {
-
-                                }
-                                else
-                                    score += v;
+                                if (isNaN(v))
+                                    v=0;
+                                score += v;
                             }
 
                         }
@@ -2119,6 +2113,10 @@ export class FormGenBS {
     private DoFormGenInteraction(e) {
 
         if (this.AllowInteractions) {
+
+            // first off lets process the TRACK interactions
+
+            this.EvaluateTRACKS();
 
             for (let INPUTIDELEMENT of this.TheInputIDs) {
 
