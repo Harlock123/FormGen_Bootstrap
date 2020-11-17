@@ -35,9 +35,9 @@ export class FormGenBS {
     }
 
     private HydrateForm(UIElements: UIElement[]) {
-        
+
         // sort the array first by the rows
-        UIElements.sort(function(a,b) {
+        UIElements.sort(function (a, b) {
             if (a.elFormRow < b.elFormRow)
                 return -1;
             if (a.elFormRow > b.elFormRow)
@@ -61,15 +61,13 @@ export class FormGenBS {
         var oldID = 0;
 
         for (let THEEL of UIElements) {
-            if (THEEL.elFormRow != oldID)
-            {
+            if (THEEL.elFormRow != oldID) {
                 rc += 1;
                 oldID = THEEL.elFormRow;
                 THEEL.elFormRow = rc;
                 this.theUIElements.push(THEEL);
             }
-            else
-            {
+            else {
                 THEEL.elFormRow = rc;
                 this.theUIElements.push(THEEL);
             }
@@ -79,7 +77,7 @@ export class FormGenBS {
 
         UIElements = this.theUIElements;
 
-        
+
         // save the handed in UIElements for further processing later
         // this.theUIElements = UIElements;
 
@@ -114,9 +112,9 @@ export class FormGenBS {
         //    FROWS.push(cnt);
         //    FROWS.push(cnt);
         //    FROWS.push(cnt);
-       // }
+        // }
         cnt = 0;
-        
+
         //for (let i = FROWS.length; i < UIElements.length; i++) { FROWS.push(cnt); FROWS.push(cnt); FROWS.push(cnt); FROWS.push(cnt); }
 
         // we now have an array of numbers the ordinal position in that array has the number of
@@ -230,21 +228,18 @@ export class FormGenBS {
             CURROW += 1;
 
 
-            if (this.EnableGreenbar)
-            {
+            if (this.EnableGreenbar) {
                 if (CURROW % 2 === 0) // even
                 {
                     innerhtml += '<div class="form-row" >';
                 }
-                else
-                {
+                else {
                     innerhtml += '<div class="form-row" style="background-color:' + this.GreenBarColor + '" >';
                 }
 
             }
-            else
-            {
-            // If the calculated style for the Current Row is empty dont emit a STYLE tag
+            else {
+                // If the calculated style for the Current Row is empty dont emit a STYLE tag
                 if (FROWTAGS[CURROW - 1] !== '')
                     innerhtml += '<div class="form-row" style="' + FROWTAGS[CURROW - 1] + '" >';
                 else
@@ -283,35 +278,33 @@ export class FormGenBS {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
 
-                            if (THEEL.elRequired)
-                            {
+                            if (THEEL.elRequired) {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table>';
                                 innerhtml += '<td valign="top" class="text-red"> * </td>';
-                                innerhtml += '<td>'; 
+                                innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
-                                innerhtml += '</td>'; 
+                                innerhtml += '</td>';
                                 innerhtml += '</table>';
 
                             }
-                            else
-                            {
+                            else {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table>';
-                                innerhtml += '<td>'; 
+                                innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
-                                innerhtml += '</td>'; 
+                                innerhtml += '</td>';
                                 innerhtml += '</table>';
                             }
-                            
+
                             if (!Array.isArray(THEEL.elInteractions) || !THEEL.elInteractions.length) {
                                 innerhtml += '<input type="text" class="' + CC + '" name = "' + THEEL.elID +
                                     '" id="' + THEEL.elID + '" style="' + THEEL.elFormStyle + '"  > ';
-                                
+
                             }
                             else {
                                 for (let v of THEEL.elInteractions) {
@@ -357,28 +350,26 @@ export class FormGenBS {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
 
-                            if (THEEL.elRequired)
-                            {
+                            if (THEEL.elRequired) {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table>';
                                 innerhtml += '<td valign="top" class="text-red"> * </td>';
-                                innerhtml += '<td>'; 
+                                innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
-                                innerhtml += '</td>'; 
+                                innerhtml += '</td>';
                                 innerhtml += '</table>';
 
                             }
-                            else
-                            {
+                            else {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table>';
-                                innerhtml += '<td>'; 
+                                innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
-                                innerhtml += '</td>'; 
+                                innerhtml += '</td>';
                                 innerhtml += '</table>';
                             }
 
@@ -430,28 +421,26 @@ export class FormGenBS {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
 
-                            if (THEEL.elRequired)
-                            {
+                            if (THEEL.elRequired) {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table>';
                                 innerhtml += '<td valign="top" class="text-red"> * </td>';
-                                innerhtml += '<td>'; 
+                                innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
-                                innerhtml += '</td>'; 
+                                innerhtml += '</td>';
                                 innerhtml += '</table>';
 
                             }
-                            else
-                            {
+                            else {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table>';
-                                innerhtml += '<td>'; 
+                                innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
-                                innerhtml += '</td>'; 
+                                innerhtml += '</td>';
                                 innerhtml += '</table>';
                             }
 
@@ -504,22 +493,20 @@ export class FormGenBS {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
 
-                            if (THEEL.elRequired)
-                            {
-                               
+                            if (THEEL.elRequired) {
+
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table>';
                                 innerhtml += '<td valign="top" class="text-red"> * </td>';
-                                innerhtml += '<td>'; 
+                                innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '"  >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
-                                innerhtml += '</td>'; 
+                                innerhtml += '</td>';
                                 innerhtml += '</table>';
 
                             }
-                            else
-                            {
+                            else {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table>';
                                 innerhtml += '<td>';
@@ -591,28 +578,26 @@ export class FormGenBS {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
 
-                            if (THEEL.elRequired)
-                            {
+                            if (THEEL.elRequired) {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table>';
                                 innerhtml += '<td valign="top" class="text-red"> * </td>';
-                                innerhtml += '<td>'; 
+                                innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
-                                innerhtml += '</td>'; 
+                                innerhtml += '</td>';
                                 innerhtml += '</table>';
 
                             }
-                            else
-                            {
+                            else {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table>';
-                                innerhtml += '<td>'; 
+                                innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
-                                innerhtml += '</td>'; 
+                                innerhtml += '</td>';
                                 innerhtml += '</table>';
 
                             }
@@ -681,21 +666,19 @@ export class FormGenBS {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
 
-                            if (THEEL.elRequired)
-                            {
+                            if (THEEL.elRequired) {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table>';
                                 innerhtml += '<td valign="top" class="text-red"> * </td>';
-                                innerhtml += '<td>'; 
+                                innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
-                                innerhtml += '</td>'; 
+                                innerhtml += '</td>';
                                 innerhtml += '</table>';
 
                             }
-                            else
-                            {
+                            else {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table>';
                                 innerhtml += '<td>';
@@ -875,22 +858,20 @@ export class FormGenBS {
                                 innerhtml += '<div class="' + CBTAG + '" >';
                             }
 
-                            if (THEEL.elRequired)
-                            {
+                            if (THEEL.elRequired) {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table style="width:100%">';
                                 innerhtml += '<td valign="top" class="text-red"> * </td>';
-                                innerhtml += '<td>'; 
+                                innerhtml += '<td>';
                                 innerhtml += '<label for="' + THEEL.elID + '" style="' + THEEL.elLabelStyle + '" >';
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
                                 innerhtml += '</td>';
-                                innerhtml += '<td style="float:right"><span class="RECXofYSPAN" id="span_' + THEEL.elID +'"style="background-color:white">' + ' + ' + '</span></td>'; 
+                                innerhtml += '<td style="float:right"><span class="RECXofYSPAN" id="span_' + THEEL.elID + '"style="background-color:white">' + ' + ' + '</span></td>';
                                 innerhtml += '</table>';
 
                             }
-                            else
-                            {
+                            else {
                                 innerhtml += '<div class="form-group" id="' + 'div_' + THEEL.elID + '" ' + VIS + STY + ' >';
                                 innerhtml += '<table style="width: 100%">';
                                 innerhtml += '<td>';
@@ -898,7 +879,7 @@ export class FormGenBS {
                                 innerhtml += THEEL.elLabel;
                                 innerhtml += '</label>';
                                 innerhtml += '</td>';
-                                innerhtml += '<td style="float:right"><span class="RECXofYSPAN" id="span_' + THEEL.elID +'"style="background-color:white">' + ' + ' + '</span></td>'; 
+                                innerhtml += '<td style="float:right"><span class="RECXofYSPAN" id="span_' + THEEL.elID + '"style="background-color:white">' + ' + ' + '</span></td>';
                                 innerhtml += '</table>';
                             }
 
@@ -916,7 +897,7 @@ export class FormGenBS {
                                 innerhtml += '<td>' + ' ' + '</td>';
                             }
                             innerhtml += '</tr>';
-                            
+
                             // let i = 0;
                             // for (let v of THEEL.elContent) {
                             //     i += 1;
@@ -1104,7 +1085,7 @@ export class FormGenBS {
 
                     var SPANELEMENT = document.getElementById("span_" + THEEL.elID);
 
-                    SPANELEMENT.addEventListener('click',this.TestModalCrap)
+                    SPANELEMENT.addEventListener('click', this.TestModalCrap)
 
                     break;
                 }
@@ -1114,17 +1095,14 @@ export class FormGenBS {
         }
     }
 
-    private EvaluateTRACKS()
-    {
+    private EvaluateTRACKS() {
         // Iterate over all of the UIInteractions stored
         for (let UIi of this.theUIInteractions) {
-            if (UIi.elInteractionType=="TRACK")
-            {
+            if (UIi.elInteractionType == "TRACK") {
                 // we have a tracking UIi so lets decode it
                 for (let THEEL of this.theUIElements) {
 
-                    if (THEEL.elID == UIi.elIDSource)
-                    {
+                    if (THEEL.elID == UIi.elIDSource) {
                         // we have the actual User Interface control that is the source for this TRACKING
                         var v = new UIValue(THEEL.elID, "");
 
@@ -1132,17 +1110,17 @@ export class FormGenBS {
                             case "TEXT":
                                 {
                                     var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
-            
+
                                     v = new UIValue(THEEL.elID, el.value);
-                                   
+
                                     break;
                                 }
                             case "DATE":
                                 {
                                     var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
-            
+
                                     v = new UIValue(THEEL.elID, el.value);
-            
+
                                     break;
                                 }
                             case "NARRATIVE":
@@ -1150,22 +1128,22 @@ export class FormGenBS {
                                     var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
 
                                     var tv = el.value;
-            
+
                                     var v = new UIValue(THEEL.elID, tv);
-            
+
                                     break;
                                 }
                             case "RADIO":
                                 {
                                     let i = 0;
-            
+
                                     for (let vv of THEEL.elContent) {
                                         i += 1;
-            
+
                                         var theid = THEEL.elID + "_" + i.toString();
-            
+
                                         var el = <HTMLInputElement>(document.getElementById(theid));
-            
+
                                         if (el.checked) {
                                             v = new UIValue(THEEL.elID + "_" + i.toString(), "true");
                                         }
@@ -1173,18 +1151,17 @@ export class FormGenBS {
                                             v = new UIValue(THEEL.elID + "_" + i.toString(), "false");
                                         }
 
-                                        if (v.uivID == UIi.elIDSource)
-                                        {
+                                        if (v.uivID == UIi.elIDSource) {
                                             break;
                                         }
                                     }
-            
+
                                     break;
                                 }
                             case "DROPDOWN":
                                 {
                                     var eli = <HTMLSelectElement>(document.getElementById(THEEL.elID));
-            
+
                                     v = new UIValue(THEEL.elID, eli.options[eli.selectedIndex].text);
 
                                     break;
@@ -1192,14 +1169,14 @@ export class FormGenBS {
                             case "CHECKBOX":
                                 {
                                     let i = 0;
-            
+
                                     for (let vv of THEEL.elContent) {
                                         i += 1;
-            
+
                                         var theid = THEEL.elID + "_" + i.toString();
-            
+
                                         var el = <HTMLInputElement>(document.getElementById(theid));
-            
+
                                         if (el.checked) {
                                             v = new UIValue(THEEL.elID + "_" + i.toString(), "true");
                                         }
@@ -1207,24 +1184,22 @@ export class FormGenBS {
                                             v = new UIValue(THEEL.elID + "_" + i.toString(), "false");
                                         }
 
-                                        if (v.uivID == UIi.elIDSource)
-                                        {
+                                        if (v.uivID == UIi.elIDSource) {
                                             break;
                                         }
 
                                     }
-            
+
                                     break;
                                 }
                         }
-                        
+
                         // Now v should contain a UIVALUE that we can look at to see if it matches the TRACK and if so we can
                         // set said value 
 
-                        if (v.uivValue == UIi.elValueTrigger)
-                        {
+                        if (v.uivValue == UIi.elValueTrigger) {
                             // We have a match
-                            
+
                             var eel = <HTMLInputElement>(document.getElementById(UIi.elIDTarget));
 
                             eel.value = UIi.elValueTracker;
@@ -1255,101 +1230,103 @@ export class FormGenBS {
         this.EvaluateTRACKS();
 
         for (let THEEL of this.theUIElements) {
-            switch (THEEL.elType.toUpperCase()) {
-                case "TEXT":
-                    {
-                        var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
+            if (THEEL.elValueEcho) {
+                switch (THEEL.elType.toUpperCase()) {
+                    case "TEXT":
+                        {
+                            var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
 
-                        var v = new UIValue(THEEL.elID, el.value);
+                            var v = new UIValue(THEEL.elID, el.value);
 
-                        UIValues.push(v);
+                            UIValues.push(v);
 
-                        break;
-                    }
-                case "DATE":
-                    {
-                        var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
-
-                        var v = new UIValue(THEEL.elID, el.value);
-
-                        UIValues.push(v);
-
-                        break;
-                    }
-                case "NARRATIVE":
-                    {
-                        var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
-
-                        var tv = el.value;
-
-                        //tv.replace('\\','\\\\'); // Excape NewLines and other control characters
-
-                        var v = new UIValue(THEEL.elID, tv);
-
-                        UIValues.push(v);
-
-                        break;
-                    }
-                case "RADIO":
-                    {
-                        let i = 0;
-
-                        for (let vv of THEEL.elContent) {
-                            i += 1;
-
-                            var theid = THEEL.elID + "_" + i.toString();
-
-                            var el = <HTMLInputElement>(document.getElementById(theid));
-
-                            if (el.checked) {
-                                var v = new UIValue(THEEL.elID + "_" + i.toString(), "true");
-
-                                UIValues.push(v);
-                            }
-                            else {
-                                var v = new UIValue(THEEL.elID + "_" + i.toString(), "false");
-
-                                UIValues.push(v);
-                            }
+                            break;
                         }
+                    case "DATE":
+                        {
+                            var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
 
-                        break;
-                    }
-                case "DROPDOWN":
-                    {
-                        var eli = <HTMLSelectElement>(document.getElementById(THEEL.elID));
+                            var v = new UIValue(THEEL.elID, el.value);
 
-                        var v = new UIValue(THEEL.elID, eli.options[eli.selectedIndex].text);
+                            UIValues.push(v);
 
-                        UIValues.push(v);
-
-                        break;
-                    }
-                case "CHECKBOX":
-                    {
-                        let i = 0;
-
-                        for (let vv of THEEL.elContent) {
-                            i += 1;
-
-                            var theid = THEEL.elID + "_" + i.toString();
-
-                            var el = <HTMLInputElement>(document.getElementById(theid));
-
-                            if (el.checked) {
-                                var v = new UIValue(THEEL.elID + "_" + i.toString(), "true");
-
-                                UIValues.push(v);
-                            }
-                            else {
-                                var v = new UIValue(THEEL.elID + "_" + i.toString(), "false");
-
-                                UIValues.push(v);
-                            }
+                            break;
                         }
+                    case "NARRATIVE":
+                        {
+                            var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
 
-                        break;
-                    }
+                            var tv = el.value;
+
+                            //tv.replace('\\','\\\\'); // Excape NewLines and other control characters
+
+                            var v = new UIValue(THEEL.elID, tv);
+
+                            UIValues.push(v);
+
+                            break;
+                        }
+                    case "RADIO":
+                        {
+                            let i = 0;
+
+                            for (let vv of THEEL.elContent) {
+                                i += 1;
+
+                                var theid = THEEL.elID + "_" + i.toString();
+
+                                var el = <HTMLInputElement>(document.getElementById(theid));
+
+                                if (el.checked) {
+                                    var v = new UIValue(THEEL.elID + "_" + i.toString(), "true");
+
+                                    UIValues.push(v);
+                                }
+                                else {
+                                    var v = new UIValue(THEEL.elID + "_" + i.toString(), "false");
+
+                                    UIValues.push(v);
+                                }
+                            }
+
+                            break;
+                        }
+                    case "DROPDOWN":
+                        {
+                            var eli = <HTMLSelectElement>(document.getElementById(THEEL.elID));
+
+                            var v = new UIValue(THEEL.elID, eli.options[eli.selectedIndex].text);
+
+                            UIValues.push(v);
+
+                            break;
+                        }
+                    case "CHECKBOX":
+                        {
+                            let i = 0;
+
+                            for (let vv of THEEL.elContent) {
+                                i += 1;
+
+                                var theid = THEEL.elID + "_" + i.toString();
+
+                                var el = <HTMLInputElement>(document.getElementById(theid));
+
+                                if (el.checked) {
+                                    var v = new UIValue(THEEL.elID + "_" + i.toString(), "true");
+
+                                    UIValues.push(v);
+                                }
+                                else {
+                                    var v = new UIValue(THEEL.elID + "_" + i.toString(), "false");
+
+                                    UIValues.push(v);
+                                }
+                            }
+
+                            break;
+                        }
+                }
             }
         }
         return UIValues;
@@ -1463,14 +1440,13 @@ export class FormGenBS {
             console.log("Iterating through Row " + i + " Height " + (<HTMLElement>x[i]).offsetHeight)
 
             THeight += (<HTMLElement>x[i]).offsetHeight;
-            if (THeight > YCord && (<HTMLElement>x[i]).offsetHeight > 0)
-            {
-                Row = i+1;
+            if (THeight > YCord && (<HTMLElement>x[i]).offsetHeight > 0) {
+                Row = i + 1;
                 break;
             }
 
-          }
-        
+        }
+
         console.log("Returned ROW " + Row);
         return Row;
     }
@@ -1665,7 +1641,7 @@ export class FormGenBS {
                             var v = Number(el.dataset.fgscore);
 
                             if (isNaN(v))
-                                v=0;
+                                v = 0;
 
                             score += v;
                         }
@@ -1679,7 +1655,7 @@ export class FormGenBS {
                         if (el.value != "") {
                             var v = Number(el.dataset.fgscore);
                             if (isNaN(v))
-                                v=0;
+                                v = 0;
 
                             score += v;
                         }
@@ -1715,7 +1691,7 @@ export class FormGenBS {
                             if (el.checked) {
                                 var v = Number(el.dataset.fgscore);
                                 if (isNaN(v))
-                                    v=0;
+                                    v = 0;
                                 score += v;
                             }
 
@@ -1740,7 +1716,7 @@ export class FormGenBS {
                                 var v = Number(eli1.dataset.fgscore);
 
                                 if (isNaN(v))
-                                    v=0;
+                                    v = 0;
 
                                 score += v;
 
@@ -1766,7 +1742,7 @@ export class FormGenBS {
                                 var v = Number(el.dataset.fgscore);
 
                                 if (isNaN(v))
-                                    v=0;
+                                    v = 0;
                                 score += v;
                             }
 
@@ -2011,7 +1987,7 @@ export class FormGenBS {
      */
     public GetWholeForm() {
 
-        var TheForm: FormGenDefCon = new FormGenDefCon("","");
+        var TheForm: FormGenDefCon = new FormGenDefCon("", "");
 
         TheForm.FGDFDefinition = this.GetFormDefinitionAsString();
         TheForm.FGDFContent = this.GetFormDataAsString();
@@ -2032,9 +2008,8 @@ export class FormGenBS {
      * this will also carry those augmentations automatically
      *  
      */
-    public SetWholeForm(TheFormDefCon: string)
-    {
-        var TheForm: FormGenDefCon = new FormGenDefCon("","");
+    public SetWholeForm(TheFormDefCon: string) {
+        var TheForm: FormGenDefCon = new FormGenDefCon("", "");
         TheForm = JSON.parse(TheFormDefCon);
 
         this.SetFormDefinition(TheForm.FGDFDefinition);
@@ -2435,16 +2410,14 @@ export class FormGenBS {
     public SetGreenBarColor(TheColor: string) {
         this.GreenBarColor = TheColor;
 
-        if (this.EnableGreenbar)
-        {
+        if (this.EnableGreenbar) {
             var Self = this;
 
             Self.HydrateForm(Self.theUIElements);
         }
     }
 
-    public TestModalCrap(e: any)
-    {
+    public TestModalCrap(e: any) {
 
         let elem = document.createElement('div') as HTMLDivElement;
         let elem1a = document.createElement('div') as HTMLDivElement;
@@ -2461,48 +2434,45 @@ export class FormGenBS {
 
         var elem2Remove = document.querySelector('#FormGenGeneratedModalDialog');
 
-        if (elem2Remove !== null)
-        {
+        if (elem2Remove !== null) {
             // Ok we got something so lets give it he axe...
 
             TheMainObject.removeChild(elem2Remove);
         }
 
         // Move on now and make a new one and insert it
-        
+
         elem.id = "FormGenGeneratedModalDialog";
-        elem.setAttribute("class","modal fade");
+        elem.setAttribute("class", "modal fade");
         //elem.className = "modal fade";
         elem.tabIndex = -1;
-        elem.setAttribute("aria-labelledby","FormGenGeneratedModalDialogLabel");
-        elem.setAttribute("aria-hidden","true");
+        elem.setAttribute("aria-labelledby", "FormGenGeneratedModalDialogLabel");
+        elem.setAttribute("aria-hidden", "true");
 
-        elem1.setAttribute("class","modal-dialog");
-        elem1.setAttribute("role","document");
+        elem1.setAttribute("class", "modal-dialog");
+        elem1.setAttribute("role", "document");
 
-        elem1a.setAttribute("class","modal-content");
+        elem1a.setAttribute("class", "modal-content");
 
-        elem2.setAttribute("class","modal-header");
-        
-        elem3.setAttribute("class","modal-title");
+        elem2.setAttribute("class", "modal-header");
+
+        elem3.setAttribute("class", "modal-title");
         elem3.id = "FormGenGeneratedModalDialogTitle"
         elem3.textContent = "Sample Title Goes Here";
 
-        elem4.setAttribute("class","close");
-        elem4.setAttribute("data-dismiss","modal");
-        elem4.setAttribute("aria-label","close");
+        elem4.setAttribute("class", "close");
+        elem4.setAttribute("data-dismiss", "modal");
+        elem4.setAttribute("aria-label", "close");
 
-        elem5.setAttribute("aria-hidden","true")
-        elem5.textContent= "X";
+        elem5.setAttribute("aria-hidden", "true")
+        elem5.textContent = "X";
 
-        elem6.setAttribute("class","modal-body");
+        elem6.setAttribute("class", "modal-body");
 
-        if (e!== undefined)
-        {
+        if (e !== undefined) {
             elem6.innerHTML = "The body of this dialog will contain<br>a series of input elements<br>that will allow you to fill<br>out a record";
         }
-        else
-        {
+        else {
             elem6.innerHTML = "Sample Body of the dialog will go here";
         }
 
@@ -2516,13 +2486,13 @@ export class FormGenBS {
         elem4.appendChild(elem5);
 
         elem1a.appendChild(elem6);
-        
+
         elem.appendChild(elem1);
 
         TheMainObject.appendChild(elem);
-        
+
         $('#FormGenGeneratedModalDialog').modal('show');
-        
+
     }
 
     // use in propigation of UIInteractions on visibiliy checks
@@ -2547,12 +2517,13 @@ export class UIElement {
     public elAutoSize: boolean;
     public elCustomClass: string;
     public elRecords: string[];
+    public elValueEcho: boolean;
 
 
     constructor(elformrow: number, elid: string, eltype: string, ellabel: string,
         elcontent: string[], elrequired: boolean, elinteractions: UIInteraction[], elinitialvisibility: boolean,
         elstyle: string, ellabelstyle: string, elformstyle: string, elscore: number[],
-        elautosize?: boolean, elcustomclass?: string, elrecords?: string[]) {
+        elautosize?: boolean, elcustomclass?: string, elrecords?: string[], elvalueecho?: boolean) {
         this.elFormRow = elformrow;
         this.elID = elid;
         this.elContent = elcontent;
@@ -2565,6 +2536,7 @@ export class UIElement {
         this.elLabelStyle = ellabelstyle;
         this.elFormStyle = elformstyle;
         this.elScore = elscore;
+        
 
         if (elautosize == undefined) {
             this.elAutoSize = false;
@@ -2587,6 +2559,14 @@ export class UIElement {
             this.elRecords = elrecords;
         }
 
+        if (elvalueecho == undefined){
+            this.elValueEcho = true;
+        }
+        else
+        {
+            this.elValueEcho = elvalueecho;
+        }
+
 
     }
 }
@@ -2606,7 +2586,7 @@ export class UIInteraction {
         this.elValueTracker = elvaluetracker;
     }
 
-    
+
 }
 
 export class UIValue {
@@ -2623,8 +2603,7 @@ export class FormGenDefCon {
     public FGDFDefinition: string;
     public FGDFContent: string;
 
-    constructor(FGDFD: string, FGDFC: string)
-    {
+    constructor(FGDFD: string, FGDFC: string) {
         this.FGDFDefinition = FGDFD;
         this.FGDFContent = FGDFC;
     }

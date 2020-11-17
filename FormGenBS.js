@@ -991,75 +991,77 @@ var FormGenBS = /** @class */ (function () {
         this.EvaluateTRACKS();
         for (var _i = 0, _a = this.theUIElements; _i < _a.length; _i++) {
             var THEEL = _a[_i];
-            switch (THEEL.elType.toUpperCase()) {
-                case "TEXT":
-                    {
-                        var el = (document.getElementById(THEEL.elID));
-                        var v = new UIValue(THEEL.elID, el.value);
-                        UIValues.push(v);
-                        break;
-                    }
-                case "DATE":
-                    {
-                        var el = (document.getElementById(THEEL.elID));
-                        var v = new UIValue(THEEL.elID, el.value);
-                        UIValues.push(v);
-                        break;
-                    }
-                case "NARRATIVE":
-                    {
-                        var el = (document.getElementById(THEEL.elID));
-                        var tv = el.value;
-                        //tv.replace('\\','\\\\'); // Excape NewLines and other control characters
-                        var v = new UIValue(THEEL.elID, tv);
-                        UIValues.push(v);
-                        break;
-                    }
-                case "RADIO":
-                    {
-                        var i = 0;
-                        for (var _b = 0, _c = THEEL.elContent; _b < _c.length; _b++) {
-                            var vv = _c[_b];
-                            i += 1;
-                            var theid = THEEL.elID + "_" + i.toString();
-                            var el = (document.getElementById(theid));
-                            if (el.checked) {
-                                var v = new UIValue(THEEL.elID + "_" + i.toString(), "true");
-                                UIValues.push(v);
-                            }
-                            else {
-                                var v = new UIValue(THEEL.elID + "_" + i.toString(), "false");
-                                UIValues.push(v);
-                            }
+            if (THEEL.elValueEcho) {
+                switch (THEEL.elType.toUpperCase()) {
+                    case "TEXT":
+                        {
+                            var el = (document.getElementById(THEEL.elID));
+                            var v = new UIValue(THEEL.elID, el.value);
+                            UIValues.push(v);
+                            break;
                         }
-                        break;
-                    }
-                case "DROPDOWN":
-                    {
-                        var eli = (document.getElementById(THEEL.elID));
-                        var v = new UIValue(THEEL.elID, eli.options[eli.selectedIndex].text);
-                        UIValues.push(v);
-                        break;
-                    }
-                case "CHECKBOX":
-                    {
-                        var i = 0;
-                        for (var _d = 0, _e = THEEL.elContent; _d < _e.length; _d++) {
-                            var vv = _e[_d];
-                            i += 1;
-                            var theid = THEEL.elID + "_" + i.toString();
-                            var el = (document.getElementById(theid));
-                            if (el.checked) {
-                                var v = new UIValue(THEEL.elID + "_" + i.toString(), "true");
-                                UIValues.push(v);
-                            }
-                            else {
-                                var v = new UIValue(THEEL.elID + "_" + i.toString(), "false");
-                                UIValues.push(v);
-                            }
+                    case "DATE":
+                        {
+                            var el = (document.getElementById(THEEL.elID));
+                            var v = new UIValue(THEEL.elID, el.value);
+                            UIValues.push(v);
+                            break;
                         }
-                        break;
-                    }
+                    case "NARRATIVE":
+                        {
+                            var el = (document.getElementById(THEEL.elID));
+                            var tv = el.value;
+                            //tv.replace('\\','\\\\'); // Excape NewLines and other control characters
+                            var v = new UIValue(THEEL.elID, tv);
+                            UIValues.push(v);
+                            break;
+                        }
+                    case "RADIO":
+                        {
+                            var i = 0;
+                            for (var _b = 0, _c = THEEL.elContent; _b < _c.length; _b++) {
+                                var vv = _c[_b];
+                                i += 1;
+                                var theid = THEEL.elID + "_" + i.toString();
+                                var el = (document.getElementById(theid));
+                                if (el.checked) {
+                                    var v = new UIValue(THEEL.elID + "_" + i.toString(), "true");
+                                    UIValues.push(v);
+                                }
+                                else {
+                                    var v = new UIValue(THEEL.elID + "_" + i.toString(), "false");
+                                    UIValues.push(v);
+                                }
+                            }
+                            break;
+                        }
+                    case "DROPDOWN":
+                        {
+                            var eli = (document.getElementById(THEEL.elID));
+                            var v = new UIValue(THEEL.elID, eli.options[eli.selectedIndex].text);
+                            UIValues.push(v);
+                            break;
+                        }
+                    case "CHECKBOX":
+                        {
+                            var i = 0;
+                            for (var _d = 0, _e = THEEL.elContent; _d < _e.length; _d++) {
+                                var vv = _e[_d];
+                                i += 1;
+                                var theid = THEEL.elID + "_" + i.toString();
+                                var el = (document.getElementById(theid));
+                                if (el.checked) {
+                                    var v = new UIValue(THEEL.elID + "_" + i.toString(), "true");
+                                    UIValues.push(v);
+                                }
+                                else {
+                                    var v = new UIValue(THEEL.elID + "_" + i.toString(), "false");
+                                    UIValues.push(v);
+                                }
+                            }
+                            break;
+                        }
+                }
             }
         }
         return UIValues;
@@ -1973,7 +1975,7 @@ var FormGenBS = /** @class */ (function () {
 }());
 exports.FormGenBS = FormGenBS;
 var UIElement = /** @class */ (function () {
-    function UIElement(elformrow, elid, eltype, ellabel, elcontent, elrequired, elinteractions, elinitialvisibility, elstyle, ellabelstyle, elformstyle, elscore, elautosize, elcustomclass, elrecords) {
+    function UIElement(elformrow, elid, eltype, ellabel, elcontent, elrequired, elinteractions, elinitialvisibility, elstyle, ellabelstyle, elformstyle, elscore, elautosize, elcustomclass, elrecords, elvalueecho) {
         this.elFormRow = elformrow;
         this.elID = elid;
         this.elContent = elcontent;
@@ -2003,6 +2005,12 @@ var UIElement = /** @class */ (function () {
         }
         else {
             this.elRecords = elrecords;
+        }
+        if (elvalueecho == undefined) {
+            this.elValueEcho = true;
+        }
+        else {
+            this.elValueEcho = elvalueecho;
         }
     }
     return UIElement;
