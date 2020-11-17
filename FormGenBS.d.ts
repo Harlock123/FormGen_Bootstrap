@@ -13,6 +13,13 @@ export declare class FormGenBS {
     private HydrateForm;
     private EvaluateTRACKS;
     /**
+     * SetElementValueEcho
+     *
+     * @param elid The ELID of the element to be adjusted
+     * @param valecho The True or False setting for this element on getformdata
+     */
+    SetElementValueEcho(elid: string, valecho: boolean): void;
+    /**
      * GetFormData
      *
      * @returns UIValue[] of the forms current answers to the question elements on the current form

@@ -979,6 +979,20 @@ var FormGenBS = /** @class */ (function () {
         }
     };
     /**
+     * SetElementValueEcho
+     *
+     * @param elid The ELID of the element to be adjusted
+     * @param valecho The True or False setting for this element on getformdata
+     */
+    FormGenBS.prototype.SetElementValueEcho = function (elid, valecho) {
+        for (var _i = 0, _a = this.theUIElements; _i < _a.length; _i++) {
+            var THEEL = _a[_i];
+            if (THEEL.elID == elid) {
+                THEEL.elValueEcho = valecho;
+            }
+        }
+    };
+    /**
      * GetFormData
      *
      * @returns UIValue[] of the forms current answers to the question elements on the current form
