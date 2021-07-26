@@ -1794,118 +1794,126 @@ export class FormGenBS {
                         {
                             var del = <HTMLElement>(document.getElementById("div_" + THEEL.elID));
 
-                            if (!del.hidden) {
-
-                                var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
-
-                                el.classList.remove('is-invalid');
-                                el.classList.remove('is-valid');
-
-
-                                if (el.value + "" == "") {
-                                    isvalid = false;
-
-                                    //el.classList.add('.was-validated');
-                                    el.classList.add('is-invalid');
-
-                                }
-                                else {
-                                    //el.classList.add('.was-validated');
-                                    //el.classList.add(':valid');
+                            if (del.clientHeight > 0)
+                            {
+                                if (!del.hidden) {
+                                   
+                                    var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
+                                    
+                                    el.classList.remove('is-invalid');
+                                    el.classList.remove('is-valid');
+                                    
+                                    
+                                    if (el.value + "" == "") {
+                                        isvalid = false;
+                                        
+                                        //el.classList.add('.was-validated');
+                                        el.classList.add('is-invalid');
+                                        
+                                    }
+                                    else {
+                                        //el.classList.add('.was-validated');
+                                        //el.classList.add(':valid');
+                                    }
                                 }
                             }
-
                             break;
                         }
                     case "DATE":
                         {
                             var del = <HTMLElement>(document.getElementById("div_" + THEEL.elID));
 
-                            if (!del.hidden) {
+                            if (del.clientHeight > 0)
+                            {
+                                if (!del.hidden) {
 
-                                var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
+                                    var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
 
-                                el.classList.remove('is-invalid');
-                                el.classList.remove('is-valid');
+                                    el.classList.remove('is-invalid');
+                                    el.classList.remove('is-valid');
 
-                                if (el.value + "" == "") {
-                                    isvalid = false;
+                                    if (el.value + "" == "") {
+                                        isvalid = false;
 
-                                    el.classList.add('is-invalid');
+                                        el.classList.add('is-invalid');
 
+                                    }
                                 }
                             }
-
                             break;
                         }
                     case "NARRATIVE":
                         {
                             var del = <HTMLElement>(document.getElementById("div_" + THEEL.elID));
 
-                            if (!del.hidden) {
+                            if (del.clientHeight > 0)
+                            {
+                                if (!del.hidden) {
 
-                                var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
+                                    var el = <HTMLInputElement>(document.getElementById(THEEL.elID));
 
-                                el.classList.remove('is-invalid');
-                                el.classList.remove('is-valid');
+                                    el.classList.remove('is-invalid');
+                                    el.classList.remove('is-valid');
 
-                                if (el.value + "" == "") {
-                                    isvalid = false;
+                                    if (el.value + "" == "") {
+                                        isvalid = false;
 
-                                    el.classList.add('is-invalid');
+                                        el.classList.add('is-invalid');
 
+                                    }
                                 }
                             }
-
                             break;
                         }
                     case "RADIO":
                         {
                             var del = <HTMLElement>(document.getElementById("div_" + THEEL.elID));
+                            if (del.clientHeight > 0)
+                            {
+                                if (!del.hidden) {
 
-                            if (!del.hidden) {
+                                    let i = 0;
 
-                                let i = 0;
+                                    let newvalid = false;
 
-                                let newvalid = false;
+                                    for (let vv of THEEL.elContent) {
+                                        i += 1;
 
-                                for (let vv of THEEL.elContent) {
-                                    i += 1;
+                                        var theid = THEEL.elID + "_" + i.toString();
 
-                                    var theid = THEEL.elID + "_" + i.toString();
+                                        var el = <HTMLInputElement>(document.getElementById(theid));
 
-                                    var el = <HTMLInputElement>(document.getElementById(theid));
+                                        if (el.checked) {
+                                            newvalid = true;
+                                        }
 
-                                    if (el.checked) {
-                                        newvalid = true;
+                                    }
+
+                                    if (isvalid && !newvalid) {
+                                        isvalid = newvalid;
+
+
+                                    }
+
+                                    i = 0;
+
+                                    for (let vv of THEEL.elContent) {
+                                        i += 1;
+
+                                        var theid = THEEL.elID + "_" + i.toString();
+
+                                        var el = <HTMLInputElement>(document.getElementById(theid));
+
+                                        el.classList.remove('is-invalid');
+                                        el.classList.remove('is-valid');
+
+                                        if (!newvalid) {
+                                            el.classList.add("is-invalid")
+                                        }
+
                                     }
 
                                 }
-
-                                if (isvalid && !newvalid) {
-                                    isvalid = newvalid;
-
-
-                                }
-
-                                i = 0;
-
-                                for (let vv of THEEL.elContent) {
-                                    i += 1;
-
-                                    var theid = THEEL.elID + "_" + i.toString();
-
-                                    var el = <HTMLInputElement>(document.getElementById(theid));
-
-                                    el.classList.remove('is-invalid');
-                                    el.classList.remove('is-valid');
-
-                                    if (!newvalid) {
-                                        el.classList.add("is-invalid")
-                                    }
-
-                                }
-
                             }
                             break;
                         }
@@ -1913,68 +1921,73 @@ export class FormGenBS {
                         {
                             var del = <HTMLElement>(document.getElementById("div_" + THEEL.elID));
 
-                            if (!del.hidden) {
+                            if (del.clientHeight> 0)
+                            {    
+                                if (!del.hidden) {
 
-                                var eli = <HTMLSelectElement>(document.getElementById(THEEL.elID));
+                                    var eli = <HTMLSelectElement>(document.getElementById(THEEL.elID));
 
-                                eli.classList.remove('is-invalid');
-                                eli.classList.remove('is-valid');
+                                    eli.classList.remove('is-invalid');
+                                    eli.classList.remove('is-valid');
 
 
-                                var seltext = eli.options[eli.selectedIndex].text;
+                                    var seltext = eli.options[eli.selectedIndex].text;
 
-                                if (seltext + "" == "") {
-                                    isvalid = false;
+                                    if (seltext + "" == "") {
+                                        isvalid = false;
 
-                                    eli.classList.add("is-invalid");
+                                        eli.classList.add("is-invalid");
+                                    }
                                 }
                             }
-
                             break;
                         }
                     case "CHECKBOX":
                         {
                             var del = <HTMLElement>(document.getElementById("div_" + THEEL.elID));
 
-                            if (!del.hidden) {
+                            if (del.clientHeight > 0)
+                            {
+                                if (!del.hidden) {
 
-                                let i = 0;
+                                    let i = 0;
 
-                                let newvalid = false;
+                                    let newvalid = false;
 
-                                for (let vv of THEEL.elContent) {
-                                    i += 1;
+                                    for (let vv of THEEL.elContent) {
+                                        i += 1;
 
-                                    var theid = THEEL.elID + "_" + i.toString();
+                                        var theid = THEEL.elID + "_" + i.toString();
 
-                                    var el = <HTMLInputElement>(document.getElementById(theid));
+                                        var el = <HTMLInputElement>(document.getElementById(theid));
 
-                                    if (el.checked) {
-                                        newvalid = true;
+                                        if (el.checked) {
+                                            newvalid = true;
+                                        }
+
                                     }
 
-                                }
-
-                                if (isvalid && !newvalid) {
-                                    isvalid = newvalid;
+                                    if (isvalid && !newvalid) {
+                                        isvalid = newvalid;
 
 
-                                }
+                                    }
 
-                                i = 0;
+                                    i = 0;
 
-                                for (let vv of THEEL.elContent) {
-                                    i += 1;
+                                    for (let vv of THEEL.elContent) {
+                                        i += 1;
 
-                                    var theid = THEEL.elID + "_" + i.toString();
+                                        var theid = THEEL.elID + "_" + i.toString();
 
-                                    var el = <HTMLInputElement>(document.getElementById(theid));
+                                        var el = <HTMLInputElement>(document.getElementById(theid));
 
-                                    el.classList.remove('is-invalid');
-                                    el.classList.remove('is-valid');
+                                        el.classList.remove('is-invalid');
+                                        el.classList.remove('is-valid');
 
-                                    if (!newvalid) {
-                                        el.classList.add("is-invalid")
+                                        if (!newvalid) {
+                                            el.classList.add("is-invalid")
+                                        }
                                     }
                                 }
                             }
